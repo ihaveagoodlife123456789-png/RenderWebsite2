@@ -1,11 +1,8 @@
-
+@import 'tailwindcss';
 
 #root {
   width: 100vw;
   height: 100vh;
   background-color: #164f57;
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b4263b6809565add16dca10c06107f02b6dd52e7
+

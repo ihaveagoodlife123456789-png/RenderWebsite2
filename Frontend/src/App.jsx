@@ -18,7 +18,7 @@ export function App() {
   }, []);
 
   return (
-    <div>
+    <div className="size-full bg-slate-950/20">
       <div>
         {userData && userData.map(users => {
           return (
