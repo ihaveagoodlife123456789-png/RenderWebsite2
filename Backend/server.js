@@ -23,7 +23,7 @@ app.get('/users', async (req, res) => {
 const distPath = path.join(__dirname, '../Frontend/dist');
 app.use(express.static(distPath));
 
-app.get('/{*splat}', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(distPath, 'index.html'))
 });
 
