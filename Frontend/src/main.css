@@ -6,3 +6,8 @@
   background-color: #164f57;
 }
 
+input:focus {
+  outline: none;
+  background-color: rgb(128, 66, 66);
+}
+
