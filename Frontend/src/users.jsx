@@ -7,7 +7,7 @@ export function UsersPage() {
   useEffect(() => {
     async function fetchUserData() {
       try {
-        const response = await fetch('/users')
+        const response = await fetch('/api/users')
         const data = await response.json();
         setUserData(data);
       } catch (error) {

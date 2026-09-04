@@ -11,7 +11,7 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-app.get('/users', async (req, res) => {
+app.get('/api/users', async (req, res) => {
     try {
         const result = await pool.query('SELECT * FROM users');
         res.json(result.rows); 
