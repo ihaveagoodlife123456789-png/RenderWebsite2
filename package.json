@@ -1,0 +1,13 @@
+{
+  "name": "renderwebsite",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd Frontend && npm install && npm run build && cd ../Backend && npm install",
+    "start": "cd Backend && node server.js"
+  }
+}
