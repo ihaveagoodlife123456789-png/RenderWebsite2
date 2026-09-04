@@ -18,7 +18,7 @@ export function App() {
   }, []);
 
   return (
-    <div className="size-full bg-slate-950/20">
+    <div className="size-full text-[35px] flex justify-center items-center">
       <div>
         {userData && userData.map(users => {
           return (
