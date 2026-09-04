@@ -8,7 +8,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const __filename = path.dirname(fileURLToPath(import.meta.url));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 app.get('/users', async (req, res) => {
     try {
@@ -19,7 +20,7 @@ app.get('/users', async (req, res) => {
     }
 })
 
-const distPath = path.join(__filename, '../Frontend/dist');
+const distPath = path.join(__dirname, '../Frontend/dist');
 app.use(express.static(distPath));
 
 app.get('*', (req, res) => {
