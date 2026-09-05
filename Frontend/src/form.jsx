@@ -80,13 +80,12 @@ export function FormPage() {
                 <h3>Email</h3>
                 <input {...register('email')} disabled={isSubmitSuccessful} type="text" placeholder="Enter your email"></input>
                 {errors.email && <h5 className="text-red-700/90">{errors.email.message}</h5>}
-                <br />
                 </fieldset>
                 <motion.button type="submit" disabled={isSubmitSuccessful ? true : isSubmitting ? true : false} className="relative top-10 size-fit text-slate-200 bg-blue-800 font-semibold text-[22px] rounded-[15px] py-[6px] px-[10px]" initial={{scale: 0, y: -20}} animate={{scale: 1, y: 0}} transition={{duration: .2}} whileHover={{scale: 1.1}}>{isSubmitting ? 'Submitting...' : isSubmitSuccessful ? 'Submitted' : 'Submit'}</motion.button>
                 {errors.root && <h4 className="text-red-700">errors.root.message</h4>}
             </motion.form>
             <h2 className="text-green-400 font-bold text-[35px]">{isValid ? 'Valid!' : isSubmitSuccessful ? 'You can go back to Lobby!' : null}</h2>
-            {isSubmitSuccessful ? <Link to='/'><motion.div className="text-white text-[18px] border-[3px] border-blue-800 font-semibold bg-blue-600/30 size-fit py-[6px] px-[4px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link> : null}
+            {isSubmitSuccessful ? <Link to='/'><motion.div className="relative text-white text-[18px] border-[3px] border-blue-800 font-semibold bg-blue-600/30 size-fit py-[6px] px-[4px] rounded-[6px] top-10" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link> : null}
                 <Link to='/'><motion.div className="text-white text-[16px] border-[2px] border-blue-800 font-semibold absolute top-8 left-8 bg-blue-600/30 size-fit py-[4px] px-[2px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link>
             </motion.div>
             <img src="/icons8-wreath-64.png" className="size-fit absolute top-14 left-14"/>

@@ -14,5 +14,6 @@ input:focus {
 input {
   border: 1px solid rgba(68, 63, 63, 0.288);
   border-radius: 5px;
+  color: hsla(29, 85%, 64%, 0.575)
 }
 
