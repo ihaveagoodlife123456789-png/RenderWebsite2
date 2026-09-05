@@ -21,6 +21,7 @@ export function UsersPage() {
 
     return (
         <div className="size-full flex items-center justify-center bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover">
+          <div className="w-[68%] h-[70%]">
             <div className="h-[90%] w-[65%] bg-slate-950/20 flex flex-col justify-center items-center gap-5 font-semibold text-slate-200 overflow-scroll scrollbar-none">
                 {userData && userData.map(users => {
                     return (
@@ -31,7 +32,8 @@ export function UsersPage() {
                         </div>
                     )
                 })}
-                <Link to='/'><motion.h2 className="bg-blue-400/20 border-[2px] border-blue-700 text-[22px] font-bold py-[6px] px-[8px] rounded-[12px]" initial={{scale: 1}} whileHover={{scale: 1.08}}>Go back</motion.h2></Link>
+            </div>
+            <Link to='/'><motion.h2 className="bg-blue-400/20 border-[2px] border-blue-700 text-[22px] font-bold py-[6px] px-[8px] rounded-[12px]" initial={{scale: 1}} whileHover={{scale: 1.08}}>Go back</motion.h2></Link>
             </div>
         </div>
     )
