@@ -18,7 +18,7 @@ export function FormPage() {
                 <motion.input placeholder="Enter your email"></motion.input>
                 <motion.button className="size-fit text-slate-200 bg-blue-800 font-semibold text-[22px] rounded-[15px] py-[6px] px-[10px]" initial={{scale: 0, y: -20}} animate={{scale: 1, y: 0}} transition={{duration: .2}} whileHover={{scale: 1.1}}>Submit</motion.button>
             </motion.form>
-                <Link to='/'><motion.div className="text-white font-semibold absolute top-5 left-5 bg-blue-900/75 size-fit py-[4px] px-[2px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1, y: 0}} transition={{duration: .2}} whileHover={{scale: 1.06}}>Go home</motion.div></Link>
+                <Link to='/'><motion.div className="text-white font-semibold absolute top-5 left-5 bg-blue-900/75 size-fit py-[4px] px-[2px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1, y: 0}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link>
             </div>
             <img src="/icons8-wreath-64.png" className="size-fit absolute top-14 left-14"/>
         </div>
