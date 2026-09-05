@@ -7,7 +7,7 @@ import { toast, Toaster } from 'sonner'
 import { namedColors } from './namedColors.js'
 
 const formSchema = z.object({
-    id: optional(),
+    id: z.optional(),
     name: z.string().regex(/^([^0-9]*)$/, { message: "Can't include numbers"}).min(1, "Name is required").max(15, "Max 15 characters"),
     message: z.string().min(1, "Message is required").max(25, "Max 25 characters"),
     color: z.string(),
