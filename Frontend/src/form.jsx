@@ -69,7 +69,7 @@ export function FormPage() {
     }
 
     function colorSchema() {
-        setColorTemplate(true)
+        setColorTemplate(!colorTemplate)
     }
 
     return (
@@ -100,7 +100,7 @@ export function FormPage() {
             {isSubmitSuccessful ? <Link to='/' className="absolute bottom-10"><motion.div className="text-white text-[18px] border-[3px] border-blue-800 font-semibold bg-blue-600/30 size-fit py-[6px] px-[4px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link> : null}
                 <Link to='/'><motion.div className="text-white text-[16px] border-[2px] border-blue-800 font-semibold absolute top-[5%] left-[5%] bg-blue-600/30 size-fit py-[4px] px-[2px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link>
                 <motion.h3 className="size-fit text-slate-300 absolute left-[20%] top-[4%] border-bottom-[2px] border-white" initial={{color: 'white'}} whileHover={{color: 'orange', scale: 1.04}} onClick={() => colorSchema()}>Possible colors</motion.h3>
-                <motion.div className="absolute left-[20%] top-[6%] border-slate-400/80 border-[3px] w-[90%] h-[90%] bg-slate-500/70" variants={variants} initial={{scale: 0}} animate={colorTemplate ? 'on' : 'false'}>{}</motion.div>
+                <motion.div className="absolute left-[20%] top-[6%] border-slate-400/80 border-[3px] w-[90%] h-[90%] bg-slate-500/70" variants={variants} initial={{scale: 0, x: '-20%'}} animate={colorTemplate ? 'on' : 'false'}>{}</motion.div>
             </motion.div>
             <img src="/icons8-wreath-64.png" className="size-fit absolute top-14 left-14"/>
         </div>
