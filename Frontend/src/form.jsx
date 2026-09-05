@@ -25,7 +25,7 @@ export function FormPage() {
     })
 
     const onSubmit = async (data) => {
-        const [ id, name, message, color, email ] = data
+        const [ name, message, color, email ] = data
         if(!namedColors.includes(color.toLowerCase())) {
             setError("root", {
                 message: "Sorry, this color isn't available at this moment"
@@ -85,7 +85,7 @@ export function FormPage() {
                 {errors.root && <h4 className="text-red-700">errors.root.message</h4>}
             </motion.form>
             <h2 className="text-green-400 font-bold text-[35px]">{isValid ? 'Valid!' : isSubmitSuccessful ? 'You can go back to Lobby!' : null}</h2>
-            {isSubmitSuccessful ? <Link to='/'><motion.div className="relative text-white text-[18px] border-[3px] border-blue-800 font-semibold bg-blue-600/30 size-fit py-[6px] px-[4px] rounded-[6px] top-10" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link> : null}
+            {isSubmitSuccessful ? <Link to='/'><motion.div className="relative text-white text-[18px] border-[3px] border-blue-800 font-semibold bg-blue-600/30 size-fit py-[6px] px-[4px] rounded-[6px] top-30" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link> : null}
                 <Link to='/'><motion.div className="text-white text-[16px] border-[2px] border-blue-800 font-semibold absolute top-8 left-8 bg-blue-600/30 size-fit py-[4px] px-[2px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link>
             </motion.div>
             <img src="/icons8-wreath-64.png" className="size-fit absolute top-14 left-14"/>
