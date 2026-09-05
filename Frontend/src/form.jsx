@@ -68,7 +68,7 @@ export function FormPage() {
             <h1 className="text-white font-semibold text-[45px]">Create a Message</h1>
             <p className="w-[55%] wrap-break-word text-slate-300/90 font-semibold text-[14px]">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
             <motion.form  onSubmit={handleSubmit(onSubmit)} className="flex flex-col align-items justify-content gap-5 font-semibold text-slate-200">
-                <fieldset disabled={isSubmitting}>
+                <fieldset disabled={isSubmitting} className="flex align-items justify-content">
                 <h3>Name</h3>
                 <input {...register('name')} disabled={isSubmitSuccessful} type="text" placeholder="Enter your name"></input>
                 {errors.name && <h5 className="text-red-700/90">{errors.name.message}</h5>}
