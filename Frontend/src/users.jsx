@@ -33,7 +33,7 @@ export function UsersPage() {
                         </div>
                     )
                 })}
-                <Link to='/'><motion.h2 className="absolute bottom-0 bg-blue-400/20 border-[2px] border-blue-700 text-[22px] font-bold py-[6px] px-[8px] rounded-[12px]" initial={{scale: 1}} whileHover={{scale: 1.08}}>Go back</motion.h2></Link>
+                <Link to='/'><motion.h2 className="absolute bottom-15 bg-blue-400/20 border-[2px] border-blue-700 text-[22px] font-bold py-[6px] px-[8px] rounded-[12px]" initial={{scale: 1}} whileHover={{scale: 1.08}}>Go back</motion.h2></Link>
             </div>
             </div>
         </div>
