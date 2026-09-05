@@ -6,7 +6,7 @@ export function FrontPage() {
 
   return (
     <div className="size-full text-[35px] bg-[url('/santa-aesthetic-5120x3413-13338.jpg')] bg-no-repeat bg-cover flex justify-center items-center gap-12 font-semibold text-slate-200">
-      <div className="relative w-full h-[25%] bg-slate-950/20 flex justify-center items-center gap-20">
+      <div className="relative w-full h-[25%] bg-slate-950/20 flex justify-center items-center gap-20 border-slate-400 border-[1px]">
         <Link to='/form'><motion.h2
         className="font-bold text-slate-300/90"
         initial={{ opacity: 0, y: -20 }}
