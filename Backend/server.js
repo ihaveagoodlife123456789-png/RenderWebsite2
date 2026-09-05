@@ -21,7 +21,7 @@ app.get('/api/users', async (req, res) => {
 })
 
 app.post('/api/users', async (req, res) => {
-    const { id, name, message, color, email } = req.body
+    const { name, message, color, email } = req.body
 
     try {
         const query = `SELECT id FROM users ORDER BY id DESC LIMIT 1`
