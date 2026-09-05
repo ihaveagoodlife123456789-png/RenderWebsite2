@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, /*SubmitHandler*/ } from "react-hook-form";
 import { toast, Toaster } from 'sonner'
 import { namedColors } from './namedColors.js'
 
