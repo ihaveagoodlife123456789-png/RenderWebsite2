@@ -3,11 +3,16 @@
 #root {
   width: 100vw;
   height: 100vh;
-  background-color: #164f57;
+  background-color: #304dad;
 }
 
 input:focus {
   outline: none;
   background-color: rgba(255, 40, 40, 0.733);
+}
+
+input {
+  border: 1px solid rgba(68, 63, 63, 0.288)
+  
 }
 
