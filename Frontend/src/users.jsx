@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react'
-import { pool } from '../../Backend/index.js'
+//import { pool } from '../../Backend/index.js'
 
 export function UsersPage() { 
     const [userData, setUserData] = useState(null);
