@@ -8,7 +8,7 @@ import { namedColors } from './namedColors.js'
 
 const formSchema = z.object({
     id: z.number(),
-    name: z.string().regex(/^([^0-9]*)$/, { message: "You cannot include numbers in your username."}).min(1, "Name is required").max(15, "Max 15 characters"),
+    name: z.string().regex(/^([^0-9]*)$/, { message: "Can't include numbers"}).min(1, "Name is required").max(15, "Max 15 characters"),
     message: z.string().min(1, "Message is required").max(25, "Max 25 characters"),
     color: z.string(),
     email: z.string().email({message: "This is not a valid email"})
@@ -83,9 +83,9 @@ export function FormPage() {
                 {errors.email && <h5 className="text-red-700/90">{errors.email.message}</h5>}
                 <input {...register('id')} disabled={true} className="absolute opacity-0 z-[-99]"></input>
                 <br />
-                <motion.button type="submit" disabled={isSubmitSuccessful} className="relative top-10 size-fit text-slate-200 bg-blue-800 font-semibold text-[22px] rounded-[15px] py-[6px] px-[10px]" initial={{scale: 0, y: -20}} animate={{scale: 1, y: 0}} transition={{duration: .2}} whileHover={{scale: 1.1}}>{isSubmitting ? 'Submitting...' : isSubmitSuccessful ? 'Submitted' : 'Submit'}</motion.button>
-                {errors.root && <h4 className="text-red-700">errors.root.message</h4>}
                 </fieldset>
+                <motion.button type="submit" disabled={isSubmitSuccessful ? true : isSubmitting ? true : false} className="relative top-10 size-fit text-slate-200 bg-blue-800 font-semibold text-[22px] rounded-[15px] py-[6px] px-[10px]" initial={{scale: 0, y: -20}} animate={{scale: 1, y: 0}} transition={{duration: .2}} whileHover={{scale: 1.1}}>{isSubmitting ? 'Submitting...' : isSubmitSuccessful ? 'Submitted' : 'Submit'}</motion.button>
+                {errors.root && <h4 className="text-red-700">errors.root.message</h4>}
             </motion.form>
             <h2 className="text-green-400 font-bold text-[35px]">{isValid ? 'Valid!' : isSubmitSuccessful ? 'You can go back to Lobby!' : null}</h2>
             {isSubmitSuccessful ? <Link to='/'><motion.div className="text-white text-[18px] border-[3px] border-blue-800 font-semibold bg-blue-600/30 size-fit py-[6px] px-[4px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link> : null}
