@@ -16,3 +16,7 @@ input {
   border-radius: 5px;
 }
 
+input:visited {
+  background-color: white;
+}
+
