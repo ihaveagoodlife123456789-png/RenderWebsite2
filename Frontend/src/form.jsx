@@ -37,7 +37,7 @@ export function FormPage() {
             const URL = '/api/users'
             const response = await fetch(URL, {
                 method: 'POST',
-                header: {
+                headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify(data)
@@ -81,7 +81,7 @@ export function FormPage() {
                 <input {...register('email')} disabled={isSubmitSuccessful} type="text" placeholder="Enter your email"></input>
                 {errors.email && <h5 className="text-red-700/90">{errors.email.message}</h5>}
                 </fieldset>
-                <motion.button type="submit" disabled={isSubmitSuccessful ? true : isSubmitting ? true : false} className="relative top-10 size-fit text-slate-200 bg-blue-800 font-semibold text-[22px] rounded-[15px] py-[6px] px-[10px]" initial={{scale: 0, y: -20}} animate={{scale: 1, y: 0}} transition={{duration: .2}} whileHover={{scale: 1.1}}>{isSubmitting ? 'Submitting...' : isSubmitSuccessful ? 'Submitted' : 'Submit'}</motion.button>
+                <motion.button type="submit" disabled={isSubmitSuccessful ? true : isSubmitting ? true : false} className="relative top-2 size-fit text-slate-200 bg-blue-800 font-semibold text-[22px] rounded-[15px] py-[6px] px-[10px]" initial={{scale: 0, y: -20}} animate={{scale: 1, y: 0}} transition={{duration: .2}} whileHover={{scale: 1.1}}>{isSubmitting ? 'Submitting...' : isSubmitSuccessful ? 'Submitted' : 'Submit'}</motion.button>
                 {errors.root && <h4 className="text-red-700">errors.root.message</h4>}
             </motion.form>
             <h2 className="text-green-400 font-bold text-[35px]">{isValid ? 'Valid!' : isSubmitSuccessful ? 'You can go back to Lobby!' : null}</h2>

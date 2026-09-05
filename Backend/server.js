@@ -31,7 +31,7 @@ app.post('/api/users', async (req, res) => {
         const insertQuery = 'INSERT INTO users(id, name, message, color, email) VALUES ($1, $2, $3, $4, $5) RETURNING *'
         const values = [ newId, name, message, color, email ]
         await pool.query(insertQuery, values)
-        return res.status(200)
+        return res.status(201)
     } catch (err) {
         return res.status(500).json({ error: 'Internal Server Error \n 500'})
     }
