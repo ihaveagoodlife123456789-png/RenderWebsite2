@@ -51,7 +51,7 @@ export function FormPage() {
                 })
                 return;
             }
-
+            console.log(fetchedData.message)
             toast.success('Your message has been submitted!')
         } catch (err) {
             setError("root", {
