@@ -14,7 +14,7 @@ export function FormPage() {
                 <motion.input placeholder="Enter message color"></motion.input>
                 <h3>Email</h3>
                 <motion.input placeholder="Enter your email"></motion.input>
-                <motion.button className="size-fit bg-blue-800 rounded-[15px] my-[8px] mx-[12px]">Submit</motion.button>
+                <motion.button className="size-fit bg-blue-800 rounded-[15px] py-[8px] px-[12px]">Submit</motion.button>
             </motion.form>
                 <Link to='/'><motion.div className="text-white">Go home</motion.div></Link>
             </div>
