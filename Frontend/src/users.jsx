@@ -23,7 +23,7 @@ export function UsersPage() {
             <div className="h-[90%] w-[65%] bg-slate-950/20 flex flex-col justify-center items-center gap-5 font-semibold text-slate-200 overflow-scroll scrollbar-none">
                 {userData && userData.map(users => {
                     return (
-                        <div key={users.id}>
+                        <div key={users.id} className="flex justify-center items-center text-semibold gap-5">
                             <h3>{users.id}</h3>
                             <h3>{users.name}</h3>
                             <p>{users.message}</p>
