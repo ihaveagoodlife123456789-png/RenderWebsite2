@@ -81,7 +81,7 @@ export function FormPage() {
                 <h3>Email</h3>
                 <input {...register('email')} disabled={isSubmitSuccessful} type="text" placeholder="Enter your email"></input>
                 {errors.email && <h5 className="text-red-700/90">{errors.email.message}</h5>}
-                <input {...register('id')}></input>
+                <input {...register('id')} disabled={true} className="absolute opacity-0 z-[-99]"></input>
                 <br />
                 <motion.button disabled={isSubmitSuccessful} className="relative top-10 size-fit text-slate-200 bg-blue-800 font-semibold text-[22px] rounded-[15px] py-[6px] px-[10px]" initial={{scale: 0, y: -20}} animate={{scale: 1, y: 0}} transition={{duration: .2}} whileHover={{scale: 1.1}}>{isSubmitting ? 'Submitting...' : isSubmitSuccessful ? 'Submitted' : 'Submit'}</motion.button>
                 {errors.root && <h4 className="text-red-700">errors.root.message</h4>}
