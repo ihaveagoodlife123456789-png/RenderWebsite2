@@ -11,7 +11,7 @@ const formSchema = z.object({
     name: z.string().min(1, "Name is required").max(15, "Max 15 characters"),
     message: z.string().min(1, "Message is required").max(25, "Max 25 characters"),
     color: z.string(),
-    email: z.email({message: "This is not a valid email"})
+    email: z.string().email({message: "This is not a valid email"})
 })
 
 export function FormPage() {
