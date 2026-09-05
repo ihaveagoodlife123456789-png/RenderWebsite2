@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { motion } from 'motion/react'
 
 export function UsersPage() { 
     const [userData, setUserData] = useState(null);
@@ -30,7 +31,7 @@ export function UsersPage() {
                         </div>
                     )
                 })}
-                <Link to='/'>Go Home</Link>
+                <Link to='/'><motion.h2 className="bg-blue-400/20 border-[2px] border-blue-700 text-[22px] font-semibold py-[6px] px-[8px]" initial={{scale: 1}} whileHover={{scale: 1.08}}>Go back</motion.h2></Link>
             </div>
         </div>
     )
