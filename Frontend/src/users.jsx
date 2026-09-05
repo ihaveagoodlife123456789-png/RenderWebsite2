@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { motion } from 'motion/react'
+import { pool } from '../../Backend/index.js'
 
 export function UsersPage() { 
     const [userData, setUserData] = useState(null);
@@ -11,6 +12,8 @@ export function UsersPage() {
         const response = await fetch('/api/users')
         const data = await response.json();
         setUserData(data);
+
+        const color = data.
       } catch (error) {
         console.error('Error fetching user data:', error);
       }
@@ -24,11 +27,15 @@ export function UsersPage() {
           <div className="w-[68%] h-[70%]">
             <div className="h-[90%] w-[65%] bg-slate-950/20 flex flex-col justify-center items-center gap-5 font-semibold text-slate-200 overflow-scroll scrollbar-none">
                 {userData && userData.map(users => {
+                  const getColor = "SELECT color FROM users WHERE id = $1"
+                  const userColorId = [users.id]
+                  const result = await pool.query(getColor, userColorId)
+                  const color = result.rows[0].color
                     return (
                         <div key={users.id} className="flex justify-center items-center text-semibold gap-5 text-[18px]">
                             <h3>{users.id}</h3>
                             <h3>{users.name}</h3>
-                            <p>{users.message}</p>
+                            <p className="text-[var(--dynamic-color)]" style={{ '--dynamic-color': color}}>{users.message}</p>
                         </div>
                     )
                 })}

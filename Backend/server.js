@@ -20,6 +20,23 @@ app.get('/api/users', async (req, res) => {
     }
 })
 
+app.post('/api/users', async (req, res) => {
+    const { id, name, message, color, email } = req.body
+
+    try {
+        const query = `SELECT id FROM users ORDER BY id DESC LIMIT 1`
+        const result = await pool.query(query)
+        const newId = result.rows[0].id + 1
+
+        const insertQuery = 'INSERT INTO users(id, name, message, color, email) VALUES ($1, $2, $3, $4, $5) RETURNING *'
+        const values = [ newId, name, message, color, email ]
+        await pool.query(insertQuery, values)
+        return res.status(200)
+    } catch (err) {
+        return res.status(500).json({ error: 'Internal Server Error \n 500'})
+    }
+})
+
 const distPath = path.join(__dirname, '../Frontend/dist');
 app.use(express.static(distPath));
 
