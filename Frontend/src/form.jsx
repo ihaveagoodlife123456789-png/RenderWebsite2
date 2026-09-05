@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, /*SubmitHandler*/ } from "react-hook-form";
 import { toast, Toaster } from 'sonner'
 import { namedColors } from './namedColors.js'
+import { useState } from 'react'
 
 const formSchema = z.object({
     name: z.string().regex(/^([^0-9]*)$/, { message: "Can't include numbers"}).min(1, "Name is required").max(15, "Max 15 characters"),
@@ -14,6 +15,8 @@ const formSchema = z.object({
 })
 
 export function FormPage() {
+
+    const [colorTemplate, setColorTemplate] = useState(false)
 
     const {
         register,
@@ -60,13 +63,22 @@ export function FormPage() {
         }
     }
 
+    const variants = {
+        on: {opacity: 1, scale: 1},
+        off: {opacity: 0, scale: 0}
+    }
+
+    function colorSchema() {
+        setColorTemplate(true)
+    }
+
     return (
         <div className="size-full bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover flex justify-center items-center" initial={{scale: 0, y: -20}} animate={{scale: 1, y: 0}} transition={{duration: .1}}>
             <Toaster position="top-right" toastOptions={{style: {background: 'green', color: 'white'}}} />
             <motion.div className="relative h-[90%] w-[45%] bg-slate-950/20 flex flex-col justify-center items-center gap-5" initial={{scale: 0, y: -30}} animate={{scale: 1}} transition={{duration: .3}}>
             <h1 className="text-white font-semibold text-[45px]">Create a Message</h1>
             <p className="w-[55%] wrap-break-word text-slate-300/90 font-semibold text-[14px]">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-            <motion.form  onSubmit={handleSubmit(onSubmit)} className="flex flex-col align-items justify-content gap-5 font-semibold text-slate-200">
+            <motion.form  onSubmit={handleSubmit(onSubmit)} className="flex flex-col align-items justify-content gap-12 font-semibold text-slate-200">
                 <fieldset disabled={isSubmitting} className="flex flex-col align-items justify-content">
                 <h3>Name</h3>
                 <input {...register('name')} disabled={isSubmitSuccessful} type="text" placeholder="Enter your name"></input>
@@ -87,7 +99,8 @@ export function FormPage() {
             <h2 className="text-green-400 font-bold text-[35px]">{isSubmitSuccessful ? 'You can go back to Lobby!' : isValid ? 'Valid!' : null}</h2>
             {isSubmitSuccessful ? <Link to='/' className="absolute bottom-10"><motion.div className="text-white text-[18px] border-[3px] border-blue-800 font-semibold bg-blue-600/30 size-fit py-[6px] px-[4px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link> : null}
                 <Link to='/'><motion.div className="text-white text-[16px] border-[2px] border-blue-800 font-semibold absolute top-[5%] left-[5%] bg-blue-600/30 size-fit py-[4px] px-[2px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link>
-                <motion.h3 className="size-fit text-slate-300 absolute left-[20%] top-[2%] border-bottom-[2px] border-white" initial={{color: 'white'}} whileHover={{color: 'orange', scale: 1.04}}>Possible colors</motion.h3>
+                <motion.h3 className="size-fit text-slate-300 absolute left-[20%] top-[4%] border-bottom-[2px] border-white" initial={{color: 'white'}} whileHover={{color: 'orange', scale: 1.04}}>Possible colors</motion.h3>
+                <motion.div className="border-slate-400/80 border-[3px] w-[90%] h-[90%] bg-slate-500/70" variants={variants} initial={{scale: 0}} animate={colorTemplate ? 'on' : 'false'} onClick={colorSchema()}>{}</motion.div>
             </motion.div>
             <img src="/icons8-wreath-64.png" className="size-fit absolute top-14 left-14"/>
         </div>
