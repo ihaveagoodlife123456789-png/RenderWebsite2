@@ -4,6 +4,8 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { pool } from './index.js';
 
+import session from 'express-session'
+
 const app = express();
 app.use(cors());
 app.use(express.json());

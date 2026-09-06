@@ -5,7 +5,7 @@ import { motion } from 'motion/react';
 export function FrontPage() {
 
   return (
-    <div className="size-full text-[35px] bg-[url('/christmas-decoration-garland-fruits-wooden-background-happy-6000x4000-3804.jpg')] bg-no-repeat bg-cover bg-center flex justify-center items-center gap-12 font-semibold text-slate-200">
+    <div className="size-full text-[35px] bg-[url('/alps-snow-mountains-3840x2160-25451.jpg')] bg-no-repeat bg-cover bg-center flex justify-center items-center gap-12 font-semibold text-slate-200">
       <div className="relative w-full h-[25%] bg-slate-950/20 flex justify-center items-center gap-20 border-slate-400 border-[1px]">
         <Link to='/form'><motion.h2 className="font-bold text-slate-300/90" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} whileHover={{ scale: 1.08}}>Write a Message</motion.h2></Link>
         <Link to='/users'><motion.h2 className="font-bold text-slate-300/90" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} whileHover={{ scale: 1.08}}>View Users</motion.h2></Link>
