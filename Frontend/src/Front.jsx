@@ -6,7 +6,7 @@ export function FrontPage() {
 
   return (
     <div className="size-full text-[35px] bg-[url('/winter-mountain-5120x2880-24311.jpg')] bg-no-repeat bg-cover bg-center flex flex-col text-slate-200">
-      <div className="size-full flex flex-col justify-center items-center gap-8">
+      <div className="w-full h-[60%] flex flex-col justify-center items-center gap-8">
         <h1 className="font-bold text-[38px]">Ascended Horizons</h1>
         <h4 className="font-[18px] font-semibold">Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. <br />Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. <br />Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</h4>
       </div>

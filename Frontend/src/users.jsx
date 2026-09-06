@@ -33,9 +33,9 @@ export function UsersPage() {
                         </div>
                     )
                 })}
-            </div>
-            <h1 className="absolute top-8 text-[35px]">Messages</h1>
+                <h1 className="absolute top-8 text-[35px]">Messages</h1>
                 <Link to='/' className="absolute bottom-12"><motion.h2 className="bg-blue-400/20 border-[2px] border-blue-700 text-[22px] font-bold py-[6px] px-[8px] rounded-[12px]" initial={{scale: 1}} whileHover={{scale: 1.08}}>Go back</motion.h2></Link>
+            </div>
             </div>
             <img src="/icons8-wreath-64.png" className="absolute top-12 left-12"/>
         </div>
