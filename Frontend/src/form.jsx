@@ -80,14 +80,14 @@ export function FormPage() {
         if(previewTemplate) {
             setPreviewTemplate(!previewTemplate)
         }
-        if(emailSchema) {
+        if(emailTemplate) {
             setEmailTemplate(!emailTemplate)
         }
     }
 
     function previewSchema() {
         setPreviewTemplate(!previewTemplate)
-        if(emailSchema) {
+        if(emailTemplate) {
             setEmailTemplate(!emailTemplate)
         }
         if(colorTemplate) {
@@ -137,7 +137,7 @@ export function FormPage() {
             {isSubmitSuccessful ? <Link to='/' className="absolute bottom-10"><motion.div className="text-white text-[18px] border-[3px] border-blue-800 font-semibold bg-blue-600/30 size-fit py-[6px] px-[4px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link> : null}
                 <Link to='/'><motion.div className="text-white text-[16px] border-[2px] border-blue-800 font-semibold absolute top-[5%] left-[5%] bg-blue-600/30 size-fit py-[4px] px-[2px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link>
                 <motion.h3 className="size-fit text-[20px] text-slate-300 absolute left-[30%] top-[4%] border-bottom-[2px] border-white" initial={{scale: 1}} whileHover={{color: 'gold', scale: 1.04, cursor: 'pointer'}} onClick={() => colorSchema()}>Colors</motion.h3>
-                <motion.div className="absolute flex justify-center items-center left-[20%] top-[6%] border-slate-400/80 border-[3px] w-[90%] h-[90%] bg-slate-800/90 text-[26px] font-semibold" variants={variants} initial={{opacity: 0, scale: 0, x: '-16.5%', y: '3%'}} animate={colorTemplate ? 'on' : 'off'}><h1 className="absolute top-[4%] font-bold text-[40px] text-yellow-950">Message colors</h1><div className="flex flex-col justify-start items-center scrollbar-auto w-[90%] h-[70%] overflow-auto">{namedColors.map(color => <p className="text-blue-700">{color}</p>)}</div><img src="/icons8-x-90.png" className="absolute right-12 top-12 h-[72px] w-[72px] scrollbar-none" variants={variants} initial={{opacity: 0}} animate={colorTemplate ? 'visible' : null} transition={{duration: .5}} onClick={() => colorSchema()}/></motion.div>
+                <motion.div className="absolute flex justify-center items-center left-[20%] top-[6%] border-slate-400/80 border-[3px] w-[90%] h-[90%] bg-slate-800/90 text-[26px] font-semibold" variants={variants} initial={{opacity: 0, scale: 0, x: '-16.5%', y: '3%'}} animate={colorTemplate ? 'on' : 'off'}><h1 className="absolute top-[4%] font-bold text-[40px] text-amber-700">Message colors</h1><div className="flex flex-col justify-start items-center scrollbar-auto w-[90%] h-[70%] overflow-auto">{namedColors.map(color => <p className="text-blue-700">{color}</p>)}</div><img src="/icons8-x-90.png" className="absolute right-12 top-12 h-[72px] w-[72px] scrollbar-none" variants={variants} initial={{opacity: 0}} animate={colorTemplate ? 'visible' : null} transition={{duration: .5}} onClick={() => colorSchema()}/></motion.div>
                 <motion.h3 className="size-fit text-[20px] text-slate-300 absolute left-[42%] top-[4%] border-bottom-[2px] border-white" initial={{scale: 1}} whileHover={{color: 'gold', scale: 1.04, cursor: 'pointer'}} onClick={() => previewSchema()}>Preview</motion.h3>
                 <motion.div className="absolute w-[94%] h-[42%] left-[6%] top-[6%] bg-slate-950/70 border-mist-950/90 border-[3px] size-[20px] font-semibold flex flex-col justify-center items-center gap-[45px]" variants={variants} initial={{scale: 0, x: '-4.5%', y: '3%'}} animate={previewTemplate ? 'on' : 'off'}><div className="size-fit text-slate-300 flex justify-center gap-[38px]"><h2>1234</h2><h2>John Doe</h2><h2 className="text-[goldenrod]">Welcome!</h2></div><div className="size-fit text-slate-300 flex justify-center gap-[38px]"><h3>Line Id</h3><h3>Name</h3><h3>Color: Goldenrod</h3></div></motion.div>
                 <motion.h3 className="size-fit text-[20px] text-slate-300 absolute left-[54%] top-[4%] border-bottom-[2px] border-white" initial={{scale: 1}} whileHover={{color: 'gold', scale: 1.04, cursor: 'pointer'}} onClick={() => emailSchema()}>Send Email</motion.h3>
