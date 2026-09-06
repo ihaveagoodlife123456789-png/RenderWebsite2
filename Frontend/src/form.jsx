@@ -117,7 +117,7 @@ export function FormPage() {
         if(colorTemplate) {
             setColorTemplate(!colorTemplate)
         }
-        if(!colorTemplate) {
+        if(!emailTemplate) {
             setTextBlur(true)
         } else {
             setTextBlur(false)
@@ -132,9 +132,9 @@ export function FormPage() {
         <div className="size-full bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover flex justify-center items-center" initial={{scale: 0, y: -20}} animate={{scale: 1, y: 0}} transition={{duration: .1}}>
             <Toaster position="top-right" toastOptions={{style: {background: 'green', color: 'white'}}} />
             <motion.div className="relative h-[90%] w-[45%] bg-slate-950/20 flex flex-col justify-center items-center gap-5" initial={{scale: 0, y: -30}} animate={{scale: 1}} transition={{duration: .3}}>
-            <motion.h1 className="text-white font-semibold text-[45px]" initial={{filter: "blur(10px)"}} animate={textBlur ? 'blur' : 'noBlur'}>Create a Message</motion.h1>
-            <motion.p className="w-[55%] wrap-break-word text-slate-300/90 font-semibold text-[14px]" initial={{filter: "blur(10px)"}} animate={textBlur ? 'blur' : 'noBlur'}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</motion.p>
-            <motion.form  onSubmit={handleSubmit(onSubmit)} className="flex flex-col align-items justify-content gap-12 font-semibold text-slate-200" variants={variants} initial={{filter: "blur(10px)"}} animate={textBlur ? 'blur' : 'noBlur'}>
+            <motion.h1 className="text-white font-semibold text-[45px]" variants={variants} initial={{filter: "blur(0px)"}} animate={textBlur ? 'blur' : 'noBlur'}>Create a Message</motion.h1>
+            <motion.p className="w-[55%] wrap-break-word text-slate-300/90 font-semibold text-[14px]" variants={variants} initial={{filter: "blur(0px)"}} animate={textBlur ? 'blur' : 'noBlur'}>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</motion.p>
+            <motion.form  onSubmit={handleSubmit(onSubmit)} className="flex flex-col align-items justify-content gap-12 font-semibold text-slate-200" variants={variants} initial={{filter: "blur(0px)"}} animate={textBlur ? 'blur' : 'noBlur'}>
                 <fieldset disabled={isSubmitting} className="flex flex-col align-items justify-content">
                 <h3>Name</h3>
                 <input {...register('name')} disabled={isSubmitSuccessful} type="text" placeholder="Enter your name"></input>
