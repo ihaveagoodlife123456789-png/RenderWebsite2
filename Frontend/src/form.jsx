@@ -17,6 +17,9 @@ const formSchema = z.object({
 export function FormPage() {
 
     const [colorTemplate, setColorTemplate] = useState(false)
+    const [previewTemplate, setPreviewTemplate] = useState(false)
+    const [emailTemplate, setEmailTemplate] = useState(false)
+    
 
     const {
         register,
@@ -73,6 +76,14 @@ export function FormPage() {
         setColorTemplate(!colorTemplate)
     }
 
+    function previewSchema() {
+        setColorTemplate(!previewTemplate)
+    }
+
+    function emailSchema() {
+        setColorTemplate(!colorTemplate)
+    }
+
     return (
         <div className="size-full bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover flex justify-center items-center" initial={{scale: 0, y: -20}} animate={{scale: 1, y: 0}} transition={{duration: .1}}>
             <Toaster position="top-right" toastOptions={{style: {background: 'green', color: 'white'}}} />
@@ -101,10 +112,11 @@ export function FormPage() {
             {isSubmitSuccessful ? <Link to='/' className="absolute bottom-10"><motion.div className="text-white text-[18px] border-[3px] border-blue-800 font-semibold bg-blue-600/30 size-fit py-[6px] px-[4px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link> : null}
                 <Link to='/'><motion.div className="text-white text-[16px] border-[2px] border-blue-800 font-semibold absolute top-[5%] left-[5%] bg-blue-600/30 size-fit py-[4px] px-[2px] rounded-[6px]" initial={{scale: 0, y: -20}} animate={{scale: 1}} transition={{duration: .1}} whileHover={{scale: 1.06}}>Go home</motion.div></Link>
                 <motion.h3 className="size-fit text-[20px] text-slate-300 absolute left-[30%] top-[4%] border-bottom-[2px] border-white" initial={{scale: 1}} whileHover={{color: 'gold', scale: 1.04, cursor: 'pointer'}} onClick={() => colorSchema()}>Colors</motion.h3>
+                <motion.div className="absolute flex justify-center items-center left-[20%] top-[6%] border-slate-400/80 border-[3px] w-[90%] h-[90%] bg-slate-800/90 text-[26px] font-semibold" variants={variants} initial={{opacity: 0, scale: 0, x: '-16.5%', y: '3%'}} animate={colorTemplate ? 'on' : 'off'}><div className="flex flex-col justify-start items-center scrollbar-auto w-[90%] h-[70%] overflow-auto">{namedColors.map(color => <p className="text-blue-700">{color}</p>)}</div><img src="/icons8-x-90.png" className="absolute right-12 top-12 h-[72px] w-[72px] scrollbar-none" variants={variants} initial={{opacity: 0}} animate={colorTemplate ? 'visible' : null} transition={{duration: .5}} onClick={() => colorSchema()}/></motion.div>
                 <motion.h3 className="size-fit text-[20px] text-slate-300 absolute left-[42%] top-[4%] border-bottom-[2px] border-white" initial={{scale: 1}} whileHover={{color: 'gold', scale: 1.04, cursor: 'pointer'}}>Preview</motion.h3>
+                <div className="aboslute w-[94%] h-[42%] left-[42%] top-[6%] g-slate-950/70 border-mist-950/90 border-[3px] size-[20px] font-semibold flex justify-center items-center gap-[25px]" variants={variants} initial={{scale: 0, x: '-4.5%', y: '3%'}} animate={previewTemplate ? 'on' : 'off'}><h2>1234</h2><h2>John Doe</h2><h2 className="">Welcome!</h2></div>
                 <motion.h3 className="size-fit text-[20px] text-slate-300 absolute left-[54%] top-[4%] border-bottom-[2px] border-white" initial={{scale: 1}} whileHover={{color: 'gold', scale: 1.04, cursor: 'pointer'}}>Send Email</motion.h3>
-                <motion.div className="absolute flex justify-center items-center left-[20%] top-[6%] border-slate-400/80 border-[3px] w-[90%] h-[90%] bg-slate-800/90 text-[26px] font-semibold" variants={variants} initial={{scale: 0, x: '-16.5%', y: '3%'}} animate={colorTemplate ? 'on' : 'false'}><div className="flex flex-col justify-start items-center scrollbar-auto w-[90%] h-[70%] overflow-auto">{namedColors.map(color => <p className="text-blue-700">{color}</p>)}</div><img src="/icons8-x-90.png" className="absolute right-12 top-12 h-[72px] w-[72px] scrollbar-none" variants={variants} initial={{opacity: 0}} animate={colorTemplate ? 'visible' : null} transition={{duration: .5}} onClick={() => colorSchema()}/></motion.div>
-                <motion.img src="/icons8-spin-90.png" className="absolute top-8 right-8 size-[45px]" initial={{rotate: 0, scale: 1}} onhover={{rotate: 120, scale: 1.06}} onClick={() => window.location.reload()} />
+                                <motion.img src="/icons8-spin-90.png" className="absolute top-8 right-8 size-[45px]" initial={{rotate: 0, scale: 1}} onhover={{rotate: 120, scale: 1.06}} onClick={() => window.location.reload()} />
             </motion.div>
             <img src="/icons8-wreath-64.png" className="size-fit absolute top-14 left-14"/>
         </div>
