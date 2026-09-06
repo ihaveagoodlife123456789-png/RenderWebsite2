@@ -20,6 +20,7 @@ export function FormPage() {
     const [previewTemplate, setPreviewTemplate] = useState(false)
     const [emailTemplate, setEmailTemplate] = useState(false)
     const [emailBooleanTemplate, setEmailBooleanTemplate] = useState(false)
+    const [textBlur, setTextBlur] = useState(false)
     
 
     const {
@@ -73,7 +74,9 @@ export function FormPage() {
         visible: {opacity: 1},
         emailBooleanYes: {scale: 1.2},
         emailBooleanNo: {scale: 1.2},
-        emailBoolean: {scale: 1}
+        emailBoolean: {scale: 1},
+        blur: {blur: 10},
+        noBlur: {blur: 0},
     }
 
     function colorSchema() {
@@ -84,6 +87,9 @@ export function FormPage() {
         if(emailTemplate) {
             setEmailTemplate(!emailTemplate)
         }
+        if(!colorTemplate) {
+            setTextBlur(false)
+        }    
     }
 
     function previewSchema() {
@@ -94,6 +100,9 @@ export function FormPage() {
         if(colorTemplate) {
             setColorTemplate(!colorTemplate)
         }
+        if(!previewTemplate) {
+            setTextBlur(false)
+        }
     }
 
     function emailSchema() {
@@ -103,6 +112,9 @@ export function FormPage() {
         }
         if(colorTemplate) {
             setColorTemplate(!colorTemplate)
+        }
+        if(!colorTemplate) {
+            setTextBlur(false)
         }
     }
 
@@ -116,7 +128,7 @@ export function FormPage() {
             <motion.div className="relative h-[90%] w-[45%] bg-slate-950/20 flex flex-col justify-center items-center gap-5" initial={{scale: 0, y: -30}} animate={{scale: 1}} transition={{duration: .3}}>
             <h1 className="text-white font-semibold text-[45px]">Create a Message</h1>
             <p className="w-[55%] wrap-break-word text-slate-300/90 font-semibold text-[14px]">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem.</p>
-            <motion.form  onSubmit={handleSubmit(onSubmit)} className="flex flex-col align-items justify-content gap-12 font-semibold text-slate-200">
+            <motion.form  onSubmit={handleSubmit(onSubmit)} className="flex flex-col align-items justify-content gap-12 font-semibold text-slate-200" variants={variants} initial={{blur: 0}} animate={textBlur ? 'blur' : 'noBlur'}>
                 <fieldset disabled={isSubmitting} className="flex flex-col align-items justify-content">
                 <h3>Name</h3>
                 <input {...register('name')} disabled={isSubmitSuccessful} type="text" placeholder="Enter your name"></input>
@@ -142,7 +154,7 @@ export function FormPage() {
                 <motion.h3 className="size-fit text-[20px] text-slate-300 absolute left-[42%] top-[4%] border-bottom-[2px] border-white" initial={{scale: 1}} whileHover={{color: 'gold', scale: 1.04, cursor: 'pointer'}} onClick={() => previewSchema()}>Preview</motion.h3>
                 <motion.div className="absolute w-[94%] h-[42%] left-[8%] top-[6%] bg-slate-950/70 border-mist-950/90 border-[3px] size-[20px] font-semibold flex flex-col justify-center items-center gap-[45px]" variants={variants} initial={{scale: 0, x: '-4.5%', y: '3%'}} animate={previewTemplate ? 'on' : 'off'}><div className="size-fit text-slate-300 flex justify-center gap-[38px] text-[35px] font-semibold"><h2>1234</h2><h2>John Doe</h2><h2 className="text-[goldenrod]">Welcome!</h2></div><div className="size-fit text-slate-300 flex justify-center gap-[38px]"><h3>Line Id</h3><h3>Name</h3><h3>Color: Goldenrod</h3></div></motion.div>
                 <motion.h3 className="size-fit text-[20px] text-slate-300 absolute left-[54%] top-[4%] border-bottom-[2px] border-white" initial={{scale: 1}} whileHover={{color: 'gold', scale: 1.04, cursor: 'pointer'}} onClick={() => emailSchema()}>Send Email</motion.h3>
-                <motion.div className="text-white absolute top-[12%] left-[54%] w-[240px] h-[180px] flex flex-col justify-center items-center gap-[20px] bg-slate-950/70 border-gray-900" variants={variants} initial={{scale: 0}} animate={emailTemplate ? 'on' : 'off'}><div className="width-full"><h2 className="font-bold size-[28px] text-emerald-600">Send email?</h2></div><div className="text-sky-500 flex justify-center items-center gap-[5px]"><motion.h3 variants={variants} initial={{scale: 1}} animate={emailBooleanTemplate ? 'emailBooleanYes' : 'emailBoolean'} onClick={() => emailBooleanOnClick()}>Yes</motion.h3><motion.h3 variants={variants} initial={{scale: 1}} animate={emailBooleanTemplate ? 'emailBoolean' : 'emailBooleanNo'} onClick={() => emailBooleanOnClick()}>No thanks</motion.h3></div></motion.div>
+                <motion.div className="text-white absolute top-[12%] left-[54%] w-[240px] h-[180px] flex flex-col justify-center items-center gap-[20px] bg-slate-950/70 border-gray-900" variants={variants} initial={{scale: 0}} animate={emailTemplate ? 'on' : 'off'}><h2 className="font-bold size-[28px] text-emerald-600">Send email?</h2><div className="text-sky-500 flex justify-center items-center gap-[20px]"><motion.h3 variants={variants} initial={{scale: 1}} animate={emailBooleanTemplate ? 'emailBooleanYes' : 'emailBoolean'} onClick={() => emailBooleanOnClick()}>Yes</motion.h3><motion.h3 variants={variants} initial={{scale: 1}} animate={emailBooleanTemplate ? 'emailBoolean' : 'emailBooleanNo'} onClick={() => emailBooleanOnClick()}>No thanks</motion.h3></div></motion.div>
                  <motion.img src="/icons8-spin-90.png" className="absolute top-8 right-8 size-[45px]" initial={{rotate: 0, scale: 1}} onhover={{rotate: 120, scale: 1.06}} onClick={() => window.location.reload()} />
             </motion.div>
             <img src="/icons8-wreath-64.png" className="size-fit absolute top-14 left-14"/>
