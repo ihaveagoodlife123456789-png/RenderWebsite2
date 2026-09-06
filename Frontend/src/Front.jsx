@@ -6,7 +6,7 @@ export function FrontPage() {
 
   return (
     <div className="size-full text-[35px] bg-[url('/winter-mountain-5120x2880-24311.jpg')] bg-no-repeat bg-cover bg-center flex flex-col text-slate-200">
-      <div className="absolute top-18 w-[72%] h-[8%] left-[14%] bg-blue-200 rounded-[12px]"></div>
+      <div className="absolute top-15 w-[62%] h-[8%] left-[20%] bg-blue-200 rounded-[12px]"></div>
       <div className="absolute top-20 right-[10%] w-[5%] h-[5%] bg-blue-500 rounded-[13px]"></div>
       <div className="w-full h-[54%] flex flex-col justify-center items-center gap-8">
         <h1 className="font-bold text-[48px] text-orange-400/90">Ascended Horizons</h1>
