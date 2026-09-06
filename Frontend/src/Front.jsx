@@ -7,14 +7,14 @@ export function FrontPage() {
   return (
     <div className="size-full text-[35px] bg-[url('/winter-mountain-5120x2880-24311.jpg')] bg-no-repeat bg-cover bg-center flex flex-col text-slate-200">
       <div className="absolute flex items-center justify-center gap-5 text-white font-semibold text-[22px] top-12 w-[52%] h-[7%] left-[25%] bg-slate-600/70 rounded-[12px]">
-      <h2>Ascended Horizons</h2>
+      <h2 className="absolute left-5 text-[25px] font-bold text-indigo-600">Ascended Horizons</h2>
       <h4>About</h4>
       <h4>Company</h4>
       <h4>Explore</h4>
       <h4>Services</h4>
-      <h2>Sign In</h2>
+      <h2 className="absolute right-5 text-[26px] text-violet-500">Sign In</h2>
       </div>
-      <div className="absolute top-15 right-[10%] w-[5%] h-[5%] bg-blue-700 rounded-[13px] text-center text-white">Login</div>
+      <div className="absolute font-bold text-[26px] top-15 right-[10%] w-[5%] h-[5%] bg-blue-700 rounded-[13px] text-center text-white">Login</div>
       <div className="w-full h-[82%] flex flex-col justify-center items-center gap-20">
         <h1 className="font-bold text-[48px] text-orange-400/90">Ascended Horizons</h1>
         <h4 className="text-[24px] leading-[42px] font-semibold text-slate-950 text-center">Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. <br />Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. <br />Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</h4>
