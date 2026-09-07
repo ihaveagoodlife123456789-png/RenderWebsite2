@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 export function FullPage() {
 
     return (
-        <>
+        <div className="h-screen w-full overflow-y-scroll snap-y snap-manditory">
         <FrontPage />
-        <div className="size-full bg-slate-950/30 flex justify-center items-center">
+        <motion.div className="size-full bg-slate-950/30 flex justify-center items-center snap-end">
         <Link to='/users'><motion.h2 className="font-semibold text-[24px] text-blue-600/90" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} whileHover={{ scale: 1.08}}>View Users</motion.h2></Link>
+        </motion.div>
         </div>
-        </>
     )
 }
