@@ -1,6 +1,6 @@
 
 import { Link } from 'react-router-dom';
-import { motion, useTransform, useScroll } from 'motion/react';
+import { motion } from 'motion/react';
 
 export function FrontPage() {
 
