@@ -13,7 +13,7 @@ export function BottomPage() {
         <h2 className="font-bold text-[42px] text-amber-600">View users</h2>
         </motion.h2>
 
-        <motion.div className="w-full h-[35%] bg-mist-800/30 relative bottom-0 text-white text-[14px] text-center font-semibold flex items-center justify-center"><h2 className="size-fit">Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.<br /> Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</h2></motion.div>
+        <motion.div className="w-full h-[35%] bg-mist-800/30 relative bottom-0 text-white text-[12px] text-center font-bold flex items-center justify-center"><h2 className="h-full w-[70%]">Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.<br /> Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</h2></motion.div>
 
         </Link>
 
