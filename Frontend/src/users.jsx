@@ -45,7 +45,7 @@ export function UsersPage() {
 
 
 
-                <h1 className="absolute top-8 text-[35px] text-white font-font size-[35px]">Messages</h1>
+                <h1 className="absolute top-8 text-[35px] text-white font-bold size-[35px]">Messages</h1>
                 <Link to='/' className="absolute bottom-12"><motion.h2 className="bg-blue-400/20 border-[2px] border-blue-700 text-[22px] font-bold py-[6px] px-[8px] rounded-[12px]" initial={{scale: 1}} whileHover={{scale: 1.08}}>Go back</motion.h2></Link>
             </div>
 
