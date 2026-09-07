@@ -8,8 +8,8 @@ export function FrontPage() {
     <div className="size-full text-[35px] bg-[url('/winter-mountain-5120x2880-24311.jpg')] bg-no-repeat bg-cover bg-center flex flex-col text-slate-200">
       <div className="absolute flex items-center justify-center gap-5 text-white font-semibold text-[22px] top-12 w-[52%] h-[7%] left-[25%] bg-slate-600/70 rounded-[12px]">
       <div className="absolute left-5 flex flex-col items-center justify-center">
-      <h2 className="text-[25px] font-bold text-indigo-800" initial={{scale: 0.3, y: -30}} animate={{scale: 1, y: 0}} whileHover={{}}>Ascended Horizons</h2>
-      <h2 className="z-[-1] bg-red-700 h-1 w-full"></h2>
+      <motion.div className="text-[25px] font-bold text-indigo-800 border-b-0 border-green-700" initial={{scale: 0.3, y: -30}} animate={{scale: 1, y: 0}} whileHover={{borderBottomWidth: '250px'}}>Ascended Horizons</motion.div>
+      <h2 className="z-[-1] bg-red-700 h-[5px] w-full"></h2>
       </div>
       <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange'}}>About</motion.h4>
       <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange'}}>Company</motion.h4>
@@ -17,7 +17,7 @@ export function FrontPage() {
       <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange'}}>Services</motion.h4>
       <h2 className="absolute right-5 text-[26px] text-violet-500" initial={{scale: 1}} whileHover={{scale: 1.08, color: 'white', pointer: 'cursor'}}>Sign In</h2>
       </div>
-      <div className="size-fit py-2 px-3 absolute font-bold text-[26px] top-15 right-[10%] bg-blue-700 rounded-[13px] text-white " initial={{scale: 1}} whileHover={{scale: 1.08, color: '#1d4ed8', backgroundColor: 'white'}}>Login</div>
+      <motion.div className="size-fit py-2 px-3 absolute font-bold text-[26px] top-15 right-[10%] bg-blue-700 rounded-[13px] text-white " initial={{scale: 1, color:'white', backgroundColor: '#1d4ed8'}} whileHover={{scale: 1.08, color: '#1d4ed8', backgroundColor: 'white'}}>Login</motion.div>
       <div className="w-full h-[88%] flex flex-col justify-center items-center gap-20">
         <h1 className="font-bold text-[48px] text-orange-400/90">Ascended Horizons</h1>
         <h4 className="text-[24px] leading-[42px] font-semibold text-slate-950 text-center">Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. <br />Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. <br />Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</h4>
