@@ -1,7 +1,6 @@
 import { FrontPage } from "./Front"
-import { motion } from 'motion/react'
+import { motion, useTransform, useScroll } from 'motion/react'
 import { Link } from 'react-router-dom';
-import { motion, useTransform, useScroll } from 'motion/react';
 
 export function FullPage() {
     const { scrollYProgress } = useScroll()
