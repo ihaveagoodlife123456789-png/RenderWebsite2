@@ -15,7 +15,7 @@ export function FrontPage() {
       <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange'}}>Company</motion.h4>
       <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange'}}>Explore</motion.h4>
       <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange'}}>Services</motion.h4>
-      <h2 className="absolute right-5 text-[26px] text-violet-500" initial={{scale: 1}} whileHover={{scale: 1.08, color: 'white', pointer: 'cursor'}}>Sign In</h2>
+      <motion.h2 className="absolute right-5 text-[26px] text-violet-500" initial={{scale: 1}} whileHover={{scale: 1.08, color: 'white', pointer: 'cursor'}}>Sign In</motion.h2>
       </div>
       <motion.div className="size-fit py-2 px-3 absolute font-bold text-[26px] top-15 right-[10%] bg-blue-700 rounded-[13px] text-white " initial={{scale: 1, color:'white', backgroundColor: '#1d4ed8'}} whileHover={{scale: 1.08, color: '#1d4ed8', backgroundColor: 'white'}}>Login</motion.div>
       <div className="w-full h-[88%] flex flex-col justify-center items-center gap-20">
