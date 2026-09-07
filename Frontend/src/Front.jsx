@@ -23,8 +23,8 @@ export function FrontPage() {
         <Link to='/form'><motion.h2 className="font-semibold text-[24px] py-2 px-4 text-white bg-blue-600/80 border-blue-700/70 border-[3px] rounded-[15px]" initial={{ opacity: 0, y: -20, color: 'white', backgroundColor: '#2563eb', borderColor: '#1d4ed8' }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} whileHover={{ scale: 1.08, color: '#2563eb', backgroundColor: 'white', borderColor: 'none'}}>Write a Message</motion.h2></Link>
       </div>
       <div className="absolute bottom-0 border-t-2 border-slate-800/70 w-full h-[12%] bg-slate-950/30 flex flex-col justify-center items-center gap-2">
-        <h2>More Here</h2>
-        <motion.div style={{rotate: '270deg'}}>{'>'}</motion.div>
+        <h2 className="text-[24px] text-white">More Here</h2>
+        <motion.div style={{rotate: '180deg'}}>{'>'}</motion.div>
       </div>
       <img src="/icons8-wreath-64.png" className="absolute top-16 left-16 size-[100px]"/>
     </div>
