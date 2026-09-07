@@ -31,7 +31,7 @@ export function UsersPage() {
 
 
 
-            <div className="absolute top-[30%] h-[60%] w-[65%] flex flex-col justify-start items-center gap-5 font-semibold text-slate-200 overflow-auto">
+            <div className="absolute top-[20%] h-[60%] w-[65%] flex flex-col justify-start items-center gap-5 font-semibold text-slate-200 overflow-auto">
                 {userData && userData.map(users => {
                     return (
                         <div key={users.id} className="flex justify-center items-center text-semibold gap-5 text-[18px]">
@@ -45,7 +45,7 @@ export function UsersPage() {
 
 
 
-                <h1 className="absolute top-8 text-[35px]">Messages</h1>
+                <h1 className="absolute top-8 text-[35px] text-white font-font size-[35px]">Messages</h1>
                 <Link to='/' className="absolute bottom-12"><motion.h2 className="bg-blue-400/20 border-[2px] border-blue-700 text-[22px] font-bold py-[6px] px-[8px] rounded-[12px]" initial={{scale: 1}} whileHover={{scale: 1.08}}>Go back</motion.h2></Link>
             </div>
 
