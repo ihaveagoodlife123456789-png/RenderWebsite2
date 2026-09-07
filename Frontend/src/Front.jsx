@@ -1,6 +1,8 @@
 
 import { Link } from 'react-router-dom';
-import { motion, useTransform } from 'motion/react';
+import { motion, useTransform, scrollYProgress, useScroll } from 'motion/react';
+
+const { scrollYProgress } = useScroll()
 
 const filter = useTransform(
         scrollYProgress,
