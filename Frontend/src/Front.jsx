@@ -13,7 +13,7 @@ const filter = useTransform(
 export function FrontPage() {
 
   return (
-    <div className="size-full text-[35px] flex flex-col text-slate-200" style={{ filter }}>
+    <motion.div className="size-full text-[35px] flex flex-col text-slate-200" style={{ filter }}>
       <div className="fixed flex items-center justify-center gap-5 text-white font-semibold text-[22px] top-12 w-[52%] h-[7%] left-[25%] bg-slate-600/70 rounded-[12px]">
       <div className="size-fit absolute left-5 flex flex-col items-center justify-center">
       <motion.div className="text-[25px] font-bold text-indigo-800 border-b-0 border-indigo-600" initial={{scale: 0.3, y: -30}} animate={{scale: 1, y: 0}} transition={{duration: .1}} whileHover={{borderBottomWidth: '4px', pointer: 'cursor'}}>Ascended Horizons</motion.div>
@@ -35,6 +35,6 @@ export function FrontPage() {
         <motion.div style={{rotate: '90deg'}} initial={{y: 0}} animate={{y: [0, 10, 0, -10, 0]}} transition={{duration: 2, repeat: Infinity, ease: 'linear'}}>{'>'}</motion.div>
       </div>
       <img src="/icons8-wreath-64.png" className="fixed top-16 left-16 size-[100px]"/>
-    </div>
+    </motion.div>
   )
 }
