@@ -1,6 +1,12 @@
 
 import { Link } from 'react-router-dom';
-import { motion } from 'motion/react';
+import { motion, useTransform } from 'motion/react';
+
+const filter = useTransform(
+        scrollYProgress,
+        [0, 1],
+        ["blur(0px)", "blur(5px)"],
+    )
 
 export function FrontPage() {
 
@@ -16,7 +22,7 @@ export function FrontPage() {
       <motion.h4 className="size-fit" initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange', pointer: 'cursor'}}>Services</motion.h4>
       <motion.h2 className="size-fit absolute right-5 text-[26px] text-violet-500" initial={{scale: 1}} whileHover={{scale: 1.08, color: 'white', pointer: 'cursor'}}>Sign In</motion.h2>
       </div>
-      <motion.div className="size-fit py-2 px-3 absolute font-bold text-[26px] top-15 right-[10%] bg-blue-700 rounded-[13px] text-white " initial={{scale: 1, color:'white', backgroundColor: '#1d4ed8'}} whileHover={{scale: 1.08, color: '#1d4ed8', backgroundColor: 'white', pointer: 'cursor'}}>Login</motion.div>
+      <motion.div className="size-fit py-2 px-3 fixed font-bold text-[26px] top-15 right-[10%] bg-blue-700 rounded-[13px] text-white " initial={{scale: 1, color:'white', backgroundColor: '#1d4ed8'}} whileHover={{scale: 1.08, color: '#1d4ed8', backgroundColor: 'white', pointer: 'cursor'}}>Login</motion.div>
       <div className="w-full h-[88%] flex flex-col justify-center items-center gap-20">
         <h1 className="font-bold text-[48px] text-orange-400/90">Ascended Horizons</h1>
         <h4 className="text-[24px] leading-[42px] font-semibold text-slate-950 text-center">Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. <br />Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. <br />Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</h4>
@@ -26,7 +32,7 @@ export function FrontPage() {
         <h2 className="text-[24px] text-white">More Here</h2>
         <motion.div style={{rotate: '90deg'}} initial={{y: 0}} animate={{y: [0, 10, 0, -10, 0]}} transition={{duration: 2, repeat: Infinity, ease: 'linear'}}>{'>'}</motion.div>
       </div>
-      <img src="/icons8-wreath-64.png" className="absolute top-16 left-16 size-[100px]"/>
+      <img src="/icons8-wreath-64.png" className="fixed top-16 left-16 size-[100px]"/>
     </div>
   )
 }
