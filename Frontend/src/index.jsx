@@ -1,5 +1,5 @@
 import { FrontPage } from "./Front"
-import motion from 'motion/react'
+import { motion } from 'motion/react'
 
 export function FullPage() {
     return (

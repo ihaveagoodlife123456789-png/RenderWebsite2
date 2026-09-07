@@ -24,7 +24,7 @@ export function FrontPage() {
       </div>
       <div className="absolute bottom-0 border-t-2 border-slate-800/70 w-full h-[12%] bg-slate-950/30 flex flex-col justify-center items-center gap-2">
         <h2>More Here</h2>
-        <motion.div>hi</motion.div>
+        <motion.div style={{rotate: '270deg'}}>{'>'}</motion.div>
       </div>
       <img src="/icons8-wreath-64.png" className="absolute top-16 left-16 size-[100px]"/>
     </div>
