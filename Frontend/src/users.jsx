@@ -27,11 +27,11 @@ export function UsersPage() {
 
 
 
-          <div className="w-[80%] h-[80%] flex flex-col items-center justify-center">
+          <div className="relative bg-slate-950/20 w-[80%] h-[80%] flex flex-col items-center justify-center">
 
 
 
-            <div className="relative top-[30%] h-[60%] w-[65%] bg-slate-950/20 flex flex-col justify-start items-center gap-5 font-semibold text-slate-200 overflow-auto">
+            <div className="relative top-[30%] h-[60%] w-[65%] flex flex-col justify-start items-center gap-5 font-semibold text-slate-200 overflow-auto">
                 {userData && userData.map(users => {
                     return (
                         <div key={users.id} className="flex justify-center items-center text-semibold gap-5 text-[18px]">
