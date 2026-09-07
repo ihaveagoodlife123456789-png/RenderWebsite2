@@ -21,7 +21,7 @@ export function UsersPage() {
   }, []);
 
     return (
-        <div className="size-full flex items-center justify-center bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover">
+        <div className="size-full flex items-center justify-center bg-[url('/yosemite-lake-yosemite-valley-landscape-reflection-yosemite-6288x4192-1023.jpg')] bg-no-repeat bg-cover">
 
 
 
