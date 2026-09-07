@@ -9,7 +9,6 @@ export function FrontPage() {
       <div className="absolute flex items-center justify-center gap-5 text-white font-semibold text-[22px] top-12 w-[52%] h-[7%] left-[25%] bg-slate-600/70 rounded-[12px]">
       <div className="size-fit absolute left-5 flex flex-col items-center justify-center">
       <motion.div className="text-[25px] font-bold text-indigo-800 border-b-0 border-indigo-600" initial={{scale: 0.3, y: -30}} animate={{scale: 1, y: 0}} transition={{duration: .1}} whileHover={{borderBottomWidth: '4px', pointer: 'cursor'}}>Ascended Horizons</motion.div>
-      <h2 className="z-[-1] bg-red-700 h-[5px] w-full"></h2>
       </div>
       <motion.h4 className="size-fit" initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange', pointer: 'cursor'}}>About</motion.h4>
       <motion.h4 className="size-fit" initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange', pointer: 'cursor'}}>Company</motion.h4>
@@ -23,7 +22,7 @@ export function FrontPage() {
         <h4 className="text-[24px] leading-[42px] font-semibold text-slate-950 text-center">Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. <br />Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. <br />Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</h4>
         <Link to='/form'><motion.h2 className="font-semibold text-[24px] py-2 px-4 text-white bg-blue-600/80 border-blue-700/70 border-[3px] rounded-[15px]" initial={{ opacity: 0, y: -20, color: 'white', backgroundColor: '#2563eb', borderColor: '#1d4ed8' }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} whileHover={{ scale: 1.08, color: '#2563eb', backgroundColor: 'white', borderColor: 'none'}}>Write a Message</motion.h2></Link>
       </div>
-      <div className="absolute bottom-0 border-t-2 border-slate-800/70 w-full h-[12%] bg-slate-950/30 flex justify-center items-center gap-20 border-slate-400 border-[1px]">
+      <div className="absolute bottom-0 border-t-2 border-slate-800/70 w-full h-[12%] bg-slate-950/30 flex justify-center items-center gap-20">
         <Link to='/users'><motion.h2 className="font-semibold text-[24px] text-blue-600/90" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} whileHover={{ scale: 1.08}}>View Users</motion.h2></Link>
       </div>
       <img src="/icons8-wreath-64.png" className="absolute top-16 left-16 size-[100px]"/>

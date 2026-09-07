@@ -7,6 +7,9 @@
   scrollbar-width: none;
   overflow-x: hidden;
   background-image: url('/winter-mountain-5120x2880-24311.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 input:focus {
