@@ -27,7 +27,7 @@ export function UsersPage() {
 
 
 
-          <div className="size-[82%] flex flex-col items-center justify-center">
+          <div className="w-[80%] h-[80%] flex flex-col items-center justify-center">
 
 
 
