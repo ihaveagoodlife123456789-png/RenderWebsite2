@@ -24,7 +24,7 @@ export function FrontPage() {
       </div>
       <div className="absolute bottom-0 border-t-2 border-slate-800/70 w-full h-[12%] bg-slate-950/30 flex flex-col justify-center items-center gap-2">
         <h2 className="text-[24px] text-white">More Here</h2>
-        <motion.div style={{rotate: '180deg'}}>{'>'}</motion.div>
+        <motion.div style={{rotate: '90deg'}} initial={{y: 0}} animate={{y: [0, 10, 0, -10, 0]}} transition={{duration: 2, repeat: Infinity, ease: 'linear'}}>{'>'}</motion.div>
       </div>
       <img src="/icons8-wreath-64.png" className="absolute top-16 left-16 size-[100px]"/>
     </div>
