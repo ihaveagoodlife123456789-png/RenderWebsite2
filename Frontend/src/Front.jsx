@@ -21,7 +21,7 @@ export function FrontPage() {
       <div className="w-full h-[88%] flex flex-col justify-center items-center gap-20">
         <h1 className="font-bold text-[48px] text-orange-400/90">Ascended Horizons</h1>
         <h4 className="text-[24px] leading-[42px] font-semibold text-slate-950 text-center">Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. <br />Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. <br />Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</h4>
-        <Link to='/form'><motion.h2 className="font-semibold text-[24px] py-2 px-4 text-white bg-blue-600/80 border-blue-700/70 border-[3px] rounded-[15px]" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} whileHover={{ scale: 1.08}}>Write a Message</motion.h2></Link>
+        <Link to='/form'><motion.h2 className="font-semibold text-[24px] py-2 px-4 text-white bg-blue-600/80 border-blue-700/70 border-[3px] rounded-[15px]" initial={{ opacity: 0, y: -20, color: 'white', backgroundColor: '#2563eb', borderColor: '#1d4ed8' }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} whileHover={{ scale: 1.08, color: '#2563eb', backgroundColor: 'white', borderColor: 'none'}}>Write a Message</motion.h2></Link>
       </div>
       <div className="absolute bottom-0 border-t-2 border-slate-800/70 w-full h-[12%] bg-slate-950/30 flex justify-center items-center gap-20 border-slate-400 border-[1px]">
         <Link to='/users'><motion.h2 className="font-semibold text-[24px] text-blue-600/90" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.2 }} whileHover={{ scale: 1.08}}>View Users</motion.h2></Link>
