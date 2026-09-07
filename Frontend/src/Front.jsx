@@ -9,13 +9,13 @@ export function FrontPage() {
       <div className="absolute flex items-center justify-center gap-5 text-white font-semibold text-[22px] top-12 w-[52%] h-[7%] left-[25%] bg-slate-600/70 rounded-[12px]">
       <div className="absolute left-5 flex flex-col items-center justify-center">
       <h2 className="text-[25px] font-bold text-indigo-800" initial={{scale: 0.3, y: -30}} animate={{scale: 1, y: 0}} whileHover={{}}>Ascended Horizons</h2>
-      <h2 className="z-[-1] bg-red-700"></h2>
+      <h2 className="z-[-1] bg-red-700 h-1 w-full"></h2>
       </div>
-      <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} transition={{duration: .4}} whileHover={{ scale: 1.08, color: 'golden-orange', duration: .1}}>About</motion.h4>
-      <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} transition={{duration: .4}} whileHover={{ scale: 1.08, color: 'golden-orange', duration: .1}}>Company</motion.h4>
-      <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} transition={{duration: .4}} whileHover={{ scale: 1.08, color: 'golden-orange', duration: .1}}>Explore</motion.h4>
-      <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} transition={{duration: .4}} whileHover={{ scale: 1.08, color: 'golden-orange', duration: .1}}>Services</motion.h4>
-      <h2 className="absolute right-5 text-[26px] text-violet-500" initial={{scale: 1}} whileHover={{scale: 1.08, color: 'white'}}>Sign In</h2>
+      <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange'}}>About</motion.h4>
+      <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange'}}>Company</motion.h4>
+      <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange'}}>Explore</motion.h4>
+      <motion.h4 initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange'}}>Services</motion.h4>
+      <h2 className="absolute right-5 text-[26px] text-violet-500" initial={{scale: 1}} whileHover={{scale: 1.08, color: 'white', pointer: 'cursor'}}>Sign In</h2>
       </div>
       <div className="size-fit py-2 px-3 absolute font-bold text-[26px] top-15 right-[10%] bg-blue-700 rounded-[13px] text-white " initial={{scale: 1}} whileHover={{scale: 1.08, color: '#1d4ed8', backgroundColor: 'white'}}>Login</div>
       <div className="w-full h-[88%] flex flex-col justify-center items-center gap-20">
