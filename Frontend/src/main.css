@@ -3,10 +3,9 @@
 #root {
   width: 100vw;
   height: 100vh;
-  background-color: none;
+  background-color: black;
   scrollbar-width: none;
   overflow-x: hidden;
-  background-image: url('/winter-mountain-5120x2880-24311.jpg');
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
