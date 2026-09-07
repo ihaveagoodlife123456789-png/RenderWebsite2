@@ -1,5 +1,6 @@
 import { FrontPage } from "./Front"
 import { motion } from 'motion/react'
+import { Link } from 'react-router-dom';
 
 export function FullPage() {
     return (
