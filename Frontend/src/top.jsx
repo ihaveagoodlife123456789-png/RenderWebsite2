@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 
-const services = 'services'
+export const services = 'services'
 
 export function TopPage() {
 
