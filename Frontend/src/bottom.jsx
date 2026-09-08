@@ -20,7 +20,7 @@ export function BottomPage() {
         Soof: {height: '65%', scale: 1},
     }
     return (
-        <motion.div id={services} className="size-full bg-slate-950/30 flex justify-around items-center snap-start scroll-smooth"
+        <motion.div id={services} className="size-full bg-slate-950/30 flex justify-around items-center snap-end scroll-smooth"
          initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
