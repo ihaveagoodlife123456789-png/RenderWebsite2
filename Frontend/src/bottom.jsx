@@ -52,7 +52,7 @@ export function BottomPage() {
         animate={animate ? 'Hon' : 'Hoof'}
         >
         <h2 className="font-semibold text-[28px]">Liebestrum</h2>
-        <h3 className="w-[70%]"
+        <h3 className="w-[70%] text-sm sm:font-serif sm:text-base md:text-lg lg:text-xl"
         variants={variants}
         initial={{opacity: 1}}
         transition={{duration: .2}}
