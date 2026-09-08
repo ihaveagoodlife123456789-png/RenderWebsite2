@@ -15,6 +15,8 @@ export function BottomPage() {
         Ooff: {opacity: 1},
         Hon: {scale: 0},
         Hoof: {scale: 1},
+        Son: {scale: 1.1},
+        Soof: {scale: 1},
     }
     return (
         <motion.div className="size-full bg-slate-950/30 flex justify-around items-center snap-start">
@@ -24,7 +26,12 @@ export function BottomPage() {
         onMouseLeave={() => onMouseEnterAnimation()}
         >
 
-        <motion.h2 className="w-full h-[65%] flex justify-center items-center bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf95GKxp-bYuHnEyd_3sSR21oAbE_l0AjFwxKGYQ0EUA&s=10')] bg-no-repeat bg-cover bg-center">
+        <motion.h2 className="w-full h-[65%] flex justify-center items-center bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf95GKxp-bYuHnEyd_3sSR21oAbE_l0AjFwxKGYQ0EUA&s=10')] bg-no-repeat bg-cover bg-center"
+        variants={variants}
+        initial={{scale: 1}}
+        transition={{duration: .5}}
+        animate={animate ? 'Son' : 'Soof'}
+        >
         <motion.h2 className="font-bold text-[42px] text-amber-600"
         variants={variants}
         initial={{opacity: 1}}
