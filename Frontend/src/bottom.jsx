@@ -1,7 +1,7 @@
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom';
-import { useState } from 'react'
-import { services } from './top'
+import { useState, useRef } from 'react'
+import { services, servicesRef } from './top'
 
 
 export function BottomPage() {
@@ -10,6 +10,8 @@ export function BottomPage() {
     function onMouseEnterAnimation() {
         setAnimate(!animate)
     }
+
+    const ref = useRef(null)
 
     const variants = {
         Oon: {scale: 1.1},
@@ -20,7 +22,11 @@ export function BottomPage() {
         Soof: {height: '65%', scale: 1},
     }
     return (
-        <motion.div id={services} className="size-full bg-slate-950/30 flex justify-around items-center snap-start scroll-smooth">
+        <motion.div id={services} className="size-full bg-slate-950/30 flex justify-around items-center snap-start scroll-smooth"
+        ref={servicesRef}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: false }}
+        >
         
         <Link to='/users' className="overflow-hidden w-[20%] h-[48%] bg-mist-800/60 font-semibold text-[24px] text-blue-600/90 flex flex-col"
         onMouseEnter={() => onMouseEnterAnimation()}

@@ -5,13 +5,16 @@ import { useRef } from 'react'
 
 export const services = 'services'
 
+  const ref = useRef(null)
+  export const servicesRef = useRef(null)
+
+export const scroll = (e) => {
+    ref.current?.scrollIntoView({ behavior: 'smooth' })
+    servicesRef.current?.scrollIntoView({ behavior: 'smooth' })
+  }
+
 export function TopPage() {
 
-  const ref = useRef(null)
-
-  const scroll = (e) => {
-    ref.current?.scrollIntoView({ behavior: 'smooth' })
-  }
 
   return (
     <motion.div className="size-full text-[35px] flex flex-col text-slate-200 snap-start scroll-smooth" 
