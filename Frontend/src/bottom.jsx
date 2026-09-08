@@ -15,13 +15,13 @@ export function BottomPage() {
         Ooff: {opacity: 1},
         Hon: {height: 0},
         Hoof: {height: '35%'},
-        Son: {height: '100%'},
-        Soof: {height: '65%'},
+        Son: {height: '100%', scale: 1.3},
+        Soof: {height: '65%', scale: 1},
     }
     return (
         <motion.div className="size-full bg-slate-950/30 flex justify-around items-center snap-start">
         
-        <Link to='/users' className="w-[20%] h-[48%] bg-mist-800/60 font-semibold text-[24px] text-blue-600/90 flex flex-col"
+        <Link to='/users' className="overflow-hidden w-[20%] h-[48%] bg-mist-800/60 font-semibold text-[24px] text-blue-600/90 flex flex-col"
         onMouseEnter={() => onMouseEnterAnimation()}
         onMouseLeave={() => onMouseEnterAnimation()}
         >
@@ -47,9 +47,14 @@ export function BottomPage() {
         animate={animate ? 'Hon' : 'Hoof'}
         >
         <h2 className="font-semibold text-[28px]">Liebestrum</h2>
-        <h3 className="w-[70%]">Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.<br /> Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</h3>
-        </motion.div>
+        <h3 className="w-[70%]"
 
+        >Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.<br /> Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</h3>
+        </motion.div>
+        variants={variants}
+        initial={{opacity: 1}}
+        transition={{duration: .2}}
+        animate={animate ? 'Oon' : 'Ooff'}
         </Link>
 
         </motion.div>
