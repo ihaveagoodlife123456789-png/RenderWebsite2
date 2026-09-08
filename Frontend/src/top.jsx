@@ -12,11 +12,23 @@ export function TopPage() {
   }
 
   const scrollServices = (e) => {
-    const element = document.getElementById('services')
-    console.log('Element found:', element); // Check if it exists
-  console.log('Element position:', element?.getBoundingClientRect()); // Check its position
-    element?.scrollIntoView({ behavior: 'smooth' })
-  }
+  e.preventDefault();
+  
+  // Get the scrollable container (FullPage div)
+  const scrollContainer = document.querySelector('.overflow-y-scroll');
+  
+  // Disable snap
+  scrollContainer.style.scrollSnapType = 'none';
+  
+  // Smooth scroll
+  const element = document.getElementById('services');
+  element?.scrollIntoView({ behavior: 'smooth' });
+  
+  // Re-enable snap after scroll
+  setTimeout(() => {
+    scrollContainer.style.scrollSnapType = 'y mandatory';
+  }, 800); // Adjust timing based on scroll distance
+}
 
   return (
     <motion.div className="size-full text-[35px] flex flex-col text-slate-200 snap-start scroll-smooth" 
