@@ -38,6 +38,7 @@ export function UsersPage() {
                             <h3>{users.id}</h3>
                             <h3>{users.name}</h3>
                             <p className="font-semibold" style={{ color: users.color}}>{users.message}</p>
+                            <h3>{users.email}</h3>
                         </div>
                     )
                 })}
