@@ -33,10 +33,6 @@ export function BottomPage() {
         animate={animate ? 'Son' : 'Soof'}
         >
         <motion.h2 className="font-bold text-[42px] text-amber-600"
-        variants={variants}
-        initial={{opacity: 1}}
-        transition={{duration: .5}}
-        animate={animate ? 'Oon' : 'Ooff'}
         >View users</motion.h2>
         </motion.h2>
 
