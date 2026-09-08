@@ -11,8 +11,8 @@ export function BottomPage() {
     }
 
     const variants = {
-        on: {opacity: 1},
-        off: {opacity: 0},
+        on: {opacity: 0},
+        off: {opacity: 1},
     }
     return (
         <motion.div className="size-full bg-slate-950/30 flex justify-around items-center snap-start">
@@ -22,12 +22,12 @@ export function BottomPage() {
         >
 
         <motion.h2 className="w-full h-[65%] flex justify-center items-center bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf95GKxp-bYuHnEyd_3sSR21oAbE_l0AjFwxKGYQ0EUA&s=10')] bg-no-repeat bg-cover bg-center">
-        <h2 className="font-bold text-[42px] text-amber-600"
+        <motion.h2 className="font-bold text-[42px] text-amber-600"
         variants={variants}
         initial={{opacity: 1}}
         transition={{duration: .5}}
         animate={animate ? 'on' : 'off'}
-        >View users</h2>
+        >View users</motion.h2>
         </motion.h2>
 
         <motion.div className="w-full h-[35%] bg-mist-800/30 relative bottom-0 text-white text-[12px] text-center font-bold flex flex-col items-center justify-center">
