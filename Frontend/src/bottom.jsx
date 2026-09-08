@@ -1,7 +1,6 @@
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom';
 import { useState } from 'react'
-import { services } from './top'
 
 
 export function BottomPage() {
@@ -20,7 +19,7 @@ export function BottomPage() {
         Soof: {height: '65%', scale: 1},
     }
     return (
-        <motion.div id={services} className="size-full bg-slate-950/30 flex justify-around items-center scroll-smooth"
+        <motion.div id='services' className="size-full bg-slate-950/30 flex justify-around items-center snap-start scroll-smooth"
          initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
