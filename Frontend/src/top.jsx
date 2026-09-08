@@ -13,6 +13,8 @@ export function TopPage() {
 
   const scrollServices = (e) => {
     const element = document.getElementById('services')
+    console.log('Element found:', element); // Check if it exists
+  console.log('Element position:', element?.getBoundingClientRect()); // Check its position
     element?.scrollIntoView({ behavior: 'smooth' })
   }
 
