@@ -14,9 +14,9 @@ export function BottomPage() {
         Oon: {opacity: 0},
         Ooff: {opacity: 1},
         Hon: {height: 0},
-        Hoof: {height: 'auto'},
-        Son: {scale: 1.1},
-        Soof: {scale: 1},
+        Hoof: {height: '35%'},
+        Son: {height: '100%'},
+        Soof: {height: '65%'},
     }
     return (
         <motion.div className="size-full bg-slate-950/30 flex justify-around items-center snap-start">
