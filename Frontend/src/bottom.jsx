@@ -1,8 +1,9 @@
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom';
-import { useState } from 'react'
-import { services, servicesRef } from './top'
+import { useState, useRef } from 'react'
+import { services } from './top'
 
+export const servicesRef = useRef(null)
 
 export function BottomPage() {
     const [animate, setAnimate] = useState(false);

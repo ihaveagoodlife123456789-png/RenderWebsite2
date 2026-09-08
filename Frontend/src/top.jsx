@@ -2,11 +2,11 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { useRef } from 'react'
+import { servicesRef } from './bottom.jsx'
 
 export const services = 'services'
 
   const ref = useRef(null)
-  export const servicesRef = useRef(null)
 
 export const scroll = (e) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' })
