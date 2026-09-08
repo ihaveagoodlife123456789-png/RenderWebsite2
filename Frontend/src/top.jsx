@@ -8,11 +8,9 @@ export const services = 'services'
 export function TopPage() {
 
   const ref = useRef(null)
-  const servicesRef = useRef(null)
 
   const scroll = (e) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' })
-    servicesRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
