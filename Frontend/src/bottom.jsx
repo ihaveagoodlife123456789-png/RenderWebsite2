@@ -19,7 +19,7 @@ export function BottomPage() {
         Soof: {height: '65%', scale: 1},
     }
     return (
-        <motion.div className="size-full bg-slate-950/30 flex justify-around items-center snap-start">
+        <motion.div id="services" className="size-full bg-slate-950/30 flex justify-around items-center snap-start">
         
         <Link to='/users' className="overflow-hidden w-[20%] h-[48%] bg-mist-800/60 font-semibold text-[24px] text-blue-600/90 flex flex-col"
         onMouseEnter={() => onMouseEnterAnimation()}
