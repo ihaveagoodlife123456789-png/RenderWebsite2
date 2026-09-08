@@ -1,6 +1,6 @@
 import { motion } from 'motion/react'
 import { Link } from 'react-router-dom';
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { services, servicesRef } from './top'
 
 
@@ -22,6 +22,8 @@ export function BottomPage() {
     return (
         <motion.div id={services} className="size-full bg-slate-950/30 flex justify-around items-center snap-start scroll-smooth"
         ref={servicesRef}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
         viewport={{ once: false }}
         >
