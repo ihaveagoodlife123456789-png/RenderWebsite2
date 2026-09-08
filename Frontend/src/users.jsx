@@ -27,7 +27,7 @@ export function UsersPage() {
 
 
 
-          <div className="relative bg-slate-950/20 w-[80%] h-[80%] flex flex-col items-center justify-center">
+          <div className="relative bg-slate-950/40 w-[80%] h-[80%] flex flex-col items-center justify-center">
 
 
 
