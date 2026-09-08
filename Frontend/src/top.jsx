@@ -7,7 +7,6 @@ export const services = 'services'
 export function TopPage() {
 
   const scroll = (e) => {
-    e.preventDefault();
     const element = document.getElementById(e)
     element?.scrollIntoView({ behavior: 'smooth' })
   }
