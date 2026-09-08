@@ -14,16 +14,16 @@ export function TopPage() {
   const scrollServices = (e) => {
   e.preventDefault();
   
-  //const scrollContainer = document.querySelector('.overflow-y-scroll');
+  const scrollContainer = document.querySelector('.overflow-y-scroll');
 
-  //scrollContainer.style.scrollSnapType = 'none';
+  scrollContainer.style.scrollSnapType = 'none';
   
   const element = document.getElementById('services');
   element?.scrollIntoView({ behavior: 'smooth' });
   
-  //setTimeout(() => {
-   // scrollContainer.style.scrollSnapType = 'y mandatory';
-  //}, 800);
+  setTimeout(() => {
+   scrollContainer.style.scrollSnapType = 'y mandatory';
+  }, 800);
 }
 
   return (
