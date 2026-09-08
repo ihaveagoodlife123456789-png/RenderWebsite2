@@ -13,9 +13,9 @@ export function BottomPage() {
     const variants = {
         Oon: {opacity: 0},
         Ooff: {opacity: 1},
-        Hon: {height: 0},
-        Hoof: {height: '35%'},
-        Son: {height: '100%', scale: 1.3},
+        Hon: {height: 0, opacity: 0},
+        Hoof: {height: '35%', opacity: 1},
+        Son: {height: '100%', scale: 1.2},
         Soof: {height: '65%', scale: 1},
     }
     return (
