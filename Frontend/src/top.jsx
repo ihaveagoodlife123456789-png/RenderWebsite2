@@ -13,6 +13,11 @@ export function TopPage() {
     ref.current?.scrollIntoView({ behavior: 'smooth' })
   }
 
+  const scrollServices = (e) => {
+    const element = document.getElementById(services)
+    element?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <motion.div className="size-full text-[35px] flex flex-col text-slate-200 snap-start scroll-smooth" 
     ref={ref}
@@ -28,7 +33,7 @@ export function TopPage() {
       <motion.h4 className="size-fit" initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange', pointer: 'cursor'}}>About</motion.h4>
       <motion.h4 className="size-fit" initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange', pointer: 'cursor'}}>Company</motion.h4>
       <motion.h4 className="size-fit" initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange', pointer: 'cursor'}}>Explore</motion.h4>
-      <motion.a className="size-fit" initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange', pointer: 'cursor'}} href={`#${services}`} onClick={scroll}>Services</motion.a>
+      <motion.a className="size-fit" initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange', pointer: 'cursor'}} href={`#${services}`} onClick={scrollServices}>Services</motion.a>
       <motion.h2 className="size-fit absolute right-5 text-[26px] text-violet-500" initial={{scale: 1}} whileHover={{scale: 1.08, color: 'white', pointer: 'cursor'}}>Sign In</motion.h2>
       </div>
       <motion.div className="size-fit py-2 px-3 fixed font-bold text-[26px] top-15 right-[10%] bg-blue-700 rounded-[13px] text-white " initial={{scale: 1, color:'white', backgroundColor: '#1d4ed8'}} whileHover={{scale: 1.08, color: '#1d4ed8', backgroundColor: 'white', pointer: 'cursor'}}>Login</motion.div>
