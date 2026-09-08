@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { useState, useRef } from 'react'
 import { services } from './top'
 
-export const servicesRef = useRef()
 
 export function BottomPage() {
     const [animate, setAnimate] = useState(false);
@@ -22,11 +21,6 @@ export function BottomPage() {
     }
     return (
         <motion.div id={services} className="size-full bg-slate-950/30 flex justify-around items-center snap-start scroll-smooth"
-        ref={servicesRef}
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: false }}
         >
         
         <Link to='/users' className="overflow-hidden w-[20%] h-[48%] bg-mist-800/60 font-semibold text-[24px] text-blue-600/90 flex flex-col"

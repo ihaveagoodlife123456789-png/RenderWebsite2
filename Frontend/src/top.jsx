@@ -6,15 +6,15 @@ import { servicesRef } from './bottom.jsx'
 
 export const services = 'services'
 
-  const ref = useRef()
+export function TopPage() {
 
-export const scroll = (e) => {
+  const ref = useRef(null)
+  const servicesRef = useRef(null)
+
+  const scroll = (e) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' })
     servicesRef.current?.scrollIntoView({ behavior: 'smooth' })
   }
-
-export function TopPage() {
-
 
   return (
     <motion.div className="size-full text-[35px] flex flex-col text-slate-200 snap-start scroll-smooth" 
