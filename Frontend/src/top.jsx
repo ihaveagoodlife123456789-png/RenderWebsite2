@@ -19,7 +19,7 @@ export function TopPage() {
   }
 
   return (
-    <motion.div className="size-full text-[35px] flex flex-col text-slate-200 snap-start scroll-smooth" 
+    <motion.div className="size-full text-[35px] flex flex-col text-slate-200 scroll-smooth" 
     ref={ref}
     initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
