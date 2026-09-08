@@ -2,7 +2,6 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { useRef } from 'react'
-import { servicesRef } from './bottom.jsx'
 
 export const services = 'services'
 
