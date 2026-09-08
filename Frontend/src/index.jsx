@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 export function FullPage() {
 
     return (
-        <div className="h-full w-full overflow-y-scroll scrollbar-none snap-y snap-mandatory">
+        <div className="h-full w-full overflow-y-scroll scrollbar-none snap-y">
         <TopPage />
         <BottomPage />
         </div>
