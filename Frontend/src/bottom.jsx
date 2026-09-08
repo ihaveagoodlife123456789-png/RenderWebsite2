@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useState, useRef } from 'react'
 import { services } from './top'
 
-export const servicesRef = useRef(null)
+export const servicesRef = useRef()
 
 export function BottomPage() {
     const [animate, setAnimate] = useState(false);

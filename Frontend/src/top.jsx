@@ -6,7 +6,7 @@ import { servicesRef } from './bottom.jsx'
 
 export const services = 'services'
 
-  const ref = useRef(null)
+  const ref = useRef()
 
 export const scroll = (e) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' })
