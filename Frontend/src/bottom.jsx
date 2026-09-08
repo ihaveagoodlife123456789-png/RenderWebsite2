@@ -11,8 +11,8 @@ export function BottomPage() {
     }
 
     const variants = {
-        Oon: {opacity: 0},
-        Ooff: {opacity: 1},
+        Oon: {scale: 1.1},
+        Ooff: {scale: 1},
         Hon: {height: 0, opacity: 0},
         Hoof: {height: '35%', opacity: 1},
         Son: {height: '100%', scale: 1.2},
@@ -33,6 +33,10 @@ export function BottomPage() {
         animate={animate ? 'Son' : 'Soof'}
         >
         <motion.h2 className="font-bold text-[42px] text-amber-600"
+        variants={variants}
+        initial={{opacity: 1}}
+        transition={{duration: .5}}
+        animate={animate ? 'Oon' : 'Ooff'}
         >View users</motion.h2>
         </motion.h2>
 
