@@ -13,8 +13,8 @@ export function BottomPage() {
     const variants = {
         Oon: {opacity: 0},
         Ooff: {opacity: 1},
-        Hon: {scale: 0},
-        Hoof: {scale: 1},
+        Hon: {height: 0},
+        Hoof: {height: 'auto'},
         Son: {scale: 1.1},
         Soof: {scale: 1},
     }
