@@ -29,3 +29,7 @@ input:visited {
   background-color: white;
 }
 
+a {
+  text-decoration: none;
+}
+

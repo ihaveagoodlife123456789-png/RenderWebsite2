@@ -8,7 +8,7 @@ export function TopPage() {
     <motion.div className="size-full text-[35px] flex flex-col text-slate-200 snap-start">
       <div className="fixed flex items-center justify-center gap-5 text-white font-semibold text-[22px] top-12 w-[52%] h-[7%] left-[25%] bg-slate-600/70 rounded-[12px]" id="top">
       <div className="size-fit absolute gap-2 left-5 flex flex-col items-center justify-center">
-      <motion.div href="#top" className="text-[25px] font-bold text-indigo-800 border-b-0 border-indigo-600" initial={{scale: 0.3, y: -30}} animate={{scale: 1, y: 0}} transition={{duration: .1}} whileHover={{borderBottomWidth: '4px', pointer: 'cursor'}}>Ascended Horizons</motion.div>
+      <motion.a href="#top" className="text-[25px] font-bold text-indigo-800 border-b-0 border-indigo-600" initial={{scale: 0.3, y: -30}} animate={{scale: 1, y: 0}} transition={{duration: .1}} whileHover={{borderBottomWidth: '4px', pointer: 'cursor'}}>Ascended Horizons</motion.a>
       </div>
       <motion.h4 className="size-fit" initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange', pointer: 'cursor'}}>About</motion.h4>
       <motion.h4 className="size-fit" initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange', pointer: 'cursor'}}>Company</motion.h4>
