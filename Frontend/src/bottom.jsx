@@ -11,8 +11,6 @@ export function BottomPage() {
         setAnimate(!animate)
     }
 
-    const ref = useRef(null)
-
     const variants = {
         Oon: {scale: 1.1},
         Ooff: {scale: 1},
