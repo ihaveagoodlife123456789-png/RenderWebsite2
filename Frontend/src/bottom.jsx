@@ -48,13 +48,12 @@ export function BottomPage() {
         >
         <h2 className="font-semibold text-[28px]">Liebestrum</h2>
         <h3 className="w-[70%]"
-
-        >Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.<br /> Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</h3>
-        </motion.div>
         variants={variants}
         initial={{opacity: 1}}
         transition={{duration: .2}}
         animate={animate ? 'Oon' : 'Ooff'}
+        >Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue.<br /> Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus.</h3>
+        </motion.div>
         </Link>
 
         </motion.div>
