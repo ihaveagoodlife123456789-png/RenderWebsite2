@@ -43,16 +43,16 @@ export function Login() {
         resolver: zodResolver(loginSchema)
     })
 
-    
+
     return (
         <div className="size-full bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover flex justify-center items-center">
             <Toaster position="top-right" toastOptions={{style: {background: 'green', color: 'white'}}} />
             <div className="size-[70%] bg-slate-950/60 flex justify-center items-center">
                 <form onSubmit={handleSubmit(loginSubmit)} className="size-full flex justify-center items-center flex-col">
                     <h2 className="text-white font-bold">Username</h2>
-                    <input {...register('username')} type="text"></input>
+                    <input {...register('username')} type="text" placeholder='username'></input>
                     <h2 className="text-white font-bold">Password</h2>
-                    <input {...register('password')} type="text"></input>
+                    <input {...register('password')} type="text" placeholder='password'></input>
                     <button type="submit" className="bg-blue-700/80 size-fit">Login</button>
                 </form>
             </div>

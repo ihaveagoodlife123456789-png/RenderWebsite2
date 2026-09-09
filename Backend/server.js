@@ -24,13 +24,6 @@ app.use(
 
 app.get('/api/users', async (req, res) => {
     try {
-        if(1 === 1) {
-            req.session.authenticated = true;
-            req.session.user = {
-                user: 'user',
-                password: 'password'
-            }
-        }
         const result = await pool.query('SELECT * FROM users');
         res.json(result.rows);
     } catch (err) {
@@ -47,11 +40,12 @@ app.post('/api/login', async (req, res) => {
                 user: 'user',
                 password: 'password'
             }
-        }
-        const insertQuery = 'INSERT INTO users(id, name, message, color, email) VALUES ($1, $2, $3, $4, $5) RETURNING *'
+            const insertQuery = 'INSERT INTO users(id, name, message, color, email) VALUES ($1, $2, $3, $4, $5) RETURNING *'
         const values = [ 67, 'poop', 'caca', 'brown', 'poop@poop.com' ]
         await pool.query(insertQuery, values)
-        res.status(201).json({message: 'hi'})
+        res.status(201).json({message: 'hii'})
+        }
+        es.status(201).json({message: 'hi'})
     } catch (err) {
         res.status(500).json({ error: '500 \n Internal server error'})
     }
