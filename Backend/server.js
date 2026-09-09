@@ -13,10 +13,45 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+app.use(
+    session({
+        secret: 'sfky4w2',
+        cookie: { maxAge: 1000 * 60 * 2, secure: true, sameSite: "none"},
+        saveUninitialized: false,
+        resave: false
+    })
+)
+
 app.get('/api/users', async (req, res) => {
     try {
+        if(1 === 1) {
+            req.session.authenticated = true;
+            req.session.user = {
+                user: 'user',
+                password: 'password'
+            }
+        }
         const result = await pool.query('SELECT * FROM users');
-        res.json(result.rows); 
+        res.json(result.rows);
+    } catch (err) {
+        res.status(500).json({ error: '500 \n Internal server error'})
+    }
+})
+
+app.post('/api/users', async (req, res) => {
+    const {username, password} = req.body
+    try {
+        if(username === 'username' && password === 'password') {
+            req.session.authenticated = true;
+            req.session.user = {
+                user: 'user',
+                password: 'password'
+            }
+        }
+        const insertQuery = 'INSERT INTO users(id, name, message, color, email) VALUES ($1, $2, $3, $4, $5) RETURNING *'
+        const values = [ 67, 'poop', 'caca', 'brown', 'poop@poop.com' ]
+        await pool.query(insertQuery, values)
+        res.redirect('/')
     } catch (err) {
         res.status(500).json({ error: '500 \n Internal server error'})
     }
