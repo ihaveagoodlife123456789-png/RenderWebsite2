@@ -34,8 +34,10 @@ app.get('/api/users', async (req, res) => {
 app.post('/api/login', async (req, res) => {
     const {username, password} = req.body
     try {
-        if(username === 'username' && password === 'password') {
-            req.session.authenticated = true;
+        if(!username === 'username' && !password === 'password') {
+            return;
+        }
+        req.session.authenticated = true;
             req.session.user = {
                 user: 'user',
                 password: 'password'
@@ -44,8 +46,6 @@ app.post('/api/login', async (req, res) => {
         const values = [ 67, 'poop', 'caca', 'brown', 'poop@poop.com' ]
         await pool.query(insertQuery, values)
         res.status(201).json({message: 'hii'})
-        }
-        res.status(201).json({message: 'hi'})
     } catch (err) {
         res.status(500).json({ error: '500 \n Internal server error'})
     }
