@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename);
 app.use(
     session({
         secret: 'sfky4w2',
-        cookie: { maxAge: 1000 * 60 * 2, secure: true, sameSite: "none"},
+        cookie: { maxAge: 1000 * 60 * 1, secure: true, sameSite: "none"},
         saveUninitialized: false,
         resave: false
     })
@@ -34,17 +34,7 @@ app.get('/api/users', async (req, res) => {
 app.post('/api/login', async (req, res) => {
     const {username, password} = req.body
     try {
-        if(username === 'username' && password === 'password') {
-            req.session.authenticated = true;
-            req.session.user = {
-                user: 'user',
-                password: 'password'
-            }
-        }
-            const insertQuery = 'INSERT INTO users(id, name, message, color, email) VALUES ($1, $2, $3, $4, $5) RETURNING *'
-        const values = [ 67, req.session.user.user, req.session.user.password, 'brown', 'poop@poop.com' ]
-        await pool.query(insertQuery, values)
-        res.status(201).json({message: 'hii'})
+        res.status(201).json(req.body)
     } catch (err) {
         res.status(500).json({ error: '500 \n Internal server error'})
     }

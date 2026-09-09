@@ -22,7 +22,7 @@ const loginSchema = z.object({
             const back = await response.json()
 
             if(response.ok) {
-                console.log(back.message)
+                console.log(back)
                 toast.success('Your message has been submitted!')
             }
 
