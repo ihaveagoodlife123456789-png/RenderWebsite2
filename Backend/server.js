@@ -38,7 +38,7 @@ app.get('/api/users', async (req, res) => {
     }
 })
 
-app.post('/api/users', async (req, res) => {
+app.post('/api/login', async (req, res) => {
     const {username, password} = req.body
     try {
         if(username === 'username' && password === 'password') {

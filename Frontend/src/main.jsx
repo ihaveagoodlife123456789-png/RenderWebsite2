@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { FullPage } from './index.jsx'
 import { FormPage } from './form.jsx'
 import { UsersPage } from './users.jsx'
+import { Login } from './login.jsx'
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: '/users',
     element: <UsersPage />,
+  },
+  {
+    path: '/login',
+    element: <Login />,
   }
 ]);
 createRoot(document.getElementById('root')).render(
