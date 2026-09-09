@@ -28,17 +28,14 @@ const loginSchema = z.object({
                 },
                 body: JSON.stringify(data)
             })
-            const fetchedData = await response.json()
 
-            if(!response.ok) {
-                const errorMessage = fetchedData.error || 'Internal server error \n 500'
-                setError("root", {
-                    message: errorMessage
-                })
-                return;
+            const back = await response.json()
+
+            if(response.ok) {
+                console.log(back.message)
+                toast.success('Your message has been submitted!')
             }
-            console.log(fetchedData.message)
-            toast.success('Your message has been submitted!')
+
         } catch (err) {
             setError("root", {
                 message: "Network error. Please check your connection or try again later."
