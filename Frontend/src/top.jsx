@@ -34,7 +34,7 @@ export function TopPage() {
         transition={{ duration: 0.5 }}
         viewport={{ once: false }}
     >
-      <div className="2xl:fixed 2xl:flex 2xl:items-center 2xl:justify-center 2xl:gap-5 2xl:text-white 2xl:font-semibold sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] 2xl:text-[22px] 2xl:top-12 2xl:w-[52%] 2xl:h-[7%] 2xl:left-[25%] 2xl:bg-slate-600/70 2xl:rounded-[12px] md:left-[5%] md:h-[62%] md:w-[7%] md:top-[15%] md:flex-col md:gap-10">
+      <div className="fixed flex items-center justify-center 2xl:gap-5 text-white font-semibold sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] 2xl:text-[22px] 2xl:top-12 2xl:w-[52%] 2xl:h-[7%] 2xl:left-[25%] bg-slate-600/70 rounded-[12px] md:left-[5%] md:h-[62%] md:w-[7%] md:top-[15%] md:flex-col md:gap-10">
       <div className="size-fit flex flex-col items-center justify-center">
       <motion.a href="#top" onClick={scroll} className="sm:text-[14px] mr-[20px] md:text-[16px] lg:text-[18px] xl:text-[20px] 2xl:text-[24px] font-bold text-indigo-800 border-b-0 border-indigo-600" initial={{scale: 0.3, y: -30}} animate={{scale: 1, y: 0}} transition={{duration: .1}} whileHover={{borderBottomWidth: '4px', pointer: 'cursor'}}>Ascended Horizons</motion.a>
       </div>
