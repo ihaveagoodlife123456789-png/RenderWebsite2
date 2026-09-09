@@ -26,7 +26,7 @@ export function BottomPage() {
         viewport={{ once: false }}
         >
         
-        <Link to='/users' className="overflow-hidden w-[20%] h-[48%] bg-mist-800/60 font-semibold text-[24px] text-blue-600/90 flex flex-col"
+        <Link to='/users' className="overflow-hidden sm:w-[52%]:h-[56%] md:w-[44%]:h-[54%] lg:w-[36%]:h-[52%] xl:w-[28%]:h-[50%] 2xl:w-[20%]:h-[48%] bg-mist-800/60 font-semibold text-[24px] text-blue-600/90 flex flex-col"
         onMouseEnter={() => onMouseEnterAnimation()}
         onMouseLeave={() => onMouseEnterAnimation()}
         >
@@ -52,7 +52,7 @@ export function BottomPage() {
         animate={animate ? 'Hon' : 'Hoof'}
         >
         <h2 className="font-semibold sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] 2xl:text-[26px]">Liebestrum</h2>
-        <h3 className="w-[70%] sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] 2xl:text-[20px]"
+        <h3 className="w-[70%] sm:text-[8px] md:text-[10px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px]"
         variants={variants}
         initial={{opacity: 1}}
         transition={{duration: .2}}
