@@ -1,6 +1,6 @@
 import { z } from 'zod';
 import { toast, Toaster } from 'sonner'
-import { useForm, /*SubmitHandler*/ } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from '@hookform/resolvers/zod';
 
 const loginSchema = z.object({
@@ -13,7 +13,6 @@ const loginSchema = z.object({
         register,
         handleSubmit,
         setError,
-        formState: { errors, isSubmitting, isValid, isSubmitSuccessful}
     } = useForm({
         resolver: zodResolver(loginSchema)
     })
