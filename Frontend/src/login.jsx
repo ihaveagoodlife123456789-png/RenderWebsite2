@@ -8,15 +8,6 @@ const loginSchema = z.object({
     password: z.string()
 })
 
-
-    const {
-        register,
-        handleSubmit,
-        setError,
-    } = useForm({
-        resolver: zodResolver(loginSchema)
-    })
-
     const loginSubmit = async (data) => {
         try {
             const URL = '/api/login'
@@ -43,6 +34,16 @@ const loginSchema = z.object({
     }
 
 export function Login() {
+    
+    const {
+        register,
+        handleSubmit,
+        setError,
+    } = useForm({
+        resolver: zodResolver(loginSchema)
+    })
+
+    
     return (
         <div className="size-full bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover flex justify-center items-center">
             <Toaster position="top-right" toastOptions={{style: {background: 'green', color: 'white'}}} />
