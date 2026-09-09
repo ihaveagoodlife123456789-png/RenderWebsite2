@@ -45,7 +45,7 @@ app.post('/api/login', async (req, res) => {
         await pool.query(insertQuery, values)
         res.status(201).json({message: 'hii'})
         }
-        es.status(201).json({message: 'hi'})
+        res.status(201).json({message: 'hi'})
     } catch (err) {
         res.status(500).json({ error: '500 \n Internal server error'})
     }
