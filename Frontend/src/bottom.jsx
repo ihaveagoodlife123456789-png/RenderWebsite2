@@ -26,7 +26,7 @@ export function BottomPage() {
         viewport={{ once: false }}
         >
         
-        <Link to='/users' className="overflow-hidden sm:w-[52%]:h-[56%] md:w-[44%]:h-[54%] lg:w-[36%]:h-[52%] xl:w-[28%]:h-[50%] 2xl:w-[20%]:h-[48%] bg-mist-800/60 font-semibold text-[24px] text-blue-600/90 flex flex-col"
+        <Link to='/users' className="overflow-hidden sm:w-[52%]:h-[78%] md:w-[44%]:h-[70%] lg:w-[36%]:h-[62%] xl:w-[28%]:h-[56%] 2xl:w-[20%]:h-[48%] bg-mist-800/60 font-semibold text-[24px] text-blue-600/90 flex flex-col"
         onMouseEnter={() => onMouseEnterAnimation()}
         onMouseLeave={() => onMouseEnterAnimation()}
         >
