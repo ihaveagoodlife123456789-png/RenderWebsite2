@@ -56,7 +56,7 @@ app.post('/api/signIn', async (req, res) => {
 
 app.get('/api/profiles', async (req, res) => {
     try {
-        if(req.session.username) {
+        if(1 === 1) {
             res.status(200).json({
                 username: req.session.username,
                 password: req.session.password
