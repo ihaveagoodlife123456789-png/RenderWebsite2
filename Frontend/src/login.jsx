@@ -50,9 +50,9 @@ export function Login() {
             <div className="size-[70%] bg-slate-950/60 flex justify-center items-center">
                 <form onSubmit={handleSubmit(loginSubmit)} className="size-full flex justify-center items-center flex-col">
                     <h2 className="text-white font-bold">Username</h2>
-                    <input {...register('username')} type="text" placeholder='username'></input>
+                    <input {...register('username')} type="text" placeholder='username' className="border-[3px] border-slate-950/90"></input>
                     <h2 className="text-white font-bold">Password</h2>
-                    <input {...register('password')} type="text" placeholder='password'></input>
+                    <input {...register('password')} type="text" placeholder='password' className="border-[3px] border-slate-950/90"></input>
                     <button type="submit" className="bg-blue-700/80 size-fit">Login</button>
                 </form>
             </div>

@@ -15,10 +15,7 @@ const __dirname = path.dirname(__filename);
 
 app.use(
     session({
-        secret: 'sfky4w2',
-        cookie: { maxAge: 1000 * 60 * 1, secure: true, sameSite: "none"},
-        saveUninitialized: false,
-        resave: false
+        
     })
 )
 
@@ -32,12 +29,7 @@ app.get('/api/users', async (req, res) => {
 })
 
 app.post('/api/login', async (req, res) => {
-    const {username, password} = req.body
-    try {
-        res.status(201).json(req.body)
-    } catch (err) {
-        res.status(500).json({ error: '500 \n Internal server error'})
-    }
+
 })
 
 app.post('/api/users', async (req, res) => {
