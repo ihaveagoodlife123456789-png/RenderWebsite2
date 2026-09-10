@@ -29,8 +29,8 @@ app.use(
 );
 
 const userData = {
-    username: '1',
-    password: '3',
+    username: '13145',
+    password: '457',
 }
 
 app.post('/api/signIn', async (req, res) => {
@@ -59,7 +59,7 @@ app.get('/api/profiles', async (req, res) => {
         if(req.session.username) {
             res.status(200).send({
                 username: req.session.username,
-                password: req.session.password
+                password: 'hi'
             })
         } else {
             res.status(401).send({message: 'Can not get user'})
