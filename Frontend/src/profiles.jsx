@@ -22,8 +22,8 @@ export function GetUserProfile() {
             <div className="size-[70%] bg-slate-950/60 flex justify-center items-center">
             {userData ? (
                 <>
-                <h1 className="text-white font-bold">{`username: ${data.username}`}</h1>
-                    <h1 className="text-white font-bold">{`username: ${data.password}`}</h1>
+                <h1 className="text-white font-bold">{`username: ${userData.username}`}</h1>
+                    <h1 className="text-white font-bold">{`username: ${userData.password}`}</h1>
                     </>
             ) : (
                 <div>Loading...</div>
