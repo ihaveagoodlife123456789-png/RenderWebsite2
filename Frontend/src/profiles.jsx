@@ -15,7 +15,7 @@ export function GetUserProfile() {
                     throw new Error({message: getResponse.message})
                 }
                 const data = await getResponse.json()
-                setUserData(getResponse)
+                setUserData(data)
             } catch(err) {
                 console.error(err.message)
             }
