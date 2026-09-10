@@ -11,11 +11,11 @@ export function BottomPage() {
     }
 
     const variants2 = {
-        Oon: {scale: 1.06},
+        Oon: {scale: 1.14},
         Ooff: {scale: 1},
         Hon: {height: 0, opacity: 0},
         Hoof: {height: '35%', opacity: 1},
-        Son: {height: '100%', scale: 1.08},
+        Son: {height: '100%', scale: 1.04},
         Soof: {height: '65%', scale: 1},
     }
 
