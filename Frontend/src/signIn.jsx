@@ -59,9 +59,10 @@ export function Login() {
                     <h2 className="text-white font-bold">Username</h2>
                     <input {...register('username')} type="text" placeholder='username' className="border-[3px] border-slate-950/90"></input>
                     <h2 className="text-white font-bold">Password</h2>
-                    <h2 className="text-white font-bold">Password</h2>
+                    <input {...register('password1')} type="text" placeholder='password' className="border-[3px] border-slate-950/90"></input>
+                    <h2 className="text-white font-bold">Password Again</h2>
                     {errors.root && <h4 className="text-red-700">{errors.root.message}</h4>}
-                    <input {...register('password')} type="text" placeholder='password' className="border-[3px] border-slate-950/90"></input>
+                    <input {...register('password2')} type="text" placeholder='password' className="border-[3px] border-slate-950/90"></input>
                     <button type="submit" className="bg-blue-700/80 size-fit text-white">{isSubmitSuccessful ? 'Submitted!' : isSubmitting ? 'Submitting...' : 'Submit'}</button>
                 </form>
             </div>
