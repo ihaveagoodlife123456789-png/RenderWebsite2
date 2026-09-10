@@ -9,7 +9,6 @@ const loginSchema = z.object({
 })
 
     const loginSubmit = async (data) => {
-        const {username, password} = data
 
         try {
             const URL = '/api/signIn'
@@ -23,7 +22,7 @@ const loginSchema = z.object({
 
             const back = await response.json()
 
-            if(!response.ok) {
+            if(!back.ok) {
                 throw new Error(back.message || 'Something went wrong')
             }
                 console.log(back)
