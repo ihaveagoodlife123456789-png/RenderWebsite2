@@ -29,8 +29,8 @@ app.use(
 );
 
 const userData = {
-    username: '13145wetr',
-    password: '45as7',
+    username: '13145',
+    password: '453457',
 }
 
 app.post('/api/signIn', async (req, res) => {
