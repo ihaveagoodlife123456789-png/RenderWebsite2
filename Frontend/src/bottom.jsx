@@ -85,13 +85,13 @@ export function BottomPage() {
         variants={variants2}
         initial={{scale: 1}}
         transition={{duration: .5}}
-        animate={animate ? 'Son' : 'Soof'}
+        animate={animate2 ? 'Son' : 'Soof'}
         >
         <motion.h2 className="font-bold text-[42px] text-amber-600"
         variants={variants2}
         initial={{opacity: 1}}
         transition={{duration: .5}}
-        animate={animate ? 'Oon' : 'Ooff'}
+        animate={animate2 ? 'Oon' : 'Ooff'}
         >Your Profile</motion.h2>
         </motion.h2>
 
@@ -99,14 +99,14 @@ export function BottomPage() {
         variants={variants2}
         initial={{scale: 1}}
         transition={{duration: .5}}
-        animate={animate ? 'Hon' : 'Hoof'}
+        animate={animate2 ? 'Hon' : 'Hoof'}
         >
         <h2 className="font-semibold sm:text-[20px] lg:text-[21px] 2xl:text-[22px]">Zefraum</h2>
         <h3 className="w-[70%] sm:text-[8px] md:text-[10px] lg:text-[12px] xl:text-[14px] 2xl:text-[16px]"
         variants={variants2}
         initial={{opacity: 1}}
         transition={{duration: .2}}
-        animate={animate ? 'Oon' : 'Ooff'}
+        animate={animate2 ? 'Oon' : 'Ooff'}
         >Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante <br />tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus.</h3>
         </motion.div>
         </Link>
