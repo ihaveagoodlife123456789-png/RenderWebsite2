@@ -1,15 +1,20 @@
 import { useEffect, useState } from 'react'
 
 export function GetUserProfile() {
-    const [userData, setUserData] = useState({})
+    const [userData, setUserData] = useState(null)
     useEffect(() => {
         async function getUser() {
             try  {
-                const getResponse = await fetch('/api/profiles')
+                const getResponse = await fetch('/api/profiles'{
+                    method: 'GET',
+                    credentials: 'include'
+                }
+                )
                 if(!getResponse) {
                     console.log(getResponse.message)
                     throw new Error({message: getResponse.message})
                 }
+                const data = await getResponse.json()
                 setUserData(getResponse)
             } catch(err) {
                 console.error(err.message)

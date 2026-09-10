@@ -7,7 +7,7 @@ import { pool } from './index.js';
 import session from 'express-session'
 
 const app = express();
-app.use(cors());
+app.use(cors({origin: 'https://ascendedhorizons.com/profile', credentials: true}));
 app.use(express.json());
 
 const __filename = fileURLToPath(import.meta.url);
@@ -21,7 +21,7 @@ app.use(
         name: 'some_cookies',
         cookie: {
             httpOnly: true,
-            secure: false,
+            secure: true,
             sameSite: 'lax',
             maxAge: 1000 * 60 * 5
         }
@@ -29,8 +29,8 @@ app.use(
 );
 
 const userData = {
-    username: '13145',
-    password: '457',
+    username: '13145wetr',
+    password: '45as7',
 }
 
 app.post('/api/signIn', async (req, res) => {
@@ -57,9 +57,9 @@ app.post('/api/signIn', async (req, res) => {
 app.get('/api/profiles', async (req, res) => {
     try {
         if(req.session.username) {
-            res.status(200).send({
+            res.status(200).json({
                 username: req.session.username,
-                password: 'hi'
+                password: req.session.password
             })
         } else {
             res.status(401).send({message: 'Can not get user'})
