@@ -36,7 +36,7 @@ const userData = {
 app.post('/api/signIn', async (req, res) => {
     const {username, password} = req.body;
     try {
-        if(username !== userData.username && password1 !== userData.password) {
+        if(username !== userData.username || password !== userData.password) {
             return res.status(401).send({message: 'Invalid username or password'})
     }
 
