@@ -28,7 +28,7 @@ export function GetUserProfile() {
             {userData ? (
                 <>
                 <h1 className="text-white font-bold">{`username: ${userData.username}`}</h1>
-                    <h1 className="text-white font-bold">{`username: ${userData.password}`}</h1>
+                    <h1 className="text-white font-bold">{`password: ${userData.password}`}</h1>
                     </>
             ) : (
                 <div>Loading...</div>
