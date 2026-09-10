@@ -15,9 +15,57 @@ const __dirname = path.dirname(__filename);
 
 app.use(
     session({
-        
+        secret: 'AXoawusxaqw',
+        resave: false,
+        saveUninitialized: false,
+        name: 'some_cookies',
+        cookie: {
+            httpOnly: true,
+            secure: false,
+            sameSite: 'lax',
+            maxAge: 1000 * 60 * 5
+        }
     })
-)
+);
+
+const userData = {
+    username: 'Vincent',
+    password: 'APassword',
+}
+
+app.post('/api/signIn', async (req, res) => {
+    const {username, password1, password2} = req.body;
+    if(username === userData.username && password1 === userData.password) {
+        req.session.username = username,
+        req.session.password = password1
+    } else {
+       res.status(500).send({message: 'wrong!'}) 
+    }
+    try {
+        const query = `INSERT INTO accounts (user_id, messages, name) VALUES ($1, $2, $3)`
+        const values = [password2, username, password1]
+        const results = await pool.query(query, values)
+        return res.status(201).send(results)
+    } catch(err) {
+        res.status(500).send({message: 'Internal error \n 500'})
+    }
+})
+
+
+app.get('/api/profiles', async (req, res) => {
+    try {
+        if(req.session.username) {
+            res.status(200).send({
+                username: req.session.username,
+                password: req.session.password
+            })
+        } else {
+            res.status(500).send({message: 'Can not get user'})
+        }
+    } catch(err) {
+        res.status(500).send({message: 'Internal error \n 500'})
+    }
+})
 
 app.get('/api/users', async (req, res) => {
     try {
@@ -26,10 +74,6 @@ app.get('/api/users', async (req, res) => {
     } catch (err) {
         res.status(500).json({ error: '500 \n Internal server error'})
     }
-})
-
-app.post('/api/login', async (req, res) => {
-
 })
 
 app.post('/api/users', async (req, res) => {
