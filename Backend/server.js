@@ -35,13 +35,14 @@ const userData = {
 
 app.post('/api/signIn', async (req, res) => {
     const {username, password1, password2} = req.body;
-    if(username === userData.username && password1 === userData.password) {
+    try {
+        if(username === userData.username && password1 === userData.password) {
         req.session.username = username,
         req.session.password = password1
     } else {
-       res.status(500).send({message: 'wrong!'}) 
+       res.status(500).send({message: 'wrong!'})
+       throw new Error()
     }
-    try {
         const query = `INSERT INTO accounts (user_id, messages, name) VALUES ($1, $2, $3)`
         const values = [password2, username, password1]
         const results = await pool.query(query, values)
