@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 
-function getUserProfile() {
+export function GetUserProfile() {
     const [userData, setUserData] = useState(null)
     useEffect(() => {
         async function getUser() {
