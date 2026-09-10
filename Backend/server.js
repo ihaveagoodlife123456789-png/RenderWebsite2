@@ -34,7 +34,7 @@ const userData = {
 }
 
 app.post('/api/signIn', async (req, res) => {
-    const {username, password1, password2} = req.body;
+    const {username, password} = req.body;
     try {
         if(username !== userData.username && password1 !== userData.password) {
             return res.status(401).send({message: 'Invalid username or password'})
@@ -43,7 +43,7 @@ app.post('/api/signIn', async (req, res) => {
     req.session.username = username
 
         const query = `INSERT INTO accounts (user_id, messages, name) VALUES ($1, $2, $3)`
-        const values = [password2, username, password1]
+        const values = [1, username, password]
         const results = await pool.query(query, values)
         return res.status(201).send(results)
     } catch(err) {
