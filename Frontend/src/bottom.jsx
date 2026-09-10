@@ -11,7 +11,7 @@ export function BottomPage() {
     }
 
     const variants2 = {
-        Oon: {scale: 1.14},
+        Oon: {scale: 1.06},
         Ooff: {scale: 1},
         Hon: {height: 0, opacity: 0},
         Hoof: {height: '35%', opacity: 1},
