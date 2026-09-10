@@ -36,18 +36,18 @@ const userData = {
 app.post('/api/signIn', async (req, res) => {
     const {username, password1, password2} = req.body;
     try {
-        if(username === userData.username && password1 === userData.password) {
-        req.session.username = username,
-        req.session.password = password1
-    } else {
-       res.status(500).send({message: 'wrong!'})
-       throw new Error()
+        if(username !== userData.username && password1 !== userData.password) {
+            return res.status(401).send({message: 'Invalid username or password'})
     }
+
+    req.session.username = username
+
         const query = `INSERT INTO accounts (user_id, messages, name) VALUES ($1, $2, $3)`
         const values = [password2, username, password1]
         const results = await pool.query(query, values)
         return res.status(201).send(results)
     } catch(err) {
+        console.error(err)
         res.status(500).send({message: 'Internal error \n 500'})
     }
 })
