@@ -8,6 +8,15 @@ const loginSchema = z.object({
     password: z.string(),
 })
 
+const {
+        register,
+        handleSubmit,
+        setError,
+        formState: { errors, isSubmitting, isValid, isSubmitSuccessful}
+    } = useForm({
+        resolver: zodResolver(loginSchema)
+    })
+
     const loginSubmit = async (data) => {
 
         try {
@@ -22,7 +31,7 @@ const loginSchema = z.object({
 
             const back = await response.json()
 
-            if(!back.ok) {
+            if(!response.ok) {
                 throw new Error(back.message || 'Something went wrong')
             }
                 console.log(back)
@@ -36,15 +45,6 @@ const loginSchema = z.object({
     }
 
 export function Login() {
-    
-    const {
-        register,
-        handleSubmit,
-        setError,
-        formState: { errors, isSubmitting, isValid, isSubmitSuccessful}
-    } = useForm({
-        resolver: zodResolver(loginSchema)
-    })
 
 
     return (
