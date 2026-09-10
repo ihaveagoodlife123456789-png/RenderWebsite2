@@ -13,7 +13,7 @@ const loginSchema = z.object({
         const {username, password1, password2} = data
 
         if(password1 != password2) {
-            throw new Error({message: 'Passwords must match'})
+            throw new Error('Passwords must match')
         }
         try {
             const URL = '/api/signIn'
@@ -27,10 +27,11 @@ const loginSchema = z.object({
 
             const back = await response.json()
 
-            if(response.ok) {
+            if(!response.ok) {
+                throw new Error(back.message || 'Something went wrong')
+            }
                 console.log(back)
                 toast.success('Your message has been submitted!')
-            }
 
         } catch (err) {
             setError("root", {
@@ -62,7 +63,7 @@ export function Login() {
                     <input {...register('password1')} type="text" placeholder='password' className="border-[3px] border-slate-950/90"></input>
                     <h2 className="text-white font-bold">Password Again</h2>
                     {errors.root && <h4 className="text-red-700">{errors.root.message}</h4>}
-                    <input {...register('password2')} type="text" placeholder='password' className="border-[3px] border-slate-950/90"></input>
+                    <input {...register('password2')} type="password" placeholder='password' className="border-[3px] border-slate-950/90"></input>
                     <button type="submit" className="bg-blue-700/80 size-fit text-white">{isSubmitSuccessful ? 'Submitted!' : isSubmitting ? 'Submitting...' : 'Submit'}</button>
                 </form>
             </div>
