@@ -29,8 +29,8 @@ app.use(
 );
 
 const userData = {
-    username: '1',
-    password: '2',
+    username: 'username',
+    password: 'password',
 }
 
 app.post('/api/signIn', async (req, res) => {
@@ -62,7 +62,7 @@ app.get('/api/profiles', async (req, res) => {
                 password: req.session.password
             })
         } else {
-            res.status(500).send({message: 'Can not get user'})
+            res.status(401).send({message: 'Can not get user'})
         }
     } catch(err) {
         res.status(500).send({message: 'Internal error \n 500'})
