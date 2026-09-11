@@ -44,7 +44,7 @@ const userData = {
 app.post('/api/signIn', async (req, res) => {
     const {username, password} = req.body;
     try {
-        if(!req.body) {
+        if(!username || !password) {
             return res.status(401).send({message: 'Connot be null'})
     }
 
