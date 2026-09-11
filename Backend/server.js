@@ -23,7 +23,8 @@ app.use(
     session({
         store: new PostgresStore({
             pool: pool,
-            tableName: 'session'
+            tableName: 'session',
+            createTableIfMissing: true
         }),
         secret: 'AXoawusxaqw',
         resave: false,
