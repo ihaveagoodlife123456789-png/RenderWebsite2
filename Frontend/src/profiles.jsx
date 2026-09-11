@@ -24,8 +24,8 @@ export function GetUserProfile() {
         getUser()
     }, [])
     return (
-        <div className="size-full bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover flex justify-center items-center">
-            <div className="size-[70%] bg-slate-950/60 flex justify-center items-center">
+        <div className="text-white text-[24px] font-bold size-full bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover flex justify-center items-center">
+            <div className="size-[70%] bg-slate-950/60 flex flex-col justify-center items-center">
             {userData ? (
                 <>
                 <h1 className="text-white font-bold">{`username: ${userData.username}`}</h1>
@@ -34,6 +34,7 @@ export function GetUserProfile() {
             ) : (
                 <div>Loading...</div>
             )}
+            <Link to="/signIn">Sign In</Link>
             </div>
         </div>
     )
