@@ -8,7 +8,10 @@ import session from 'express-session'
 import pgSession from 'connect-pg-simple'
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: 'https://ascendedhorizons.com',
+    credentials: true
+}));
 app.use(express.json());
 
 const __filename = fileURLToPath(import.meta.url);
