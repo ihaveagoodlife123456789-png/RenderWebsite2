@@ -2,6 +2,7 @@ import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, /*SubmitHandler*/ } from "react-hook-form";
 import { toast, Toaster } from 'sonner'
+import { Link } from 'react-router-dom'
 
 const loginSchema = z.object({
     username: z.string(),
@@ -60,6 +61,8 @@ const {
                     {errors.root && <h4 className="text-red-700">{errors.root.message}</h4>}
                     <button type="submit" className="bg-blue-700/80 size-fit text-white">{isSubmitSuccessful ? 'Submitted!' : isSubmitting ? 'Submitting...' : 'Submit'}</button>
                 </form>
+                <Link to="/">Home</Link>
+                <Link to="/profile">Profile</Link>
             </div>
         </div>
     )
