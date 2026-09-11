@@ -51,7 +51,7 @@ app.post('/api/signIn', async (req, res) => {
             const query = `INSERT INTO accounts (user_id, messages, name) VALUES ($1, $2, $3)`
             const values = [1, username, password]
             pool.query(query, values).then(results => {
-                return res.status(201).json(req.session.username)
+                return res.status(201).json(req.session)
             }).catch(err => {
                 console.error(err)
                 res.status(500).send({message: 'Internal error \n 500'})
