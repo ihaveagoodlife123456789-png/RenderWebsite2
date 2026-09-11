@@ -20,6 +20,7 @@ app.use(
         saveUninitialized: false,
         name: 'some_cookies',
         cookie: {
+            domain: 'ascendedhorizons.com',
             httpOnly: true,
             secure: true,
             sameSite: 'lax',
