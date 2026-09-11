@@ -43,9 +43,9 @@ app.use(
 app.post('/api/signIn', async (req, res) => {
     const {username, password} = req.body;
     try {
-        if(typeof password === 'string') {
-           return res.status(401).send({message: 'Password must be a number'})
-    }
+        //if(typeof password === 'string') {
+           //return res.status(401).send({message: 'Password must be a number'})
+    //}
 
     req.session.username = username
     req.session.password = password

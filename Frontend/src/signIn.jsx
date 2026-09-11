@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const loginSchema = z.object({
     username: z.string(),
-    password: z.number().min(1, "Must be number"),
+    password: z.string(),
 })
 
 
