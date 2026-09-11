@@ -16,13 +16,13 @@ const __dirname = path.dirname(__filename);
 app.use(
     session({
         secret: 'AXoawusxaqw',
-        resave: true,
+        resave: false,
         saveUninitialized: false,
         name: 'some_cookies',
         cookie: {
             domain: 'ascendedhorizons.com',
             httpOnly: true,
-            secure: false,
+            secure: req.headers['x-forwarded-proto'] === 'https',
             sameSite: 'lax',
             maxAge: 1000 * 60 * 5
         }
@@ -37,8 +37,8 @@ const userData = {
 app.post('/api/signIn', async (req, res) => {
     const {username, password} = req.body;
     try {
-        if(username !== userData.username || password !== userData.password) {
-            return res.status(401).send({message: 'Invalid username or password'})
+        if(!req.body) {
+            return res.status(401).send({message: 'Connot be null'})
     }
 
     req.session.username = username
