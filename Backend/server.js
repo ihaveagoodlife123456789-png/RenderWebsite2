@@ -22,7 +22,7 @@ app.use(
         cookie: {
             domain: 'ascendedhorizons.com',
             httpOnly: true,
-            secure: true,
+            secure: false,
             sameSite: 'lax',
             maxAge: 1000 * 60 * 5
         }
