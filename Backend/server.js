@@ -50,7 +50,7 @@ app.post('/api/signIn', async (req, res) => {
     req.session.username = username
     req.session.password = password
 
-            const query = `INSERT INTO accounts (user_id, password) VALUES ($1, $2, $3)`
+            const query = `INSERT INTO accounts (username, password) VALUES ($1, $2, $3)`
             const values = [username, password]
             await pool.query(query, values)
             return res.status(201).json(req.session)
