@@ -17,7 +17,7 @@ app.use(
     session({
         secret: 'AXoawusxaqw',
         resave: true,
-        saveUninitialized: true,
+        saveUninitialized: false,
         name: 'some_cookies',
         cookie: {
             httpOnly: true,
