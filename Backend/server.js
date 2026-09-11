@@ -43,7 +43,7 @@ app.use(
 app.post('/api/signIn', async (req, res) => {
     const {username, password} = req.body;
     try {
-        if(typeof password === 'string') {
+        if(typeof password === 'number') {
            return res.status(401).send({message: 'Password must be a number'})
     }
 
