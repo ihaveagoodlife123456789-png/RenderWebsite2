@@ -35,27 +35,22 @@ app.use(
             httpOnly: true,
             secure: false,
             sameSite: 'lax',
-            maxAge: 1000 * 60 * 5
+            maxAge: 1000 * 60 * 1
         }
     })
 );
 
-const userData = {
-    username: '1',
-    password: '4',
-}
-
 app.post('/api/signIn', async (req, res) => {
     const {username, password} = req.body;
     try {
-       // if(!username || !password) {
-           // return res.status(401).send({message: 'Connot be null'})
-    //}
+        if(typeof password === 'string') {
+           return res.status(401).send({message: 'Password must be a number'})
+    }
 
     req.session.username = username
     req.session.password = password
 
-            const query = `INSERT INTO accounts (user_id, messages, name) VALUES ($1, $2, $3)`
+            const query = `INSERT INTO accounts (user_id, password) VALUES ($1, $2, $3)`
             const values = [1, username, password]
             await pool.query(query, values)
             return res.status(201).json(req.session)
