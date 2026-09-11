@@ -7,7 +7,7 @@ import { pool } from './index.js';
 import session from 'express-session'
 
 const app = express();
-app.use(cors({origin: 'https://ascendedhorizons.com', credentials: true}));
+app.use(cors());
 app.use(express.json());
 
 const __filename = fileURLToPath(import.meta.url);
