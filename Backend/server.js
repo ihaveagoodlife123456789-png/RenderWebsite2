@@ -16,7 +16,7 @@ const __dirname = path.dirname(__filename);
 app.use(
     session({
         secret: 'AXoawusxaqw',
-        resave: false,
+        resave: true,
         saveUninitialized: true,
         name: 'some_cookies',
         cookie: {
