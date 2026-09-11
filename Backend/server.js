@@ -42,11 +42,21 @@ app.post('/api/signIn', async (req, res) => {
 
     req.session.username = username
     req.session.password = password
+    req.session.save((err) => {
+            if (err) {
+                console.error('Session save error:', err);
+                return res.status(500).send({message: 'Internal error \n 500'})
+            }
 
-        const query = `INSERT INTO accounts (user_id, messages, name) VALUES ($1, $2, $3)`
-        const values = [1, username, password]
-        const results = await pool.query(query, values)
-        return res.status(201).json(req.session.username)
+            const query = `INSERT INTO accounts (user_id, messages, name) VALUES ($1, $2, $3)`
+            const values = [1, username, password]
+            pool.query(query, values).then(results => {
+                return res.status(201).json(req.session.username)
+            }).catch(err => {
+                console.error(err)
+                res.status(500).send({message: 'Internal error \n 500'})
+            })
+        })
     } catch(err) {
         console.error(err)
         res.status(500).send({message: 'Internal error \n 500'})
