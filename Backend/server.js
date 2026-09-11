@@ -6,6 +6,8 @@ import { pool } from './index.js';
 
 import session from 'express-session'
 
+import PostgresStore from 'connect-pg-simple'
+
 const app = express();
 app.use(cors({origin: 'https://ascendedhorizons.com', credentials: true}));
 app.use(express.json());
@@ -13,8 +15,13 @@ app.use(express.json());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const pgSession = PostgresStore(session)
+
 app.use(
     session({
+        store: new pgSession({
+            pool: pool // Use your existing database pool
+        }),
         secret: 'AXoawusxaqw',
         resave: false,
         saveUninitialized: false,
