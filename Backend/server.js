@@ -66,7 +66,7 @@ app.post('/api/signIn', async (req, res) => {
 
 app.get('/api/profiles', async (req, res) => {
     try {
-        const a = await pool.query('SELECT * FROM users')
+        const a = req.session
         if(1 === 1) {
             res.status(200).json(a)
         } else {
