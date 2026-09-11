@@ -66,11 +66,9 @@ app.post('/api/signIn', async (req, res) => {
 
 app.get('/api/profiles', async (req, res) => {
     try {
+        const a = await pool.query('SELECT * FROM users')
         if(1 === 1) {
-            res.status(200).json({
-                username: req.session.username,
-                password: req.session.password
-            })
+            res.status(200).json(a)
         } else {
             res.status(401).send({message: 'Can not get user'})
         }
