@@ -10,7 +10,7 @@ authSignIn.post('/', async (req, res) => {
     try {
         const verify = `SELECT * FROM authenticate WHERE email = $1`
         const verifyEmail = await pool.query(verify, [email])
-        if(verifyEmail.rows === 1) {
+        if(verifyEmail.rows.length === 1) {
             return res.status(401).json({message: 'A user with this email already exists.'})
         }
         const query = `INSERT INTO authenticate (username, password, email) VALUES ($1, $2, $3)`
