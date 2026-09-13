@@ -83,7 +83,7 @@ passport.use(new LocalStrategy(
             const { rows } = await pool.query(searchUser, [username])
 
             if(rows.length === 0) {
-                return done(null, false, { message: 'Incorrect usrename.'})
+                return done(null, false, { message: 'Incorrect username.'})
             }
             const userPassword = rows[0].password
             if(userPassword !== password) {

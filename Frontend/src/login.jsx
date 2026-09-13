@@ -61,7 +61,7 @@ const {
                     {errors.root && <h4 className="text-red-700">{errors.root.message}</h4>}
                     <button type="submit" className="bg-blue-700/80 size-fit text-white">{isSubmitSuccessful ? 'Submitted!' : isSubmitting ? 'Submitting...' : 'Submit'}</button>
                 </form>
-                <Link to="/" className="absolute top-2 left-2 text-green-700 font-bold"><motion.div initial={{scale: 1}} whileHover={{scale: 1.05}}>Home</motion.div></Link>
+                <Link to="/" className="absolute top-5 left-5 text-green-700 font-bold"><motion.div initial={{scale: 1}} whileHover={{scale: 1.1}}>Home</motion.div></Link>
             </div>
         </div>
     )
