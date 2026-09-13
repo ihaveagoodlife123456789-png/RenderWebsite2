@@ -74,7 +74,10 @@ useEffect(() => {
         <a href="#explore" onClick={scrollExplore} className="text-[24px] text-white">More Here</a>
         <motion.a href="#explore" onClick={scrollExplore} style={{rotate: '90deg'}} initial={{y: 0}} animate={{y: [0, 10, 0, -10, 0]}} transition={{duration: 2, repeat: Infinity, ease: 'linear'}}>{'>'}</motion.a>
       </div>
-      <motion.div onClick={() => logout()} className="absolute bottom-[16%] size-fit py-2 px-3 font-bold bottom-25 sm:right-[4%] md:right-[5%] lg:right-[6%] xl:right-[8%] 2xl:right-[10%] bg-red-800 rounded-[13px] text-white sm:text-[20px] lg:text-[23px] 2xl:text-[26px] md:py-1 md:px-2" initial={{scale: 1, color:'white', backgroundColor: '#D32F2F'}} whileHover={{scale: 1.08, color: '#D32F2F', backgroundColor: 'white', pointer: 'cursor'}}>Logout</motion.div>
+      <motion.div onClick={() => {
+        logout()
+        setTimeout(() => window.location.reload(), 1500)
+        }} className="absolute bottom-[16%] size-fit py-2 px-3 font-bold bottom-25 sm:right-[4%] md:right-[5%] lg:right-[6%] xl:right-[8%] 2xl:right-[10%] bg-red-800 rounded-[13px] text-white sm:text-[20px] lg:text-[23px] 2xl:text-[26px] md:py-1 md:px-2" initial={{scale: 1, color:'white', backgroundColor: '#D32F2F'}} whileHover={{scale: 1.08, color: '#D32F2F', backgroundColor: 'white', pointer: 'cursor'}}>Logout</motion.div>
       <img src="/icons8-wreath-64.png" className="fixed top-8 sm:left-9 md:left-10 lg:left-12 xl:left-14 2xl:left-16 sm:size-[55px] md:size-[65px] lg:size-[75px] xl:size-[85px] 2xl:size-[100px]"/>
     </motion.div>
   )
