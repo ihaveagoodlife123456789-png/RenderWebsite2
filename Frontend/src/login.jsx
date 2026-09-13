@@ -3,6 +3,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, /*SubmitHandler*/ } from "react-hook-form";
 import { toast, Toaster } from 'sonner'
 import { Link } from 'react-router-dom'
+import { motion } from 'motion/react'
 
 const loginSchema = z.object({
     username: z.string(),
@@ -51,7 +52,7 @@ const {
     return (
         <div className="size-full bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover flex justify-center items-center">
             <Toaster position="top-right" toastOptions={{style: {background: 'green', color: 'white'}}} />
-            <div className="size-[70%] bg-slate-950/60 flex justify-center items-center flex-col gap-12 text-white font-bold text-[25px]">
+            <div className="relative size-[70%] bg-slate-950/60 flex justify-center items-center flex-col gap-12 text-white font-bold text-[25px]">
                 <form onSubmit={handleSubmit(loginSubmit)} className="size-full flex justify-center items-center flex-col">
                     <h2 className="text-white font-bold">Username</h2>
                     <input {...register('username')} type="text" placeholder='username' className="border-[3px] border-slate-950/90"></input>
@@ -60,8 +61,7 @@ const {
                     {errors.root && <h4 className="text-red-700">{errors.root.message}</h4>}
                     <button type="submit" className="bg-blue-700/80 size-fit text-white">{isSubmitSuccessful ? 'Submitted!' : isSubmitting ? 'Submitting...' : 'Submit'}</button>
                 </form>
-                <Link to="/">Home</Link>
-                <Link to="/profile">Profile</Link>
+                <Link to="/" className="absolute top-2 left-2 text-green-700 font-bold"><motion.div initial={{scale: 1}} whileHover={{scale: 1.05}}>Home</motion.div></Link>
             </div>
         </div>
     )
