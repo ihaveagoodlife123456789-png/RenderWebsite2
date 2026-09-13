@@ -4,8 +4,11 @@ import passport from 'passport';
 
 export const authLoginRouter = express.Router()
 
-authLoginRouter.post('/', (req, res) => {
+authLoginRouter.post('/', (req, res, next) => {
     passport.authenticate("local", (err, user, info) => {
+        if (err) {
+            return next(err)
+        }
 
         if (!user) {
             return res.status(401).json({ error: info.message})
@@ -17,5 +20,5 @@ authLoginRouter.post('/', (req, res) => {
             }
             return res.json({ message: 'Logged in Successfully', user: user})
         })
-    })
+    })(req, res, next)
 })
