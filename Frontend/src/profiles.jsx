@@ -6,7 +6,7 @@ export function GetUserProfile() {
     useEffect(() => {
         async function getUser() {
             try  {
-                const getResponse = await fetch('/api/profiles', {
+                const getResponse = await fetch('/api/profile', {
                     method: 'GET',
                     credentials: 'include'
                 }

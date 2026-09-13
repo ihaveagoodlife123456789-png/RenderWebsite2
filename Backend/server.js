@@ -7,15 +7,28 @@ import { pool } from './index.js';
 import session from 'express-session'
 import pgSession from 'connect-pg-simple'
 
+import passport from 'passport';
+import { Strategy as LocalStrategy } from 'passport-local';
+
+import { authLoginRouter } from './serverRequests/authLogin.js'
+import { authLogoutRouter } from './serverRequests/authLogout.js'
+import { AuthProfile } from './serverRequests/profile.js'
+import { display } from './serverRequests/display.js'
+import { createPost } from './serverRequests/createPost.js'
+import { authSignIn } from './serverRequests/authSignIn.js'
+
 const app = express();
-app.use(cors({
-    origin: 'https://ascendedhorizons.com',
-    credentials: true
-}));
+app.use(cors({ origin: 'https://ascendedhorizons.com', credentials: true }));
 app.use(express.json());
+
+
+//Frontend paths
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+
+//Cookies
 
 const PostgresStore = pgSession(session)
 
@@ -40,65 +53,61 @@ app.use(
     })
 );
 
-app.post('/api/signIn', async (req, res) => {
-    const {username, password} = req.body;
-    try {
-        //if(typeof password === 'string') {
-           //return res.status(401).send({message: 'Password must be a number'})
-    //}
 
-    req.session.username = username
-    req.session.password = password
+//Authentication
 
-            const query = `INSERT INTO accounts (username, password) VALUES ($1, $2)`
-            const values = [username, password]
-            await pool.query(query, values)
-            return res.status(201).json(req.session)
-    } catch(err) {
-        console.error(err)
-        res.status(500).send({message: 'Internal error \n 500'})
-    }
+app.use(passport.initialize());
+app.use(passport.session());
+
+passport.serializeUser((user, done) => {
+    done(null, user.id)
 })
 
-
-app.get('/api/profiles', async (req, res) => {
+passport.deserializeUser(async (id, done) => {
     try {
-        const a = req.session
-        if(1 === 1) {
-            res.status(200).json(a)
-        } else {
-            res.status(401).send({message: 'Can not get user'})
+        const searchUser = `SELECT * FROM authenticate WHERE id = $1`
+        const { rows } = await pool.query(searchUser, [id])
+        if(rows.length === 0) {
+           return done(null, false);
         }
-    } catch(err) {
-        res.status(500).send({message: 'Internal error \n 500'})
-    }
-})
-
-app.get('/api/users', async (req, res) => {
-    try {
-        const result = await pool.query('SELECT * FROM users');
-        res.json(result.rows);
+        done(null, rows[0])
     } catch (err) {
-        res.status(500).json({ error: '500 \n Internal server error'})
+        done(err)
     }
-})
+});
 
-app.post('/api/users', async (req, res) => {
-    const { name, message, color, email } = req.body
+passport.use(new LocalStrategy(
+    async function(username, password, done) {
+        try {
+            const searchUser = `SELECT * FROM authenticate WHERE username = $1`
+            const { rows } = await pool.query(searchUser, [username])
 
-    try {
-        const query = `SELECT id FROM users ORDER BY id DESC LIMIT 1`
-        const result = await pool.query(query)
-        const newId = result.rows[0].id + 1
-
-        const insertQuery = 'INSERT INTO users(id, name, message, color, email) VALUES ($1, $2, $3, $4, $5) RETURNING *'
-        const values = [ newId, name, message, color, email ]
-        await pool.query(insertQuery, values)
-        return res.status(201).send({ message: 'Recieved!'})
-    } catch (err) {
-        return res.status(500).json({ error: 'Internal Server Error \n 500'})
+            if(rows.length === 0) {
+                return done(null, false, { message: 'Incorrect usrename.'})
+            }
+            const userPassword = rows[0].password
+            if(userPassword !== password) {
+                return done(null, false, { message: 'Incorrect password.'})
+            }
+            return done(null, rows[0])
+        } catch (err) {
+            return done(err)
+        }
     }
-})
+));
+
+
+//Module paths
+
+app.use('/api/auth/login', authLoginRouter)
+app.use('/api/auth/logout', authLogoutRouter)
+app.use('/api/auth/signIn', authSignIn)
+app.use('/api/profile', AuthProfile)
+app.use('/api/users', display)
+app.use('/api/create', createPost)
+
+
+//Frontend renders
 
 const distPath = path.join(__dirname, '../Frontend/dist');
 app.use(express.static(distPath));

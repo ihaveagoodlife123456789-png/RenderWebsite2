@@ -7,10 +7,11 @@ import { Link } from 'react-router-dom'
 const loginSchema = z.object({
     username: z.string(),
     password: z.string(),
+    email: z.string().email({ message: "Not a valid email"})
 })
 
 
-export function Login() {
+export function SignIn() {
 
 const {
         register,
@@ -24,22 +25,21 @@ const {
     const loginSubmit = async (data) => {
 
         try {
-            const URL = '/api/signIn'
+            const URL = '/api/auth/signIn'
             const response = await fetch(URL, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                credentials: 'include',
                 body: JSON.stringify(data)
             })
 
-            const back = await response.json()
+            const result = await response.json()
 
             if(!response.ok) {
-                throw new Error(back.message || 'Something went wrong')
+                throw new Error(result.message || 'Something went wrong')
             }
-                console.log(back)
+                console.log(result)
                 toast.success('Your message has been submitted!')
 
         } catch (err) {
@@ -58,8 +58,11 @@ const {
                     <input {...register('username')} type="text" placeholder='username' className="border-[3px] border-slate-950/90"></input>
                     <h2 className="text-white font-bold">Password</h2>
                     <input {...register('password')} type="text" placeholder='password' className="border-[3px] border-slate-950/90"></input>
-                    {errors.root && <h4 className="text-red-700">{errors.root.message}</h4>}
+                    <h2 className="text-white font-bold">Email</h2>
+                    <input {...register('email')} type="text" placeholder='password' className="border-[3px] border-slate-950/90"></input>
+                    {errors.email ? <h4 className="text-red-700">{errors.email.message}</h4> : null}
                     <button type="submit" className="bg-blue-700/80 size-fit text-white">{isSubmitSuccessful ? 'Submitted!' : isSubmitting ? 'Submitting...' : 'Submit'}</button>
+                    {errors.root ? <h4 className="text-red-700">{errors.root.message}</h4> : null}
                 </form>
                 <Link to="/">Home</Link>
                 <Link to="/profile">Profile</Link>

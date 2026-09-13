@@ -43,7 +43,7 @@ export function FormPage() {
         }
         
         try {
-            const URL = '/api/users'
+            const URL = '/api/create'
             const response = await fetch(URL, {
                 method: 'POST',
                 headers: {

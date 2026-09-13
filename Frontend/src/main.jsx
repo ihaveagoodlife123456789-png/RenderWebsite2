@@ -4,7 +4,8 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import { FullPage } from './index.jsx'
 import { FormPage } from './form.jsx'
 import { UsersPage } from './users.jsx'
-import { Login } from './signIn.jsx'
+import { SignIn } from './signIn.jsx'
+import { Login } from './login.jsx'
 import { GetUserProfile } from './profiles.jsx'
 
 const router = createBrowserRouter([
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   },
   {
     path: '/signIn',
+    element: <SignIn />,
+  },
+  {
+    path: '/login',
     element: <Login />,
   },
   {
