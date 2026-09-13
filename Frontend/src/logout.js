@@ -10,7 +10,8 @@
                     'Content-Type': 'application/json'
                 },
             })
-            toast.success('Logged Out!')
+            const result = await response.json()
+            toast.success(`${result.message}`)
         } catch (err) {
             console.log(err)
         }
