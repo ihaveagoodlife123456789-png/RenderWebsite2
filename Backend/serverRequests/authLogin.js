@@ -6,9 +6,6 @@ export const authLoginRouter = express.Router()
 
 authLoginRouter.post('/', (req, res) => {
     passport.authenticate("local", (err, user, info) => {
-        if (err) {
-            return next(err)
-        }
 
         if (!user) {
             return res.status(401).json({ error: info.message})
