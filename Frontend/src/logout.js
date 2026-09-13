@@ -1,3 +1,5 @@
+   import { toast } from 'sonner'
+   
    export const logout = async () => {
 
         try {
@@ -8,7 +10,7 @@
                     'Content-Type': 'application/json'
                 },
             })
-
+            toast.success('Logged Out!')
         } catch (err) {
             console.log(err)
         }
