@@ -64,7 +64,7 @@ const {
                     <input {...register('email')} type="text" placeholder='password' disabled={isSubmitting} className="border-[3px] border-slate-950/90"></input>
                     {errors.email ? <h4 className="text-red-700">{errors.email.message}</h4> : null}
                     </fieldset>
-                    <motion.button type="submit" className="relative py-1 px-2 top-4 bg-blue-700/80 size-fit text-white rounded-[12px]" disabled={isSubmitting ? true : isSubmitSuccessful ? true : false} initial={{scale: 1}} whileHover={{scale: 1.04}}>{isSubmitSuccessful ? 'Submitted!' : isSubmitting ? 'Submitting...' : 'Submit'}</motion.button>
+                    <motion.button type="submit" className="relative py-1 px-2 top-4 bg-blue-700/80 size-fit text-white rounded-[12px]" disabled={isSubmitting || isSubmitSuccessful} initial={{scale: 1}} whileHover={{scale: 1.04}}>{isSubmitSuccessful ? 'Submitted!' : isSubmitting ? 'Submitting...' : 'Submit'}</motion.button>
                     {errors.root ? <h4 className="text-red-700">{errors.root.message}</h4> : null}
                     {isSubmitSuccessful ? <h3 className="text-green-700 font-bold aboslute bottom-15">You can go back home and login!</h3> : null}
                 </form>
