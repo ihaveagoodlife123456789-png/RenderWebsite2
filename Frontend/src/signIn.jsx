@@ -66,7 +66,7 @@ const {
                     </fieldset>
                     <motion.button type="submit" className="relative py-1 px-2 top-4 bg-blue-700/80 size-fit text-white rounded-[12px]" disabled={isSubmitting || isSubmitSuccessful} initial={{scale: 1}} whileHover={{scale: 1.04}}>{isSubmitSuccessful ? 'Submitted!' : isSubmitting ? 'Submitting...' : 'Submit'}</motion.button>
                     {errors.root ? <h4 className="text-red-700">{errors.root.message}</h4> : null}
-                    {isSubmitSuccessful ? <h3 className="text-green-700 font-bold aboslute bottom-15">You can go back home and login!</h3> : null}
+                    {isSubmitSuccessful ? <h3 className="text-green-700 font-bold aboslute bottom-7">You can go back home and login!</h3> : null}
                 </form>
                 <Link to="/"><motion.div className="size-fit border-blue-800 border-[2px] bg-blue-700 font-bold text-[18px] rounded-[12px] absolute top-[4%] left-[4%]" initial={{scale: 1, color: 'white', backgroundColor: '#1D4ED8', borderColor: '#1e40af'}} whileHover={{scale: 1.06, color: '#1D4ED8', backgroundColor: 'white', borderColor: 'none'}}>Home</motion.div></Link>
             </div>
