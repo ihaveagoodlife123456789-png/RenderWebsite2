@@ -10,7 +10,7 @@ import pgSession from 'connect-pg-simple'
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 
-import bcrypt from 'bycrypt';
+import bcrypt from 'bcrypt';
 
 import { authLoginRouter } from './serverRequests/authLogin.js'
 import { authLogoutRouter } from './serverRequests/authLogout.js'
