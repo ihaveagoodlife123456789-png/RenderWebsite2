@@ -7,7 +7,6 @@
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                credentials: 'include',
             })
 
         } catch (err) {
