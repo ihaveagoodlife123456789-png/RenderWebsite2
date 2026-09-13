@@ -32,14 +32,14 @@ export function GetUserProfile() {
             <div className="ext-blue-800 size-[70%] bg-slate-950/60 flex flex-col justify-center items-center">
             {userData ? (
                 <>
-                <h1 className="text-white font-bold">{userData.username ? `Username: ${userData.username}` : 'Na'}</h1>
-                    <h1 className="text-white font-bold">{userData.password ? `Password: ${userData.password}` : 'Na'}</h1>
+                <h1 className="text-white font-bold">{userData.username ? `Username: ${userData.username}` : 'Please login first!'}</h1>
+                    <h1 className="text-white font-bold">{userData.password ? `Password: ${userData.password}` : null}</h1>
                     {logError ? <h2 className="text-red-700 font-bold text-[24px]">{logError}</h2> : null}
                     </>
             ) : (
                 <div>Loading...</div>
             )}
-            <Link to="/signIn" className="relative top-3 size-fit bg-lime-600"><motion.div initial={{scale: 1, color: 'white', backgroundColor: '#5EA500'}} whileHover={{scale: 1.06, color: '#5EA500', backgroundColor: 'white'}}>Sign In</motion.div></Link>
+            <Link to="/login" className="relative top-3 size-fit bg-lime-600"><motion.div initial={{scale: 1, color: 'white', backgroundColor: '#5EA500'}} whileHover={{scale: 1.06, color: '#5EA500', backgroundColor: 'white'}}>login</motion.div></Link>
                     <Link to="/" className="absolute top-2 left-2 size-fit bg-blu-800"><motion.div initial={{scale: 1}} whileHover={{scale: 1.05}}>Home</motion.div></Link>
             </div>
         </div>
