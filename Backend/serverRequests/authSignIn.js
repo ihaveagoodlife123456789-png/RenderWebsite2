@@ -2,7 +2,7 @@ import express from 'express';
 import { pool } from '../index.js';
 
 import passport from 'passport';
-import bcrypt from 'bycrypt';
+import bcrypt from 'bcrypt';
 
 export const authSignIn  = express.Router()
 
