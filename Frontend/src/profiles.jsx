@@ -32,14 +32,13 @@ export function GetUserProfile() {
             <div className="relative text-blue-800 size-[70%] bg-slate-950/60 flex flex-col justify-center items-center">
             {userData ? (
                 <>
-                <h1 className="text-white font-bold">{userData.username ? <h2 className="text-orange-700 flex gap-3"><h2 className="text-white">Username:</h2><h2>{`${userData.username}`}</h2></h2> : 'Please login first!'}</h1>
+                <h1 className="text-white font-bold">{userData.username ? <h2 className="text-orange-700 flex gap-3"><h2 className="text-white">Username:</h2><h2>{`${userData.username}`}</h2></h2> : <h1>'Please login first!'<br /><Link to="/login" className="relative top-3 size-fit bg-lime-600"><motion.div initial={{scale: 1, color: 'white', backgroundColor: '#5EA500'}} whileHover={{scale: 1.06, color: '#5EA500', backgroundColor: 'white'}}>login</motion.div></Link></h1>}</h1>
                     <h1 className="text-white font-bold">{userData.password ? <h2 className="text-orange-700 flex gap-3"><h2 className="text-white">Password: </h2><h2>{`${userData.password}`}</h2></h2> : null}</h1>
                     {logError ? <h2 className="text-red-700 font-bold text-[24px]">{logError}</h2> : null}
                     </>
             ) : (
                 <div>Loading...</div>
             )}
-            {userData.username === null ? null : <Link to="/login" className="relative top-3 size-fit bg-lime-600"><motion.div initial={{scale: 1, color: 'white', backgroundColor: '#5EA500'}} whileHover={{scale: 1.06, color: '#5EA500', backgroundColor: 'white'}}>login</motion.div></Link>}
                     <Link to="/" className="absolute top-2 left-2 size-fit bg-blu-800"><motion.div initial={{scale: 1}} whileHover={{scale: 1.05}}>Home</motion.div></Link>
             </div>
         </div>
