@@ -14,7 +14,7 @@ authSignIn.post('/', async (req, res) => {
             return res.status(401).json({message: 'A user with this email already exists.'})
         }
         const query = `INSERT INTO authenticate (username, password, email) VALUES ($1, $2, $3)`
-        const values = [username, password, email]
+        const values = [username.toLowerCase(), password, email]
         const result = await pool.query(query, values)
         return res.status(201).json(result)
     } catch (err) {

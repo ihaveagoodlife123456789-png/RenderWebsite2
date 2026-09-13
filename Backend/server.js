@@ -80,7 +80,7 @@ passport.use(new LocalStrategy(
     async function(username, password, done) {
         try {
             const searchUser = `SELECT * FROM authenticate WHERE username = $1`
-            const { rows } = await pool.query(searchUser, [username])
+            const { rows } = await pool.query(searchUser, [username.toLowerCase()])
 
             if(rows.length === 0) {
                 return done(null, false, { message: 'Incorrect username.'})
