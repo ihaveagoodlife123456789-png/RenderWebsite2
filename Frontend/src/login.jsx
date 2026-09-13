@@ -61,6 +61,7 @@ const {
                     {errors.root && <h4 className="text-red-700">{errors.root.message}</h4>}
                     <motion.button type="submit" className="relative top-4 bg-blue-700/80 size-fit text-white bg-orange-700 py-2 px-3 rounded-[12px]" initial={{scale: 1, color: 'white', backgroundColor: '#F57C00'}} whileHover={{scale: 1.06, color: '#F57C00', backgroundColor: 'white'}}>{isSubmitSuccessful ? 'Submitted!' : isSubmitting ? 'Submitting...' : 'Submit'}</motion.button>
                 </form>
+                <h3 className="aboslute bottom-12 text-green-700 font-bold aboslute bottom-15">Your user session expires in 15 minutes!</h3>
                 <Link to="/" className="absolute top-5 left-5 text-green-700 font-bold"><motion.div initial={{scale: 1}} whileHover={{scale: 1.1}}>Home</motion.div></Link>
             </div>
         </div>
