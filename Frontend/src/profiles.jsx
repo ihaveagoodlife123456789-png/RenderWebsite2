@@ -29,7 +29,7 @@ export function GetUserProfile() {
     }, [])
     return (
         <div className="text-blue-800 text-[24px] font-bold size-full bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover flex justify-center items-center">
-            <div className="ext-blue-800 size-[70%] bg-slate-950/60 flex flex-col justify-center items-center">
+            <div className="relative text-blue-800 size-[70%] bg-slate-950/60 flex flex-col justify-center items-center">
             {userData ? (
                 <>
                 <h1 className="text-white font-bold">{userData.username ? `Username: ${userData.username}` : 'Please login first!'}</h1>
