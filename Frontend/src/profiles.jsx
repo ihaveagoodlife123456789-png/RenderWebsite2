@@ -32,8 +32,8 @@ export function GetUserProfile() {
             <div className="relative text-blue-800 size-[70%] bg-slate-950/60 flex flex-col justify-center items-center">
             {userData ? (
                 <>
-                <h1 className="text-white font-bold">{userData.username ? `Username: ${userData.username}` : 'Please login first!'}</h1>
-                    <h1 className="text-white font-bold">{userData.password ? `Password: ${userData.password}` : null}</h1>
+                <h1 className="text-white font-bold">{userData.username ? <h2 className="text-orange-700">{`Username: ${userData.username}`}</h2> : 'Please login first!'}</h1>
+                    <h1 className="text-white font-bold">{userData.password ? <h2 className="text-orange-700">{`Password: ${userData.password}`}</h2> : null}</h1>
                     {logError ? <h2 className="text-red-700 font-bold text-[24px]">{logError}</h2> : null}
                     </>
             ) : (
