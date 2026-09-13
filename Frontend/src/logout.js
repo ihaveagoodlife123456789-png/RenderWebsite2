@@ -11,7 +11,11 @@
                 },
             })
             const result = await response.json()
-            toast.success(`${result.message}`)
+            if(!response.ok) {
+                toast.error(`${result.message}`, { style: { color: 'red' }})
+                return
+            }
+            toast.success(`${result.message}`, { style: { color: 'green' }})
         } catch (err) {
             console.log(err)
         }
