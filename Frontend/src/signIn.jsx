@@ -68,7 +68,7 @@ const {
                     {errors.root ? <h4 className="text-red-700">{errors.root.message}</h4> : null}
                     {isSubmitSuccessful ? <h3 className="text-green-700 font-bold">You can go back home and login!</h3> : null}
                 </form>
-                <Link to="/"><motion.div className="size-fit py-2 px-3 border-blue-800 border-[2px] bg-blue-700 font-bold text-[27px] rounded-[12px] absolute bottom-[6%]" initial={{scale: 1, color: 'white', backgroundColor: '#1D4ED8', borderColor: '#1e40af'}} whileHover={{scale: 1.06, color: '#1D4ED8', backgroundColor: 'white', borderColor: 'none'}}>Home</motion.div></Link>
+                <Link to="/"><motion.div className="size-fit py-1 px-2 border-blue-800 border-[2px] bg-blue-700 font-bold text-[18px] rounded-[12px] absolute top-[4%] left-[4%]" initial={{scale: 1, color: 'white', backgroundColor: '#1D4ED8', borderColor: '#1e40af'}} whileHover={{scale: 1.06, color: '#1D4ED8', backgroundColor: 'white', borderColor: 'none'}}>Home</motion.div></Link>
             </div>
         </div>
     )
