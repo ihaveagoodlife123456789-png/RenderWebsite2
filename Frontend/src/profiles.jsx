@@ -39,7 +39,7 @@ export function GetUserProfile() {
             ) : (
                 <div>Loading...</div>
             )}
-            {userData ? null : <Link to="/login" className="relative top-3 size-fit bg-lime-600"><motion.div initial={{scale: 1, color: 'white', backgroundColor: '#5EA500'}} whileHover={{scale: 1.06, color: '#5EA500', backgroundColor: 'white'}}>login</motion.div></Link> }
+            {userData ? <Link to="/login" className="relative top-3 size-fit bg-lime-600"><motion.div initial={{scale: 1, color: 'white', backgroundColor: '#5EA500'}} whileHover={{scale: 1.06, color: '#5EA500', backgroundColor: 'white'}}>login</motion.div></Link> : null}
                     <Link to="/" className="absolute top-2 left-2 size-fit bg-blu-800"><motion.div initial={{scale: 1}} whileHover={{scale: 1.05}}>Home</motion.div></Link>
             </div>
         </div>
