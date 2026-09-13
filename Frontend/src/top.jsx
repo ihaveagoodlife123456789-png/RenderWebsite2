@@ -35,7 +35,7 @@ useEffect(() => {
     const url = '/api/profile'
   const response = await fetch(url)
   const result = await response.json()
-  if(!result) {
+  if(!response.ok) {
     setUser(false)
     return;
   }
