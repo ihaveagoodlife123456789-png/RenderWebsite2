@@ -55,15 +55,18 @@ const {
             <Toaster position="top-right" toastOptions={{style: {background: 'green', color: 'white'}}} />
             <div className="size-[70%] bg-slate-950/60 flex justify-center items-center flex-col gap-12 text-white font-bold text-[25px]">
                 <form onSubmit={handleSubmit(loginSubmit)} className="size-full flex justify-center items-center flex-col">
+                    <fieldset disabled={isSubmitSuccessful}>
                     <h2 className="text-white font-bold">Username</h2>
-                    <input {...register('username')} type="text" placeholder='username' className="border-[3px] border-slate-950/90"></input>
+                    <input {...register('username')} type="text" placeholder='username' disabled={isSubmitting} className="border-[3px] border-slate-950/90"></input>
                     <h2 className="text-white font-bold">Password</h2>
-                    <input {...register('password')} type="text" placeholder='password' className="border-[3px] border-slate-950/90"></input>
+                    <input {...register('password')} type="text" placeholder='password' disabled={isSubmitting} className="border-[3px] border-slate-950/90"></input>
                     <h2 className="text-white font-bold">Email</h2>
-                    <input {...register('email')} type="text" placeholder='password' className="border-[3px] border-slate-950/90"></input>
+                    <input {...register('email')} type="text" placeholder='password' disabled={isSubmitting} className="border-[3px] border-slate-950/90"></input>
                     {errors.email ? <h4 className="text-red-700">{errors.email.message}</h4> : null}
-                    <button type="submit" className="bg-blue-700/80 size-fit text-white">{isSubmitSuccessful ? 'Submitted!' : isSubmitting ? 'Submitting...' : 'Submit'}</button>
+                    </fieldset>
+                    <motion.button type="submit" className="relative top-2 bg-blue-700/80 size-fit text-white rounded-[12px]" disabled={isSubmitting ? true : isSubmitSuccessful ? true : false}>{isSubmitSuccessful ? 'Submitted!' : isSubmitting ? 'Submitting...' : 'Submit'}</motion.button>
                     {errors.root ? <h4 className="text-red-700">{errors.root.message}</h4> : null}
+                    {isSubmitSuccessful ? <h3 className="text-green-700 font-bold">You can go back home and login!</h3> : null}
                 </form>
                 <Link to="/" className="size-fit py-2 px-3 border-blue-800 border-[2px] bg-blue-700 font-bold text-[27px] rounded-[12px] absolute bottom-[6%]"><motion.div initial={{scale: 1, color: 'white', backgroundColor: '#1D4ED8', borderColor: '#1e40af'}} whileHover={{scale: 1.06, color: '#1D4ED8', backgroundColor: 'white', borderColor: 'none'}}>Home</motion.div></Link>
             </div>
