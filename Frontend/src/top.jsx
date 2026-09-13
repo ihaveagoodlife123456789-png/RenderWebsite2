@@ -42,6 +42,7 @@ useEffect(() => {
   console.log(result.username)
   setUser(result)
   }
+  getUserName()
 },[])
 
   return (
