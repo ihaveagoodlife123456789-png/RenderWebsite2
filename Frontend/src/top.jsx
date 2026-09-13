@@ -1,12 +1,13 @@
 
 import { Link } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { useRef } from 'react'
+import { useRef, useState, useEffect } from 'react'
 
 import { logout } from './logout.js'
 import { Toaster } from 'sonner'
 
 export function TopPage() {
+  const [user, setUser] = useState(null)
 
   const ref = useRef(null)
 
@@ -29,6 +30,20 @@ export function TopPage() {
   }, 800);
 }
 
+useEffect(() => {
+  async function getUserName() {
+    const url = '/api/profile'
+  const response = await fetch(url)
+  const result = await response.json()
+  if(!result) {
+    setUser(null)
+    return;
+  }
+  console.log(result.username)
+  setUser(result)
+  }
+},[])
+
   return (
     <motion.div className="size-full text-[35px] flex flex-col text-slate-200 snap-start scroll-smooth" 
     ref={ref}
@@ -40,7 +55,7 @@ export function TopPage() {
        <Toaster position="bottom-right" toastOptions={{style: {background: 'green', color: 'white'}}} />
       <div className="fixed flex items-center justify-center gap-5 text-white font-semibold sm:text-[12px] md:text-[14px] lg:text-[16px] xl:text-[18px] 2xl:text-[22px] top-12 w-[52%] h-[7%] left-[25%] bg-slate-600/70 rounded-[12px]">
       <div className="size-fit flex flex-col items-center justify-center">
-      <motion.a href="#top" onClick={scroll} className="sm:text-[14px] mr-[20px] md:text-[16px] lg:text-[18px] xl:text-[20px] 2xl:text-[24px] font-bold text-indigo-800 border-b-0 border-indigo-600" initial={{scale: 0.3, y: -30}} animate={{scale: 1, y: 0}} transition={{duration: .1}} whileHover={{borderBottomWidth: '4px', pointer: 'cursor'}}>Ascended Horizons</motion.a>
+      <motion.a href="#top" onClick={scroll} className="sm:text-[14px] mr-[20px] md:text-[16px] lg:text-[18px] xl:text-[20px] 2xl:text-[24px] font-bold text-indigo-800 border-b-0 border-indigo-600" initial={{scale: 0.3, y: -30}} animate={{scale: 1, y: 0}} transition={{duration: .1}} whileHover={{borderBottomWidth: '4px', pointer: 'cursor'}}>{user ? <h1 className="text-red-800">{`Welcome back ${user.username}`}</h1> : 'Ascended Horizons'}</motion.a>
       </div>
       <motion.h4 className="size-fit" initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange', pointer: 'cursor'}}>About</motion.h4>
       <motion.h4 className="size-fit" initial={{scale: 1, opacity: 0, color: 'white'}} animate={{ opacity: 1}} whileHover={{ scale: 1.08, color: 'orange', pointer: 'cursor'}}>Company</motion.h4>
