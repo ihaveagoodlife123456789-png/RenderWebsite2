@@ -16,6 +16,7 @@
                 return
             }
             toast.success(`${result.message}`, { style: { color: 'green' }})
+            setTimeout(() => window.location.reload(), 1500)
         } catch (err) {
             console.log(err)
         }
