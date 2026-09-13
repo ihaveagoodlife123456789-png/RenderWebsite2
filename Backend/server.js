@@ -10,6 +10,8 @@ import pgSession from 'connect-pg-simple'
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
 
+import bcrypt from 'bycrypt';
+
 import { authLoginRouter } from './serverRequests/authLogin.js'
 import { authLogoutRouter } from './serverRequests/authLogout.js'
 import { AuthProfile } from './serverRequests/profile.js'
@@ -85,8 +87,9 @@ passport.use(new LocalStrategy(
             if(rows.length === 0) {
                 return done(null, false, { message: 'Incorrect username.'})
             }
-            const userPassword = rows[0].password
-            if(userPassword !== password) {
+            const isValid = await bcrypt.compare(password, rows[0].password)
+
+            if(!isValid) {
                 return done(null, false, { message: 'Incorrect password.'})
             }
             return done(null, rows[0])
