@@ -53,7 +53,7 @@ const {
     return (
         <div className="size-full bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover flex justify-center items-center">
             <Toaster position="top-right" toastOptions={{style: {background: 'green', color: 'white'}}} />
-            <div className="size-[70%] bg-slate-950/60 flex justify-center items-center flex-col gap-12 text-white font-bold text-[25px]">
+            <div className="relative size-[70%] bg-slate-950/60 flex justify-center items-center flex-col gap-12 text-white font-bold text-[25px]">
                 <form onSubmit={handleSubmit(loginSubmit)} className="size-full flex justify-center items-center flex-col">
                     <fieldset disabled={isSubmitSuccessful}>
                     <h2 className="text-white font-bold">Username</h2>
@@ -68,7 +68,7 @@ const {
                     {errors.root ? <h4 className="text-red-700">{errors.root.message}</h4> : null}
                     {isSubmitSuccessful ? <h3 className="text-green-700 font-bold">You can go back home and login!</h3> : null}
                 </form>
-                <Link to="/" className="size-fit py-2 px-3 border-blue-800 border-[2px] bg-blue-700 font-bold text-[27px] rounded-[12px] absolute bottom-[6%]"><motion.div initial={{scale: 1, color: 'white', backgroundColor: '#1D4ED8', borderColor: '#1e40af'}} whileHover={{scale: 1.06, color: '#1D4ED8', backgroundColor: 'white', borderColor: 'none'}}>Home</motion.div></Link>
+                <Link to="/"><motion.div className="size-fit py-2 px-3 border-blue-800 border-[2px] bg-blue-700 font-bold text-[27px] rounded-[12px] absolute bottom-[6%]" initial={{scale: 1, color: 'white', backgroundColor: '#1D4ED8', borderColor: '#1e40af'}} whileHover={{scale: 1.06, color: '#1D4ED8', backgroundColor: 'white', borderColor: 'none'}}>Home</motion.div></Link>
             </div>
         </div>
     )
