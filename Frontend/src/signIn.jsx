@@ -65,7 +65,7 @@ const {
                     <button type="submit" className="bg-blue-700/80 size-fit text-white">{isSubmitSuccessful ? 'Submitted!' : isSubmitting ? 'Submitting...' : 'Submit'}</button>
                     {errors.root ? <h4 className="text-red-700">{errors.root.message}</h4> : null}
                 </form>
-                <Link to="/" className="size-fit py-2 px-3 border-blue-800 bg-blue-700 font-bold text-[27px]"><motion.div initial={{scale: 1, color: 'white', backgroundColor: '#1D4ED8', borderColor: '#1e40af'}} whileHover={{scale: 1.06, color: '#1D4ED8', backgroundColor: 'white', borderColor: 'transparent'}}>Home</motion.div></Link>
+                <Link to="/" className="size-fit py-2 px-3 border-blue-800 border-[2px] bg-blue-700 font-bold text-[27px] rounded-[12px] absolute bottom-[6%]"><motion.div initial={{scale: 1, color: 'white', backgroundColor: '#1D4ED8', borderColor: '#1e40af'}} whileHover={{scale: 1.06, color: '#1D4ED8', backgroundColor: 'white', borderColor: 'none'}}>Home</motion.div></Link>
             </div>
         </div>
     )
