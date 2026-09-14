@@ -89,19 +89,29 @@ passport.use(new GoogleStrategy(
         callbackURL: 'https://ascendedhorizons.com/auth/google/callback'
     },
     async (accessToken, refreshToken, profile, done) => {
-        try{
-          console.log('User from Goggle:', profile)
+        try {
+            console.log('=== GOOGLE AUTH START ===')
+            console.log('Profile:', JSON.stringify(profile, null, 2))
 
-        const searchUser = `SELECT * FROM authenticate WHERE google_id = $1`
-            const { rows } = await pool.query(searchUser, [profile.id])
+            if (!profile.emails || profile.emails.length === 0) {
+                console.error('No email from Google profile')
+                return done(new Error('No email from Google'))
+            }
+
+            const googleId = profile.id
+            const email = profile.emails[0].value
+
+            console.log('Searching for user with google_id:', googleId)
+
+            const searchUser = `SELECT * FROM authenticate WHERE google_id = $1`
+            const { rows } = await pool.query(searchUser, [googleId])
 
             if (rows.length > 0) {
+                console.log('User found, returning:', rows[0].id)
                 return done(null, rows[0])
             }
 
-        const email = profile.emails[0].value
-            const name = profile.displayName
-            const googleId = profile.id
+            console.log('User not found, creating new user')
 
             const createUser = `
                 INSERT INTO authenticate (google_id, username, email) 
@@ -110,10 +120,15 @@ passport.use(new GoogleStrategy(
             `
             const newUser = await pool.query(createUser, [googleId, email, email])
             
+            console.log('New user created:', newUser.rows[0].id)
             return done(null, newUser.rows[0])
-    } catch (err) {
-        done(err)
-    }
+
+        } catch (err) {
+            console.error('=== GOOGLE AUTH ERROR ===')
+            console.error('Error message:', err.message)
+            console.error('Error stack:', err.stack)
+            return done(err)
+        }
     }
 ))
 
