@@ -84,8 +84,8 @@ passport.deserializeUser(async (id, done) => {
 
 passport.use(new GoogleStrategy(
     {
-        clientID: '363158928557-hj2h07a0gk7t8mo1j9dsrl1tsj222oek.apps.googleusercontent.com',
-        clientSecret: '363158928557-hj2h07a0gk7t8mo1j9dsrl1tsj222oek.apps.googleusercontent.com',
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: 'https://ascendedhorizons.com'
     },
     (accessToken, refreshToken, profile, done) => {
@@ -151,7 +151,3 @@ app.listen(PORT, '0.0.0.0', () => {
 app.get('/api/profile', (req, res) => {
     console.log(req.session)
 })
-
-//363158928557-hj2h07a0gk7t8mo1j9dsrl1tsj222oek.apps.googleusercontent.com
-
-//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
