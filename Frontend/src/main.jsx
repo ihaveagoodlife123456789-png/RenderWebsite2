@@ -35,7 +35,7 @@ const router = createBrowserRouter([
     element: <GetUserProfile />,
   },
   {
-    path: '/d[ashboard',
+    path: '/dashboard',
     element: <Dashboard />,
   }
 ]);
