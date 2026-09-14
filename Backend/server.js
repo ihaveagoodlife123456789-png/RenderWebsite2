@@ -12,12 +12,16 @@ import { Strategy as LocalStrategy } from 'passport-local';
 
 import bcrypt from 'bcrypt';
 
+import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
+import jwt from 'jsonwebtoken';
+
 import { authLoginRouter } from './serverRequests/authLogin.js'
 import { authLogoutRouter } from './serverRequests/authLogout.js'
 import { AuthProfile } from './serverRequests/profile.js'
 import { display } from './serverRequests/display.js'
 import { createPost } from './serverRequests/createPost.js'
 import { authSignIn } from './serverRequests/authSignIn.js'
+import { authGoogle } from './googleAuth.js'
 
 const app = express();
 app.use(cors({ origin: 'https://ascendedhorizons.com', credentials: true }));
@@ -78,6 +82,25 @@ passport.deserializeUser(async (id, done) => {
     }
 });
 
+passport.use(new GoogleStrategy(
+    {
+        clientID: '363158928557-hj2h07a0gk7t8mo1j9dsrl1tsj222oek.apps.googleusercontent.com',
+        clientSecret: '363158928557-hj2h07a0gk7t8mo1j9dsrl1tsj222oek.apps.googleusercontent.com',
+        callbackURL: 'https://ascendedhorizons.com'
+    },
+    (accessToken, refreshToken, profile, done) => {
+        console.log('User from Goggle:', profile)
+
+        const user = {
+            id: profile.id,
+            email: profile.emails[0].value,
+            name: profile.displayName
+        };
+
+        return done(null, user)
+    }
+))
+
 passport.use(new LocalStrategy(
     async function(username, password, done) {
         try {
@@ -108,6 +131,7 @@ app.use('/api/auth/signIn', authSignIn)
 app.use('/api/profile', AuthProfile)
 app.use('/api/users', display)
 app.use('/api/create', createPost)
+app.use('/auth/google', authGoogle)
 
 
 //Frontend renders
@@ -127,3 +151,7 @@ app.listen(PORT, '0.0.0.0', () => {
 app.get('/api/profile', (req, res) => {
     console.log(req.session)
 })
+
+//363158928557-hj2h07a0gk7t8mo1j9dsrl1tsj222oek.apps.googleusercontent.com
+
+//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

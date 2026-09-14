@@ -22,3 +22,4 @@ authLoginRouter.post('/', (req, res, next) => {
         })
     })(req, res, next)
 })
+

@@ -1,8 +1,28 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 import { motion } from 'motion/react'
 
 export function GetUserProfile() {
+    const [searchParams] = useSearchParams()
+    const [token, setToken] = useState(null)
+
+    useEffect(() => {
+        const urlToken = searchParams.get('token')
+        if (urlToken) {
+            setToken(urlToken)
+            localStorage.setItem('token', urlToken)
+        }
+    }, [searchParams]);
+
+    return (
+        <div className="text-blue-800 text-[24px] font-bold size-full bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover flex flex-col gap-15 justify-center items-center">
+            <h1>Welcome</h1>
+            {token && <p>You're logged in! Token: {token}</p>}
+        </div>
+    )
+}
+
+/*export function GetUserProfile() {
     const [userData, setUserData] = useState(null)
     const [logError, setLogError] = useState(null)
     useEffect(() => {
@@ -43,4 +63,4 @@ export function GetUserProfile() {
             </div>
         </div>
     )
-}
+}*/
