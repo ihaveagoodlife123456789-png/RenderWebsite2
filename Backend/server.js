@@ -52,7 +52,7 @@ app.use(
         cookie: {
             domain: 'ascendedhorizons.com',
             httpOnly: true,
-            secure: false,
+            secure: process.env.NODE_ENV === 'production',
             sameSite: 'lax',
             maxAge: 1000 * 60 * 15
         }
