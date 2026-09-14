@@ -66,13 +66,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser((user, done) => {
-    done(null, user.id)
+    done(null, user)
 })
 
 passport.deserializeUser(async (id, done) => {
     try {
         const searchUser = `SELECT * FROM authenticate WHERE id = $1`
-        const { rows } = await pool.query(searchUser, [id])
+        const { rows } = await pool.query(searchUser, [id.id])
         if(rows.length === 0) {
            return done(null, false);
         }
