@@ -88,16 +88,32 @@ passport.use(new GoogleStrategy(
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         callbackURL: 'https://ascendedhorizons.com/auth/google/callback'
     },
-    (accessToken, refreshToken, profile, done) => {
-        console.log('User from Goggle:', profile)
+    async (accessToken, refreshToken, profile, done) => {
+        try{
+          console.log('User from Goggle:', profile)
 
-        const user = {
-            id: profile.id,
-            email: profile.emails[0].value,
-            name: profile.displayName
-        };
+        const searchUser = `SELECT * FROM authenticate WHERE google_id = $1`
+            const { rows } = await pool.query(searchUser, [profile.id])
 
-        return done(null, user)
+            if (rows.length > 0) {
+                return done(null, rows[0])
+            }
+
+        const email = profile.emails[0].value
+            const name = profile.displayName
+            const googleId = profile.id
+
+            const createUser = `
+                INSERT INTO authenticate (google_id, username, email) 
+                VALUES ($1, $2, $3) 
+                RETURNING *
+            `
+            const newUser = await pool.query(createUser, [googleId, email, name])
+            
+            return done(null, newUser.rows[0])
+    } catch (err) {
+
+    }
     }
 ))
 
