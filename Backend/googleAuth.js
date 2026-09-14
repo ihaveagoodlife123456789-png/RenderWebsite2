@@ -22,7 +22,11 @@ app.use(express.json());
 
 export const authGoogle = express.Router()
 
-authGoogle.get('/',
+authGoogle.get('/login', passport.authenticate('google', {
+  scope: ['profile', 'email']
+}));
+
+authGoogle.get('/callback',
     passport.authenticate('google', { failureRedirect: '/login-failed'},
         (req, res) => {
             console.log('User logged in:', req.user);

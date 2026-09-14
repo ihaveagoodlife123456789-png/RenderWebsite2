@@ -38,7 +38,10 @@ app.use(_express["default"].json());
 var authGoogle = _express["default"].Router();
 
 exports.authGoogle = authGoogle;
-authGoogle.get('/', _passport["default"].authenticate('google', {
+authGoogle.get('/login', _passport["default"].authenticate('google', {
+  scope: ['profile', 'email']
+}));
+authGoogle.get('/callback', _passport["default"].authenticate('google', {
   failureRedirect: '/login-failed'
 }, function (req, res) {
   console.log('User logged in:', req.user);

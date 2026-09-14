@@ -82,10 +82,6 @@ passport.deserializeUser(async (id, done) => {
     }
 });
 
-app.get('/auth/google', passport.authenticate('google', {
-  scope: ['profile', 'email']
-}));
-
 passport.use(new GoogleStrategy(
     {
         clientID: process.env.GOOGLE_CLIENT_ID,
