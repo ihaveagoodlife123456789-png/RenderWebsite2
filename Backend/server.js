@@ -45,7 +45,7 @@ app.use(
             tableName: 'session',
             createTableIfMissing: true
         }),
-        secret: 'AXoawusxaqw',
+        secret: process.env.COOKIE_SECRET,
         resave: false,
         saveUninitialized: false,
         name: 'some_cookies',

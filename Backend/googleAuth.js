@@ -29,7 +29,7 @@ authGoogle.get('/',
 
             const token = jwt.sign(
                 {userId: req.user.id, email: req.user.email},
-                process.env.JWT_TOKEN,
+                process.env.JWT_SECRET,
                 { expiresIn: '1d'}
             );
 

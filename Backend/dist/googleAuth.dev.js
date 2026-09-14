@@ -46,7 +46,7 @@ authGoogle.get('/', _passport["default"].authenticate('google', {
   var token = _jsonwebtoken["default"].sign({
     userId: req.user.id,
     email: req.user.email
-  }, process.env.JWT_TOKEN, {
+  }, process.env.JWT_SECRET, {
     expiresIn: '1d'
   });
 
