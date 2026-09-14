@@ -7,6 +7,7 @@ import { UsersPage } from './users.jsx'
 import { SignIn } from './signIn.jsx'
 import { Login } from './login.jsx'
 import { GetUserProfile } from './profiles.jsx'
+import { Dashboard } from './dashboard.jsx'
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
   {
     path: '/profile',
     element: <GetUserProfile />,
+  },
+  {
+    path: '/d[ashboard',
+    element: <Dashboard />,
   }
 ]);
 createRoot(document.getElementById('root')).render(
