@@ -108,11 +108,11 @@ passport.use(new GoogleStrategy(
                 VALUES ($1, $2, $3) 
                 RETURNING *
             `
-            const newUser = await pool.query(createUser, [googleId, email, name])
+            const newUser = await pool.query(createUser, [googleId, email, email])
             
             return done(null, newUser.rows[0])
     } catch (err) {
-
+        done(err)
     }
     }
 ))
