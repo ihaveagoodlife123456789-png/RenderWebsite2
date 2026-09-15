@@ -10,17 +10,25 @@ export function Dashboard() {
 
     useEffect(() => {
         const urlToken = searchParams.get('token')
-        if(!urlToken) {
-            const getUserToken = localStorage.getItem('token')
-            setUser(getUserToken)
-        }
-        if(urlToken) {
-            setToken(urlToken)
-            localStorage.setItem('token', urlToken)
+        const localToken = localStorage.getItem('token')
 
-            const decoded = jwtDecode(urlToken)
-            console.log('Decoded!:', decoded)
+        const activeToken = urlToken || localToken
+
+        if (activeToken) {
+            setToken(activeToken)
+        }
+
+        if (urlToken) {
+            localStorage.setItem('token', urlToken)
+        }
+
+        try {
+            const decoded = jwtDecode(activeToken)
             setUser(decoded)
+            console.log('Decoded!:', decoded)
+        } catch (error) {
+            console.log("Invalid roken:", error)
+            handleLogout()
         }
     }, [searchParams])
 
