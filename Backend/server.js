@@ -21,7 +21,7 @@ import { AuthProfile } from './serverRequests/profile.js'
 import { display } from './serverRequests/display.js'
 import { createPost } from './serverRequests/createPost.js'
 import { authSignIn } from './serverRequests/authSignIn.js'
-//import { authGoogle } from './googleAuth.js'
+import { authGoogle } from './googleAuth.js'
 
 const app = express();
 app.use(cors({ origin: 'https://ascendedhorizons.com', credentials: true }));
@@ -66,17 +66,22 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.serializeUser((user, done) => {
-    done(null, user)
+    done(null, user.id)
 })
 
 passport.deserializeUser(async (id, done) => {
     try {
         const searchUser = `SELECT * FROM authenticate WHERE id = $1`
-        const { rows } = await pool.query(searchUser, [id.id])
-        if(rows.length === 0) {
+        const searchUserGoogle = `SELECT * FROM authenticateGoogle WHERE id = $1`
+        const { rows } = await pool.query(searchUser, [id])
+        const { rowsGoogle } = await pool.query(searchUserGoogle, [id])
+        if(rows.length === 0 && rowsGoogle.length) {
            return done(null, false);
+        } else if(rows.length === 1) {
+            done(null, rows[0])
+        } else if(rowsGoogle.length) {
+            done(null, rowsGoogle[0])
         }
-        done(null, rows[0])
     } catch (err) {
         done(err)
     }
@@ -103,6 +108,37 @@ passport.use(new LocalStrategy(
     }
 ));
 
+passport.use(new GoogleStrategy(
+    {
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: 'https://ascendedhorizons.com/auth/google/callback'
+    },
+    async (accessToken, refreshToken, profile, done) => {
+        console.log('User info from Google:', profile)
+
+        const googleId = profile.id
+        const email = profile.emails[0].value
+
+        const searchUser = `SELECT * FROM authenticateGoogle WHERE google_id = $1`
+        const { rows } = await pool.query(searchUser, [googleId])
+
+        if (rows.length > 0) {
+            return done(null, rows[0])
+        }
+
+        const createUser = `
+        INSERT INTO authenticateGoogle (google_id, username, email)
+        VALUES ($1, $2, $3)
+        RETURNING *
+        `
+
+        const newUser = await pool.query(createUser, [googleId, email, email])
+
+        return done(null, newUser.rows[0])
+    }
+))
+
 
 //Module paths
 
@@ -112,7 +148,7 @@ app.use('/api/auth/signIn', authSignIn)
 app.use('/api/profile', AuthProfile)
 app.use('/api/users', display)
 app.use('/api/create', createPost)
-//app.use('/auth/google', authGoogle)
+app.use('/auth/google', authGoogle)
 
 
 //Frontend renders
