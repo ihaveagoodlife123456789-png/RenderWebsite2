@@ -28,7 +28,6 @@ export function Dashboard() {
             console.log('Decoded!:', decoded)
         } catch (error) {
             console.log("Invalid roken:", error)
-            handleLogout()
         }
     }, [searchParams])
 
