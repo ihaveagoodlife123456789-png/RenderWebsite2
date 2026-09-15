@@ -10,6 +10,10 @@ export function Dashboard() {
 
     useEffect(() => {
         const urlToken = searchParams.get('token')
+        if(!urlToken) {
+            const getUserToken = localStorage.getItem('token')
+            setUser(getUserToken)
+        }
         if(urlToken) {
             setToken(urlToken)
             localStorage.setItem('token', urlToken)
