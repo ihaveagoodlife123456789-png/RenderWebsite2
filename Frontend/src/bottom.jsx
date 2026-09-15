@@ -46,7 +46,7 @@ export function BottomPage() {
         onMouseLeave={() => onMouseEnterAnimation()}
         >
 
-        <motion.h2 className="w-full h-[65%] flex justify-center items-center bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf95GKxp-bYuHnEyd_3sSR21oAbE_l0AjFwxKGYQ0EUA&s=10')] bg-no-repeat bg-cover bg-center"
+        <motion.div className="w-full h-[65%] flex justify-center items-center bg-[url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRf95GKxp-bYuHnEyd_3sSR21oAbE_l0AjFwxKGYQ0EUA&s=10')] bg-no-repeat bg-cover bg-center"
         variants={variants}
         initial={{scale: 1}}
         transition={{duration: .5}}
@@ -58,7 +58,7 @@ export function BottomPage() {
         transition={{duration: .5}}
         animate={animate ? 'Oon' : 'Ooff'}
         >View users</motion.h2>
-        </motion.h2>
+        </motion.div>
 
         <motion.div className="w-full h-[35%] bg-mist-800/30 relative bottom-0 text-white text-[12px] text-center font-bold flex flex-col items-center justify-center"
         variants={variants}
@@ -81,7 +81,7 @@ export function BottomPage() {
         onMouseLeave={() => onMouseEnterAnimation2()}
         >
 
-        <motion.h2 className="w-full h-[65%] flex justify-center items-center bg-[url('https://assets.simpleviewinc.com/sv-anchorage/image/upload/c_fill,f_jpg,g_xy_center,h_450,q_65,w_640,x_2114,y_907/v1/cms_resources/clients/anchorage-redesign/DenaliMtnView_R4409_044d9d90-5361-481b-a074-7dd9918d57be.jpg')] bg-no-repeat bg-cover bg-center"
+        <motion.div className="w-full h-[65%] flex justify-center items-center bg-[url('https://assets.simpleviewinc.com/sv-anchorage/image/upload/c_fill,f_jpg,g_xy_center,h_450,q_65,w_640,x_2114,y_907/v1/cms_resources/clients/anchorage-redesign/DenaliMtnView_R4409_044d9d90-5361-481b-a074-7dd9918d57be.jpg')] bg-no-repeat bg-cover bg-center"
         variants={variants2}
         initial={{scale: 1}}
         transition={{duration: .5}}
@@ -93,7 +93,7 @@ export function BottomPage() {
         transition={{duration: .5}}
         animate={animate2 ? 'Oon' : 'Ooff'}
         >Your Profile</motion.h2>
-        </motion.h2>
+        </motion.div>
 
         <motion.div className="w-full h-[35%] bg-mist-800/30 relative bottom-0 text-white text-[12px] text-center font-bold flex flex-col items-center justify-center"
         variants={variants2}
