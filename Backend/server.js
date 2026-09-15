@@ -120,7 +120,8 @@ passport.use(new GoogleStrategy(
         callbackURL: 'https://ascendedhorizons.com/auth/google/callback'
     },
     async (accessToken, refreshToken, profile, done) => {
-        console.log('User info from Google:', profile)
+       try {
+            console.log('User info from Google:', profile)
 
         const googleId = profile.id
         const email = profile.emails[0].value
@@ -138,9 +139,23 @@ passport.use(new GoogleStrategy(
         RETURNING *
         `
 
-        const newUser = await pool.query(createUser, [googleId, email, email])
+        const insertResult  = await pool.query(createUser, [googleId, email, email])
+
+        if (!insertResult.rows[0]) {
+                console.error('ERROR: Insert returned no rows')
+                return done(new Error('Failed to create user'))
+            }
+
+            const newUser = insertResult.rows[0]
+            console.log('User created:', newUser)
+            console.log('User ID:', newUser.id) 
 
         return done(null, newUser.rows[0])
+    } catch (err){
+        console.error('Google auth error:', err.message)
+        console.error('Stack:', err.stack)
+        return done(err)
+    }
     }
 ))
 
