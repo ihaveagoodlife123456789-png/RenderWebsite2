@@ -33,7 +33,7 @@ export function GetUserProfile() {
             {userData ? (
                 <>
                 <div className="text-white font-bold">{userData.username ? <div className="text-orange-700 flex gap-3"><h2 className="text-white">Username:</h2><h2>{`${userData.username}`}</h2></div> : <div className="flex flex-col justify-center items-center"><h1>Please login first!</h1><Link to="/login"><motion.div className="relative top-3 size-fit bg-lime-600 rounded-[5px]" initial={{scale: 1, color: 'white', backgroundColor: '#5EA500'}} whileHover={{scale: 1.06, color: '#5EA500', backgroundColor: 'white'}}>login</motion.div></Link></div>}</div>
-                    <div className="text-white font-bold">{userData.password ? <div className="text-orange-700 flex gap-3"><h2 className="text-white">Password:</h2><h2>{`${userData.password}`}</h2></div> : null}</div>
+                    <div className="text-white font-bold">{userData.password ? <div className="text-orange-700 flex gap-3"><h2 className="text-white">Email:</h2><h2>{`${userData.email}`}</h2></div> : null}</div>
                     {logError ? <h2 className="text-red-700 font-bold text-[24px]">{logError}</h2> : null}
                     </>
             ) : (
