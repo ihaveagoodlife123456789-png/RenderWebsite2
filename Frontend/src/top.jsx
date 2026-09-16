@@ -11,6 +11,7 @@ import { jwtDecode } from 'jwt-decode'
 export function TopPage() {
   const [searchParams] = useSearchParams()
   const [user, setUser] = useState(false)
+  const [token, setToken] = useState(false)
 
   const ref = useRef(null)
 
@@ -36,10 +37,15 @@ export function TopPage() {
 useEffect(() => {
   async function getUserName() {
   const JWTToken = searchParams.get('token')
-  const JWTStored = localStorage.setItem('token', JWTToken)
-  const decoded = jwtDecode(JWTToken)
+  if(JWTToken) {
+  localStorage.setItem('token', JWTToken)
+  const getToken = localStorage.getItem('token')
+  const decoded = jwtDecode(getToken)
   localStorage.setItem('user', JSON.stringify(decoded))
-  if(JWTStored) {
+  setToken(true)
+  }
+
+  if(token) {
     const userInfo = JSON.parse(localStorage.getItem('user'))
     setUser(userInfo)
     console.log(userInfo)
