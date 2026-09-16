@@ -38,8 +38,10 @@ useEffect(() => {
   const JWTToken = searchParams.get('token')
   const decoded = jwtDecode(JWTToken)
   if(decoded) {
-    setUser(decoded)
-    console.log(decoded)
+    localStorage.setItem('user', decoded)
+    const userInfo = localStorage.getItem('user')
+    setUser(userInfo)
+    console.log(userInfo)
     return;
   }
   const url = '/api/profile'
