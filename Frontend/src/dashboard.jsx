@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react'
 import { jwtDecode } from 'jwt-decode'
 
 export function Dashboard() {
-    const [token, setToken] = useState(null)
     const [user, setUser] = useState(null)
 
     useEffect(() => {
@@ -26,7 +25,7 @@ export function Dashboard() {
     return (
         <div className="size-full bg-[url('/snowy-village-5120x2880-20406.jpg')] bg-no-repeat bg-cover flex justify-center items-center">
             <div className="relative size-[86%] bg-slate-950/40 flex flex-col justify-center items-center">
-            {token ? 
+            {user ? 
             <>
             <h1 className="text-green-800 font-bold text-[32px]">You are logged In!</h1>
             <div className="text-violet-600 font-semibold text-[26px]">Username:
