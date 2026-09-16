@@ -41,11 +41,11 @@ export function Dashboard() {
             <div className="relative size-[86%] bg-slate-950/40 flex flex-col justify-center items-center">
             {token ? 
             <>
-            <h1>You are logged In!</h1>
-            <div className="text-green-700 font-semibold text-[26px]">Username:
+            <h1 className="text-green-800 font-bold text-[32px]">You are logged In!</h1>
+            <div className="text-violet-600 font-semibold text-[26px]">Username:
                 <h2 className="text-orange-700 font-bold text-[28px]">{user.username}</h2>
             </div>
-            <div className="text-green-700 font-semibold text-[26px]">Email:
+            <div className="text-violet-600 font-semibold text-[26px]">Email:
                 <h2 className="text-orange-700 font-bold text-[28px]">{user.email}</h2>
             </div> 
             </>

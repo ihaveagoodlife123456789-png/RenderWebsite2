@@ -33,7 +33,7 @@ authGoogle.get('/callback', _passport["default"].authenticate('google', {
   console.log('User logged in:', req.user);
 
   var token = _jsonwebtoken["default"].sign({
-    userId: req.user.id,
+    userId: req.user.google_id,
     username: req.user.username,
     email: req.user.email
   }, process.env.JWT_SECRET, {
