@@ -10,7 +10,7 @@ export function Dashboard() {
     useEffect(() => {
 
         try {
-            const localToken = localStorage.getItem('user')
+            const localToken = JSON.parse(localStorage.getItem('user'))
             setUser(localToken)
             console.log('Fetched!:', localToken)
         } catch (error) {
