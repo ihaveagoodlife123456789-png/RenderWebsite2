@@ -36,9 +36,10 @@ export function TopPage() {
 useEffect(() => {
   async function getUserName() {
   const JWTToken = searchParams.get('token')
+  const JWTStored = localStorage.setItem('token', JWTToken)
   const decoded = jwtDecode(JWTToken)
-  if(decoded) {
-    localStorage.setItem('user', JSON.stringify(decoded))
+  localStorage.setItem('user', JSON.stringify(decoded))
+  if(JWTStored) {
     const userInfo = JSON.parse(localStorage.getItem('user'))
     setUser(userInfo)
     console.log(userInfo)

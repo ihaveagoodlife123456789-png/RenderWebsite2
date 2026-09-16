@@ -19,7 +19,7 @@
             }
             
             if(tokenExist) {
-                localStorage.removeItem('token')
+                localStorage.removeItem('user')
             }
             toast.success(`${result.message}`, { style: { color: 'green' }})
         } catch (err) {
