@@ -74,16 +74,16 @@ passport.deserializeUser(async (id, done) => {
         const searchUser = `SELECT * FROM authenticate WHERE id = $1`
         const searchUserGoogle = `SELECT * FROM authenticateGoogle WHERE id = $1`
 
-        const { rows } = await pool.query(searchUser, [id])
-
-        if(rows.length > 0) {
-            return done(null, rows[0])
-        }
-
         const { rows: rowsGoogle } = await pool.query(searchUserGoogle, [id])
 
         if(rowsGoogle.length > 0) {
             return done(null, rowsGoogle[0])
+        }
+
+        const { rows } = await pool.query(searchUser, [id])
+
+        if(rows.length > 0) {
+            return done(null, rows[0])
         }
     
         return done(null, false);
