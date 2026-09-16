@@ -38,7 +38,7 @@ useEffect(() => {
   const decoded = jwtDecode(JWTToken)
   if(decoded) {
     setUser(decoded)
-    console.log(decoded)
+    console.log(JWTToken)
     return;
   }
   const url = '/api/profile'

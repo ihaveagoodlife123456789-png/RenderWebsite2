@@ -141,7 +141,7 @@ passport.use(new GoogleStrategy(
         RETURNING *
         `
 
-        const newUser  = await pool.query(createUser, [googleId, username, email, photo])
+        const newUser = await pool.query(createUser, [googleId, username, email, photo])
 
 
         return done(null, newUser.rows[0])
