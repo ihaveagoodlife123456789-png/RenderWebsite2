@@ -16,7 +16,7 @@ export function Dashboard() {
         } catch (error) {
             console.log("Invalid roken:", error)
         }
-    }, [searchParams])
+    }, [])
 
     function handleLogout() {
         localStorage.removeItem('token')
