@@ -1,31 +1,18 @@
-import { Link, useSearchParams } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 import { useState, useEffect } from 'react'
 import { jwtDecode } from 'jwt-decode'
 
 export function Dashboard() {
-    const [searchParams] = useSearchParams()
     const [token, setToken] = useState(null)
     const [user, setUser] = useState(null)
 
     useEffect(() => {
-        const urlToken = searchParams.get('token')
-        const localToken = localStorage.getItem('token')
-
-        const activeToken = urlToken || localToken
-
-        if (activeToken) {
-            setToken(activeToken)
-        }
-
-        if (urlToken) {
-            localStorage.setItem('token', urlToken)
-        }
 
         try {
-            const decoded = jwtDecode(activeToken)
-            setUser(decoded)
-            console.log('Decoded!:', decoded)
+            const localToken = localStorage.getItem('user')
+            setUser(localToken)
+            console.log('Fetched!:', localToken)
         } catch (error) {
             console.log("Invalid roken:", error)
         }
