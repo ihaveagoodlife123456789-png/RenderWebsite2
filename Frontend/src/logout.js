@@ -11,9 +11,15 @@
                 },
             })
             const result = await response.json()
+            const localToken = localStorage.getItem('token')
+            const tokenExist = localToken
             if(!response.ok) {
                 toast.error(`${result.message}`, { style: { color: 'red' }})
                 return
+            }
+            
+            if(tokenExist) {
+                localStorage.removeItem('token')
             }
             toast.success(`${result.message}`, { style: { color: 'green' }})
         } catch (err) {
