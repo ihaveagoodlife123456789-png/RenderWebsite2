@@ -1,10 +1,12 @@
 
-import { Link } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { motion } from 'motion/react';
 import { useRef, useState, useEffect } from 'react'
 
 import { logout } from './logout.js'
 import { Toaster } from 'sonner'
+
+import { jwtDecode } from 'jwt-decode'
 
 export function TopPage() {
   const [user, setUser] = useState(false)
@@ -32,7 +34,14 @@ export function TopPage() {
 
 useEffect(() => {
   async function getUserName() {
-    const url = '/api/profile'
+  const JWTToken = useSearchParams.get('token')
+  const decoded = jwtDecode(JWTToken)
+  if(decoded) {
+    setUser(decoded)
+    console.log(decoded)
+    return;
+  }
+  const url = '/api/profile'
   const response = await fetch(url)
   const result = await response.json()
   if(!response.ok) {

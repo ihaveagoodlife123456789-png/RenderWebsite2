@@ -34,12 +34,11 @@ authGoogle.get('/callback', _passport["default"].authenticate('google', {
 
   var token = _jsonwebtoken["default"].sign({
     userId: req.user.id,
+    username: req.user.username,
     email: req.user.email
   }, process.env.JWT_SECRET, {
     expiresIn: '15min'
   });
 
-  var decoded = (0, _jwtDecode.jwtDecode)(token);
-  console.log('Decoded!:', decoded);
   res.redirect("https://ascendedhorizons.com/?token=".concat(token));
 });

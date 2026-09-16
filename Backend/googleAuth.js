@@ -23,13 +23,10 @@ authGoogle.get('/callback',
         console.log('User logged in:', req.user)
 
         const token = jwt.sign(
-            { userId: req.user.id, email: req.user.email },
+            { userId: req.user.id, username: req.user.username, email: req.user.email },
             process.env.JWT_SECRET,
             { expiresIn: '15min'}
         )
-
-        const decoded = jwtDecode(token)
-        console.log('Decoded!:', decoded)
 
         res.redirect(`https://ascendedhorizons.com/?token=${token}`)
     }
