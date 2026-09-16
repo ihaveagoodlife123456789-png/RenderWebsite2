@@ -126,6 +126,7 @@ passport.use(new GoogleStrategy(
         const googleId = profile.id
         const email = profile.emails[0].value
         const username = profile.displayName
+        const photo = profile.photos[0].value
 
         const searchUser = `SELECT * FROM authenticateGoogle WHERE google_id = $1`
         const { rows } = await pool.query(searchUser, [googleId])
@@ -135,12 +136,12 @@ passport.use(new GoogleStrategy(
         }
 
         const createUser = `
-        INSERT INTO authenticateGoogle (google_id, username, email)
-        VALUES ($1, $2, $3)
+        INSERT INTO authenticateGoogle (google_id, username, email, photo)
+        VALUES ($1, $2, $3, $4)
         RETURNING *
         `
 
-        const newUser  = await pool.query(createUser, [googleId, username, email])
+        const newUser  = await pool.query(createUser, [googleId, username, email, photo])
 
 
         return done(null, newUser.rows[0])

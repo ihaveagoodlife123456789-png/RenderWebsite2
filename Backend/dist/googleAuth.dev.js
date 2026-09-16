@@ -35,7 +35,8 @@ authGoogle.get('/callback', _passport["default"].authenticate('google', {
   var token = _jsonwebtoken["default"].sign({
     userId: req.user.google_id,
     username: req.user.username,
-    email: req.user.email
+    email: req.user.email,
+    photo: req.user.photo
   }, process.env.JWT_SECRET, {
     expiresIn: '15min'
   });

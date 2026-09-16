@@ -23,7 +23,7 @@ authGoogle.get('/callback',
         console.log('User logged in:', req.user)
 
         const token = jwt.sign(
-            { userId: req.user.google_id, username: req.user.username, email: req.user.email },
+            { userId: req.user.google_id, username: req.user.username, email: req.user.email, photo: req.user.photo },
             process.env.JWT_SECRET,
             { expiresIn: '15min'}
         )
