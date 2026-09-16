@@ -38,8 +38,8 @@ useEffect(() => {
   const JWTToken = searchParams.get('token')
   const decoded = jwtDecode(JWTToken)
   if(decoded) {
-    localStorage.setItem('user', decoded)
-    const userInfo = localStorage.getItem('user')
+    localStorage.setItem('user', JSON.stringify(decoded))
+    const userInfo = JSON.parse(localStorage.getItem('user'))
     setUser(userInfo)
     console.log(userInfo)
     return;
