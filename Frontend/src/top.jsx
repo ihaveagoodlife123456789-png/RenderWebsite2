@@ -9,6 +9,7 @@ import { Toaster } from 'sonner'
 import { jwtDecode } from 'jwt-decode'
 
 export function TopPage() {
+  const [searchParams] = useSearchParams()
   const [user, setUser] = useState(false)
 
   const ref = useRef(null)
@@ -34,11 +35,11 @@ export function TopPage() {
 
 useEffect(() => {
   async function getUserName() {
-  const JWTToken = useSearchParams.get('token')
+  const JWTToken = searchParams.get('token')
   const decoded = jwtDecode(JWTToken)
   if(decoded) {
     setUser(decoded)
-    console.log(JWTToken)
+    console.log(decoded)
     return;
   }
   const url = '/api/profile'
