@@ -3,6 +3,7 @@ import express from 'express';
 import cors from 'cors';
 import passport from 'passport';
 import jwt from 'jsonwebtoken';
+import { jwtDecode } from 'jwt-decode'
 
 const app = express();
 app.use(cors());
@@ -24,10 +25,13 @@ authGoogle.get('/callback',
         const token = jwt.sign(
             { userId: req.user.id, email: req.user.email },
             process.env.JWT_SECRET,
-            { expiresIn: '1d'}
+            { expiresIn: '15min'}
         )
 
-        res.redirect(`https://ascendedhorizons.com/dashboard?token=${token}`)
+        const decoded = jwtDecode(token)
+        console.log('Decoded!:', decoded)
+
+        res.redirect(`https://ascendedhorizons.com/?token=${token}`)
     }
 )
 

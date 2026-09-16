@@ -13,6 +13,8 @@ var _passport = _interopRequireDefault(require("passport"));
 
 var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
+var _jwtDecode = require("jwt-decode");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var app = (0, _express["default"])();
@@ -34,8 +36,10 @@ authGoogle.get('/callback', _passport["default"].authenticate('google', {
     userId: req.user.id,
     email: req.user.email
   }, process.env.JWT_SECRET, {
-    expiresIn: '1d'
+    expiresIn: '15min'
   });
 
-  res.redirect("https://ascendedhorizons.com/dashboard?token=".concat(token));
+  var decoded = (0, _jwtDecode.jwtDecode)(token);
+  console.log('Decoded!:', decoded);
+  res.redirect("https://ascendedhorizons.com/?token=".concat(token));
 });

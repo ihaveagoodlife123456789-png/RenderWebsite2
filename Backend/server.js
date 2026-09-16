@@ -125,6 +125,7 @@ passport.use(new GoogleStrategy(
 
         const googleId = profile.id
         const email = profile.emails[0].value
+        const username = profile.displayName
 
         const searchUser = `SELECT * FROM authenticateGoogle WHERE google_id = $1`
         const { rows } = await pool.query(searchUser, [googleId])
@@ -139,7 +140,7 @@ passport.use(new GoogleStrategy(
         RETURNING *
         `
 
-        const newUser  = await pool.query(createUser, [googleId, email, email])
+        const newUser  = await pool.query(createUser, [googleId, username, email])
 
 
         return done(null, newUser.rows[0])
@@ -153,7 +154,7 @@ passport.use(new GoogleStrategy(
 
 //Module paths
 
-app.use('/api/auth/login', authLoginRouter)
+app.use('/api/auth/login', authLoginRouter) 
 app.use('/api/auth/logout', authLogoutRouter)
 app.use('/api/auth/signIn', authSignIn)
 app.use('/api/profile', AuthProfile)
