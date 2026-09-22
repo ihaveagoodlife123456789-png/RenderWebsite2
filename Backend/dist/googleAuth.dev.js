@@ -15,6 +15,8 @@ var _jsonwebtoken = _interopRequireDefault(require("jsonwebtoken"));
 
 var _jwtDecode = require("jwt-decode");
 
+var _validator = _interopRequireDefault(require("validator"));
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var app = (0, _express["default"])();
@@ -31,15 +33,27 @@ authGoogle.get('/callback', _passport["default"].authenticate('google', {
   failureRedirect: '/login-failed'
 }), function (req, res) {
   console.log('User logged in:', req.user);
+  var photo = req.user.photo;
+
+  if (photo && !_validator["default"].isURL(photo, {
+    require_protocol: true
+  })) {
+    photo = null;
+  }
 
   var token = _jsonwebtoken["default"].sign({
     userId: req.user.google_id,
     username: req.user.username,
     email: req.user.email,
-    photo: req.user.photo
+    photo: photo
   }, process.env.JWT_SECRET, {
     expiresIn: '15min'
   });
 
-  res.redirect("https://ascendedhorizons.com/?token=".concat(token));
+  res.cookie('token', token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict'
+  });
+  res.redirect("https://ascendedhorizons.com/");
 });

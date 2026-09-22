@@ -1,14 +1,45 @@
 import express from 'express';
 import { pool } from '../index.js';
 
-import passport from 'passport';
 import bcrypt from 'bcrypt';
+
+import { createPostLimiter } from '../server.js'
+
+import validator from 'validator'
 
 export const authSignIn  = express.Router()
 
-authSignIn.post('/', async (req, res) => {
+authSignIn.post('/', createPostLimiter,  async (req, res) => {
     const {username, password, email} = req.body
     try {
+
+        username = validator.trim(username)
+        email = validator.trim(email).toLowerCase()
+
+        if (!validator.isLength(username, { min: 5, max: 12,})) {
+            return res.status(401).json({message: 'Password must be between 5 and 12 caracters'})
+        }
+
+        if (!validator.matches(username, /^[A-Za-z0-9]+$/)) {
+            return res.status(401).json({message: 'Username can only contain letters, numbers, underscore, hyphen'})
+        }
+
+        if (!validator.isEmail(email)) {
+            return res.status(400).json({ message: 'Invalid email' })
+        }
+
+        const isStrongPassword = validator.isStrongPassword(password, {
+    minLength: 8,
+    minLowercase: 1,
+    minUppercase: 1,
+    minNumbers: 1,
+    minSymbols: 1
+})
+
+       if (!isStrongPassword) {
+        return res.status(401).json({message: 'Password needs uppercase, lowercase, number, symbol'})
+       }
+
         const saltRounds = 12;
         const hashedPassword = await bcrypt.hash(password, saltRounds)
 
@@ -22,6 +53,6 @@ authSignIn.post('/', async (req, res) => {
         const result = await pool.query(query, values)
         return res.status(201).json(result)
     } catch (err) {
-        res.status(201).json({message: err.message})
+        res.status(201).json({message: 'Server error'})
     }
 })

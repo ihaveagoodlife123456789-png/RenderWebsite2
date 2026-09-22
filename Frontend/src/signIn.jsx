@@ -5,11 +5,21 @@ import { toast, Toaster } from 'sonner'
 import { Link } from 'react-router-dom'
 import { motion } from 'motion/react'
 
+const passwordSchema = z.string()
+  .min(8, "Password must be 8+ characters")
+  .regex(/[A-Z]/, "Must include uppercase letter")
+  .regex(/[a-z]/, "Must include lowercase letter")
+  .regex(/[0-9]/, "Must include number")
+  .regex(/[@$!%*?&]/, "Must include special character (@$!%*?&)");
+
 const loginSchema = z.object({
     username: z.string(),
-    password: z.string(),
+    password: passwordSchema,
     email: z.string().email({ message: "Not a valid email"})
-})
+})/*.refine((data) => data.password === data.confirmPassword, {
+  message: "Passwords don't match",
+  path: ["confirmPassword"]
+});*/
 
 
 export function SignIn() {
@@ -36,6 +46,13 @@ const {
             })
 
             const result = await response.json()
+            
+            if (response.status === 429) {
+            setError("root", {
+              message: fetchedData.message 
+            });
+              return;
+            }
 
             if(!response.ok) {
                 throw new Error(result.message || 'Something went wrong')

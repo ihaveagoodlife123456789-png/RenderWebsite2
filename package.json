@@ -9,5 +9,8 @@
   "scripts": {
     "build": "cd Frontend && npm install --include=dev && npm run build && cd ../Backend && npm install",
     "start": "cd Backend && node server.js"
+  },
+  "dependencies": {
+    "validator": "^13.15.35"
   }
 }

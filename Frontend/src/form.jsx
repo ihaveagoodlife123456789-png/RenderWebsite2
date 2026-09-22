@@ -22,7 +22,16 @@ export function FormPage() {
     const [emailBooleanTemplate, setEmailBooleanTemplate] = useState(false)
     const [textBlur, setTextBlur] = useState(false)
     const [emailChoose, setEmailChoose] = useState(false)
+
+    const [csrfToken, setCsrfToken] = useState('')
     
+    useEffect(() => {
+        async function crsf() {
+            const csrfTokenResponse = await fetch('/api/csrf-token')
+            const response = csrfTokenResponse.json()
+            setCsrfToken(response)
+        }
+}, []);
 
     const {
         register,
@@ -43,11 +52,13 @@ export function FormPage() {
         }
         
         try {
+            data._csrf = csrfToken
             const URL = '/api/create'
             const response = await fetch(URL, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': csrfToken
                 },
                 body: JSON.stringify(data)
             })

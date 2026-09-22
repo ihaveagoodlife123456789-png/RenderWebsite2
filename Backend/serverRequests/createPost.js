@@ -1,10 +1,11 @@
 import express from 'express'
 import { pool } from '../index.js';
 
-export const createPost = express.Router()
+export const createPost = express.Router()//res.json({ token: req.session.csrfToken });
+import { validateCsrf } from '../server.js'
 
 
-createPost.post('/', async (req, res) => {
+createPost.post('/', validateCsrf, async (req, res) => {
     const { name, message, color, email } = req.body
 
     try {

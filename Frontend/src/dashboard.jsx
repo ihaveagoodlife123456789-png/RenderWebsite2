@@ -13,7 +13,7 @@ export function Dashboard() {
             setUser(localToken)
             console.log('Fetched!:', localToken)
         } catch (error) {
-            console.log("Invalid roken:", error)
+            console.log("Invalid Token:")
         }
     }, [])
 

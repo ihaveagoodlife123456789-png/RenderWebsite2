@@ -15,6 +15,8 @@ import bcrypt from 'bcrypt';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import jwt from 'jsonwebtoken';
 
+import cookieParser from 'cookie-parser'
+
 import { authLoginRouter } from './serverRequests/authLogin.js'
 import { authLogoutRouter } from './serverRequests/authLogout.js'
 import { AuthProfile } from './serverRequests/profile.js'
@@ -22,10 +24,19 @@ import { display } from './serverRequests/display.js'
 import { createPost } from './serverRequests/createPost.js'
 import { authSignIn } from './serverRequests/authSignIn.js'
 import { authGoogle } from './googleAuth.js'
+import { stripe } from './stripe.js'
+
+import crypto from 'crypto'
+import validator from 'validator'
+
+import nodemailer from 'nodemailer';
 
 const app = express();
 app.use(cors({ origin: 'https://ascendedhorizons.com', credentials: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(cookieParser())
+app.use(helmet())
 
 
 //Frontend paths
@@ -58,6 +69,56 @@ app.use(
         }
     })
 );
+
+//DDos Prevention
+export const createPostLimiter = rateLimit({
+    windowMs: 1000 * 25,
+    max: 5
+})
+
+//XSS Prevention
+app.use((req, res, next) => {
+    res.setHeader('Content-Security-Policy', "default-src 'self'")
+    res.setHeader('X-Content-Type-Options', 'nosniff')
+    res.setHeader('X-Frame-Options', 'DENY')
+    res.setHeader('X-XSS-Protection', '1; mode=block')
+    next()
+})
+
+//CSRF Prevention
+app.use((req, res, next) => {
+  if (!req.session.csrfToken) {
+    req.session.csrfToken = crypto.randomBytes(32).toString('hex');
+  }
+  next();
+});
+
+export const validateCsrf = (req, res, next) => {
+  const token = req.body._csrf || req.headers['x-csrf-token'];
+  if (token !== req.session.csrfToken) {
+    return res.status(403).json({ error: 'CSRF validation failed' });
+  }
+  next();
+};
+
+app.get('/api/csrf-token', (req, res) => {
+  res.json({ token: req.session.csrfToken });
+});
+
+
+//SQL Injection prevention
+
+validator.isEmail(email)                          // Check valid email
+validator.isLength(str, { min, max })             // Check length
+validator.matches(str, regex)                     // Match pattern
+validator.isAlphanumeric(str)                     // Only letters/numbers
+validator.isStrongPassword(password)              // Check password strength
+validator.trim(str)                               // Remove whitespace
+validator.escape(str)                             // HTML escape (XSS prevention)
+validator.normalizeEmail(email)                   // Normalize email
+validator.isMobilePhone(phone, locale)            // Validate phone
+validator.isURL(url)                              // Validate URL
+validator.isInt(str)                           // Check if integer
 
 
 //Authentication
@@ -95,6 +156,8 @@ passport.deserializeUser(async (id, done) => {
 passport.use(new LocalStrategy(
     async function(username, password, done) {
         try {
+
+            
             const searchUser = `SELECT * FROM authenticate WHERE username = $1`
             const { rows } = await pool.query(searchUser, [username.toLowerCase()])
 
@@ -128,6 +191,10 @@ passport.use(new GoogleStrategy(
         const username = profile.displayName
         const photo = profile.photos[0].value
 
+        if (!validator.isEmail(email)) {
+            return done(new Error('Invalid email from Google'))
+        }
+
         const searchUser = `SELECT * FROM authenticateGoogle WHERE google_id = $1`
         const { rows } = await pool.query(searchUser, [googleId])
 
@@ -152,6 +219,26 @@ passport.use(new GoogleStrategy(
     }
 ))
 
+//Nodemailer
+
+const transporter = nodemailer.createTransport({
+    host: 'smtp.gmail.com',
+    port: 587,
+    secure: false,
+    auth: {
+        user: "username",
+        pass: "password"
+    }
+})
+
+const message = {
+    from: "sender@server.com",
+  to: "receiver@example.com",
+  subject: "Hello World",
+  text: "This is the plaintext version of the email.",
+  html: "<p>This is the <strong>HTML version</strong> of the email.</p>",
+}
+
 
 //Module paths
 
@@ -162,6 +249,7 @@ app.use('/api/profile', AuthProfile)
 app.use('/api/users', display)
 app.use('/api/create', createPost)
 app.use('/auth/google', authGoogle)
+app.use('/auth/stripe', stripe)
 
 
 //Frontend renders

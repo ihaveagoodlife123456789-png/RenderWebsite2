@@ -8,12 +8,26 @@ import { Toaster } from 'sonner'
 
 import { jwtDecode } from 'jwt-decode'
 
+import validator from 'validator'
+
+import DOMpurify from 'dompurify'
+//const clean = DOMPurify.sanitize(input)
+
+//Don't forget to add this:
+//credentials: 'include'
+
 export function TopPage() {
   const [searchParams] = useSearchParams()
   const [user, setUser] = useState(false)
   const [token, setToken] = useState(false)
 
   const ref = useRef(null)
+
+  const isValidImageUrl = (url) => {
+    if (!url) return false;
+
+    return url.startsWith('http://') || url.startsWith('https://');
+  }
 
   const scroll = (e) => {
     ref.current?.scrollIntoView({ behavior: 'smooth' })
@@ -36,6 +50,20 @@ export function TopPage() {
 
 useEffect(() => {
   async function getUserName() {
+    /*
+  const getUserInformation = await fetch('/auth/google/callback', {
+    credentials: 'include'
+  })
+
+  if (getUserInformation.ok) {
+    const userData = await getUserInformation.json()
+    setUser(userData)
+    return
+} else {
+     setUser(null)
+     return 
+ }*/
+  
   const JWTToken = searchParams.get('token')
   if(JWTToken) {
   localStorage.setItem('token', JWTToken)
@@ -51,6 +79,7 @@ useEffect(() => {
     console.log(userInfo)
     return;
   }
+  
   const url = '/api/profile'
   const response = await fetch(url)
   const result = await response.json()
@@ -100,7 +129,7 @@ useEffect(() => {
           setTimeout(() => window.location.reload(), 1500)
         }
         }} className="absolute bottom-[16%] size-fit py-2 px-3 font-bold bottom-25 sm:right-[4%] md:right-[5%] lg:right-[6%] xl:right-[8%] 2xl:right-[10%] bg-red-800 rounded-[13px] text-white sm:text-[20px] lg:text-[23px] 2xl:text-[26px] md:py-1 md:px-2" initial={{scale: 1, color:'white', backgroundColor: '#D32F2F'}} whileHover={{scale: 1.08, color: '#D32F2F', backgroundColor: 'white', pointer: 'cursor'}}>Logout</motion.div>
-      {user ? <img src={user.photo} className="fixed top-8 sm:left-9 md:left-10 lg:left-12 xl:left-14 2xl:left-16 sm:size-[55px] md:size-[65px] lg:size-[75px] xl:size-[85px] 2xl:size-[100px]"></img> : <img src="/icons8-wreath-64.png" className="fixed top-8 sm:left-9 md:left-10 lg:left-12 xl:left-14 2xl:left-16 sm:size-[55px] md:size-[65px] lg:size-[75px] xl:size-[85px] 2xl:size-[100px]"/>}
+      {user && user.photo && isValidImageUrl(user.photo) ? <img src={user.photo} className="fixed top-8 sm:left-9 md:left-10 lg:left-12 xl:left-14 2xl:left-16 sm:size-[55px] md:size-[65px] lg:size-[75px] xl:size-[85px] 2xl:size-[100px]"></img> : <img src="/icons8-wreath-64.png" className="fixed top-8 sm:left-9 md:left-10 lg:left-12 xl:left-14 2xl:left-16 sm:size-[55px] md:size-[65px] lg:size-[75px] xl:size-[85px] 2xl:size-[100px]"/>}
     </motion.div>
   )
 }
