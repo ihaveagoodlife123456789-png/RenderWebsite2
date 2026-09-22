@@ -3,11 +3,16 @@ import { pool } from '../index.js';
 
 import bcrypt from 'bcrypt';
 
-import { createPostLimiter } from '../server.js'
+//import { createPostLimiter } from '../server.js'
 
 import validator from 'validator'
 
 export const authSignIn  = express.Router()
+
+export const createPostLimiter = rateLimit({
+    windowMs: 1000 * 25,
+    max: 5
+})
 
 authSignIn.post('/', createPostLimiter,  async (req, res) => {
     const {username, password, email} = req.body

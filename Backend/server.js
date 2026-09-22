@@ -71,10 +71,10 @@ app.use(
 );
 
 //DDos Prevention
-export const createPostLimiter = rateLimit({
+/*export const createPostLimiter = rateLimit({
     windowMs: 1000 * 25,
     max: 5
-})
+})*/
 
 //XSS Prevention
 app.use((req, res, next) => {

@@ -3,15 +3,13 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.authSignIn = void 0;
+exports.createPostLimiter = exports.authSignIn = void 0;
 
 var _express = _interopRequireDefault(require("express"));
 
 var _index = require("../index.js");
 
 var _bcrypt = _interopRequireDefault(require("bcrypt"));
-
-var _server = require("../server.js");
 
 var _validator = _interopRequireDefault(require("validator"));
 
@@ -22,7 +20,12 @@ function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only")
 var authSignIn = _express["default"].Router();
 
 exports.authSignIn = authSignIn;
-authSignIn.post('/', _server.createPostLimiter, function _callee(req, res) {
+var createPostLimiter = rateLimit({
+  windowMs: 1000 * 25,
+  max: 5
+});
+exports.createPostLimiter = createPostLimiter;
+authSignIn.post('/', createPostLimiter, function _callee(req, res) {
   var _req$body, username, password, email, isStrongPassword, saltRounds, hashedPassword, verify, verifyEmail, query, values, result;
 
   return regeneratorRuntime.async(function _callee$(_context) {
