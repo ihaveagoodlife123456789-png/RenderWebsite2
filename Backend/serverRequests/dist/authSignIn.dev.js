@@ -13,6 +13,8 @@ var _bcrypt = _interopRequireDefault(require("bcrypt"));
 
 var _validator = _interopRequireDefault(require("validator"));
 
+var _expressRateLimit = require("express-rate-limit");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only"); }
@@ -20,7 +22,7 @@ function _readOnlyError(name) { throw new Error("\"" + name + "\" is read-only")
 var authSignIn = _express["default"].Router();
 
 exports.authSignIn = authSignIn;
-var createPostLimiter = rateLimit({
+var createPostLimiter = (0, _expressRateLimit.rateLimit)({
   windowMs: 1000 * 25,
   max: 5
 });
