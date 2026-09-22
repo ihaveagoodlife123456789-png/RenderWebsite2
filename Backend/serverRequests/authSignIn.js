@@ -30,9 +30,9 @@ authSignIn.post('/', createPostLimiter,  async (req, res) => {
             return res.status(401).json({message: 'Username can only contain letters, numbers, underscore, hyphen'})
         }
 
-        if (!validator.isEmail(email)) {
+        /*if (!validator.isEmail(email)) {
             return res.status(400).json({ message: 'Invalid email' })
-        }
+        }*/
 
         const isStrongPassword = validator.isStrongPassword(password, {
     minLength: 8,

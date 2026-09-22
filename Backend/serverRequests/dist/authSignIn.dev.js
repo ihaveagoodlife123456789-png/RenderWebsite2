@@ -62,16 +62,9 @@ authSignIn.post('/', createPostLimiter, function _callee(req, res) {
           }));
 
         case 8:
-          if (_validator["default"].isEmail(email)) {
-            _context.next = 10;
-            break;
-          }
-
-          return _context.abrupt("return", res.status(400).json({
-            message: 'Invalid email'
-          }));
-
-        case 10:
+          /*if (!validator.isEmail(email)) {
+              return res.status(400).json({ message: 'Invalid email' })
+          }*/
           isStrongPassword = _validator["default"].isStrongPassword(password, {
             minLength: 8,
             minLowercase: 1,
@@ -81,7 +74,7 @@ authSignIn.post('/', createPostLimiter, function _callee(req, res) {
           });
 
           if (isStrongPassword) {
-            _context.next = 13;
+            _context.next = 11;
             break;
           }
 
@@ -89,22 +82,22 @@ authSignIn.post('/', createPostLimiter, function _callee(req, res) {
             message: 'Password needs uppercase, lowercase, number, symbol'
           }));
 
-        case 13:
+        case 11:
           saltRounds = 12;
-          _context.next = 16;
+          _context.next = 14;
           return regeneratorRuntime.awrap(_bcrypt["default"].hash(password, saltRounds));
 
-        case 16:
+        case 14:
           hashedPassword = _context.sent;
           verify = "SELECT * FROM authenticate WHERE email = $1";
-          _context.next = 20;
+          _context.next = 18;
           return regeneratorRuntime.awrap(_index.pool.query(verify, [email.toLowerCase()]));
 
-        case 20:
+        case 18:
           verifyEmail = _context.sent;
 
           if (!(verifyEmail.rows.length === 1)) {
-            _context.next = 23;
+            _context.next = 21;
             break;
           }
 
@@ -112,27 +105,27 @@ authSignIn.post('/', createPostLimiter, function _callee(req, res) {
             message: 'A user with this email already exists.'
           }));
 
-        case 23:
+        case 21:
           query = "INSERT INTO authenticate (username, password, email) VALUES ($1, $2, $3)";
           values = [username.toLowerCase(), hashedPassword, email.toLowerCase()];
-          _context.next = 27;
+          _context.next = 25;
           return regeneratorRuntime.awrap(_index.pool.query(query, values));
 
-        case 27:
+        case 25:
           result = _context.sent;
           return _context.abrupt("return", res.status(201).json(result));
 
-        case 31:
-          _context.prev = 31;
+        case 29:
+          _context.prev = 29;
           _context.t0 = _context["catch"](1);
           res.status(201).json({
             message: 'Server error'
           });
 
-        case 34:
+        case 32:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[1, 31]]);
+  }, null, null, [[1, 29]]);
 });
