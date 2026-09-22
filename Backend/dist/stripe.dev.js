@@ -14,7 +14,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 var stripe = _express["default"].Router();
 
 exports.stripe = stripe;
-var stripeKEY = new _stripe["default"](STRIPE_SECRET_KEY);
+var stripeKEY = new _stripe["default"](process.env.STRIPE_SECRET_KEY);
 stripe.get('/', function _callee(req, res) {
   var paymentMethod;
   return regeneratorRuntime.async(function _callee$(_context) {
