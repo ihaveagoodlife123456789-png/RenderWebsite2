@@ -40,7 +40,7 @@ const router = createBrowserRouter([
     element: <Dashboard />,
   },
   {
-    path: '/auth/payment',
+    path: '/payment',
     element: <PaymentPage />
   }
 ]);
