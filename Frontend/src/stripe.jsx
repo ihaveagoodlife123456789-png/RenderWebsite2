@@ -17,13 +17,12 @@ useEffect(() => {
         setPayment(data)
         console.log(data)
     }
+    fetchPayment()
 })
     return (
     <div className="size-full bg-blue-500">
         <div className="size-80% bg-slate-800/80 flex flex-col justify-center items-center">
-        {
-            
-        }
+        hi
         </div>
     </div>
     )
