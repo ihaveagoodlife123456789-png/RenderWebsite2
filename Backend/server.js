@@ -93,13 +93,6 @@ app.use((req, res, next) => {
   next();
 });
 
-export const validateCsrf = (req, res, next) => {
-  const token = req.body._csrf || req.headers['x-csrf-token'];
-  if (token !== req.session.csrfToken) {
-    return res.status(403).json({ error: 'CSRF validation failed' });
-  }
-  next();
-};
 
 app.get('/api/csrf-token', (req, res) => {
   res.json({ token: req.session.csrfToken });

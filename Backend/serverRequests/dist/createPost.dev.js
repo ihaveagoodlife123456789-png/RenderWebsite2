@@ -3,21 +3,32 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.createPost = void 0;
+exports.validateCsrf = exports.createPost = void 0;
 
 var _express = _interopRequireDefault(require("express"));
 
 var _index = require("../index.js");
 
-var _server = require("../server.js");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var createPost = _express["default"].Router(); //res.json({ token: req.session.csrfToken });
+//import { validateCsrf } from '../server.js'
 
 
 exports.createPost = createPost;
-createPost.post('/', _server.validateCsrf, function _callee(req, res) {
+
+var validateCsrf = function validateCsrf(req, res, next) {
+  var token = req.body._csrf || req.headers['x-csrf-token'];
+
+  if (token !== req.session.csrfToken) {
+    return res.status(403).json({
+      error: 'CSRF validation failed'
+    });
+  }
+};
+
+exports.validateCsrf = validateCsrf;
+createPost.post('/', validateCsrf, function _callee(req, res) {
   var _req$body, name, message, color, email, query, result, newId, insertQuery, values;
 
   return regeneratorRuntime.async(function _callee$(_context) {
