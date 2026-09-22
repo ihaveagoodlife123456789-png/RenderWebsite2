@@ -186,9 +186,9 @@ passport.use(new GoogleStrategy(
         const username = profile.displayName
         const photo = profile.photos[0].value
 
-        if (!validator.isEmail(email)) {
+        /*if (!validator.isEmail(email)) {
             return done(new Error('Invalid email from Google'))
-        }
+        }*/
 
         const searchUser = `SELECT * FROM authenticateGoogle WHERE google_id = $1`
         const { rows } = await pool.query(searchUser, [googleId])
