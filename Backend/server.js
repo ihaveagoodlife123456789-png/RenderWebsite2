@@ -29,6 +29,8 @@ import { stripe } from './stripe.js'
 import crypto from 'crypto'
 import validator from 'validator'
 
+import helmet from 'helmet'
+
 import nodemailer from 'nodemailer';
 
 const app = express();
