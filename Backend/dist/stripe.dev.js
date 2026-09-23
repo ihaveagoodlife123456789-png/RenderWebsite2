@@ -22,7 +22,7 @@ stripe.get('/', function _callee(req, res) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return regeneratorRuntime.awrap(stripeKEY.paymentMethods.create({
+          return regeneratorRuntime.awrap(stripeKEY.paymentIntents.create({
             amount: 250,
             currency: 'cad'
           }));

@@ -5,7 +5,7 @@ export const stripe = express.Router()
 const stripeKEY = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 stripe.get('/', async (req, res) => {
-    const paymentMethod = await stripeKEY.paymentMethods.create({
+    const paymentMethod = await stripeKEY.paymentIntents.create({
     amount: 250,
     currency: 'cad'
 })
