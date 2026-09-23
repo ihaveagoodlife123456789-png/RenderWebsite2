@@ -9,6 +9,7 @@ import { Login } from './login.jsx'
 import { GetUserProfile } from './profiles.jsx'
 import { Dashboard } from './dashboard.jsx'
 import { PaymentPage } from './stripe.jsx'
+import { Element } from './stripe.jsx'
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: '/payment',
     element: <PaymentPage />
+  },
+  {
+    path: '/auth/payment/method',
+    element: <Element />
   }
 ]);
 createRoot(document.getElementById('root')).render(
