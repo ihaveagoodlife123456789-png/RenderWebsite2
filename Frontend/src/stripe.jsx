@@ -4,7 +4,7 @@ export function PaymentPage() {
 const [payment, setPayment] = useState(null)
 useEffect(() => {
     async function fetchPayment() {
-        const APIResponse = fetch('/auth/stripe', {
+        const APIResponse = await fetch('/auth/stripe', {
             method: 'GET',
             credentials: 'include'
         })

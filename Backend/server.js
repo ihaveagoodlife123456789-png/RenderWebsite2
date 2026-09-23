@@ -24,7 +24,7 @@ import { display } from './serverRequests/display.js'
 import { createPost } from './serverRequests/createPost.js'
 import { authSignIn } from './serverRequests/authSignIn.js'
 import { authGoogle } from './googleAuth.js'
-import { stripe } from './stripe.js'
+import { stripePayment } from './stripe.js'
 
 import crypto from 'crypto'
 import validator from 'validator'
@@ -186,9 +186,9 @@ passport.use(new GoogleStrategy(
         const username = profile.displayName
         const photo = profile.photos[0].value
 
-        /*if (!validator.isEmail(email)) {
+        if (!validator.isEmail(email)) {
             return done(new Error('Invalid email from Google'))
-        }*/
+        }
 
         const searchUser = `SELECT * FROM authenticateGoogle WHERE google_id = $1`
         const { rows } = await pool.query(searchUser, [googleId])
@@ -244,7 +244,7 @@ app.use('/api/profile', AuthProfile)
 app.use('/api/users', display)
 app.use('/api/create', createPost)
 app.use('/auth/google', authGoogle)
-app.use('/auth/stripe', stripe)
+app.use('/auth/stripe', stripePayment)
 
 
 //Frontend renders

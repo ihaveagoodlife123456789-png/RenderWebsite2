@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.stripe = void 0;
+exports.stripePayment = void 0;
 
 var _stripe = _interopRequireDefault(require("stripe"));
 
@@ -11,20 +11,20 @@ var _express = _interopRequireDefault(require("express"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
-var stripe = _express["default"].Router();
+var stripePayment = _express["default"].Router();
 
-exports.stripe = stripe;
-var stripeKEY = new _stripe["default"](process.env.STRIPE_SECRET_KEY);
-stripe.get('/', function _callee(req, res) {
+exports.stripePayment = stripePayment;
+var stripe = new _stripe["default"](process.env.STRIPE_SECRET_KEY);
+stripePayment.get('/', function _callee(req, res) {
   var paymentMethod;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
           _context.next = 2;
-          return regeneratorRuntime.awrap(stripeKEY.paymentIntents.create({
+          return regeneratorRuntime.awrap(stripe.paymentIntents.create({
             amount: 250,
-            currency: 'cad'
+            currency: 'usd'
           }));
 
         case 2:
