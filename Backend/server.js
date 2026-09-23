@@ -103,7 +103,7 @@ app.get('/api/csrf-token', (req, res) => {
 
 //SQL Injection prevention
 
-validator.isEmail(email)                          // Check valid email
+/*validator.isEmail(email)                          // Check valid email
 validator.isLength(str, { min, max })             // Check length
 validator.matches(str, regex)                     // Match pattern
 validator.isAlphanumeric(str)                     // Only letters/numbers
@@ -113,7 +113,7 @@ validator.escape(str)                             // HTML escape (XSS prevention
 validator.normalizeEmail(email)                   // Normalize email
 validator.isMobilePhone(phone, locale)            // Validate phone
 validator.isURL(url)                              // Validate URL
-validator.isInt(str)                           // Check if integer
+validator.isInt(str)                           // Check if integer*/
 
 
 //Authentication
