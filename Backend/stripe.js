@@ -9,5 +9,6 @@ stripePayment.get('/', async (req, res) => {
     amount: 250,
     currency: 'usd'
 })
+console.log(paymentMethod)
 res.json({client_secret: paymentMethod.client_secret})
 })

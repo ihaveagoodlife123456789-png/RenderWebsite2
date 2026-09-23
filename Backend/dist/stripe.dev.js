@@ -29,11 +29,12 @@ stripePayment.get('/', function _callee(req, res) {
 
         case 2:
           paymentMethod = _context.sent;
+          console.log(paymentMethod);
           res.json({
             client_secret: paymentMethod.client_secret
           });
 
-        case 4:
+        case 5:
         case "end":
           return _context.stop();
       }
