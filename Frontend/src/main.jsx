@@ -8,7 +8,7 @@ import { SignIn } from './signIn.jsx'
 import { Login } from './login.jsx'
 import { GetUserProfile } from './profiles.jsx'
 import { Dashboard } from './dashboard.jsx'
-import { PaymentPage } from './stripe.jsx'
+import { PaymentPage } from './CheckoutForm.jsx'
 
 const router = createBrowserRouter([
   {
