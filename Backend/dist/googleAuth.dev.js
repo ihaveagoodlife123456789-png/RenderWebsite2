@@ -55,5 +55,5 @@ authGoogle.get('/callback', _passport["default"].authenticate('google', {
     secure: process.env.NODE_ENV === 'production',
     sameSite: 'strict'
   });
-  res.redirect("https://ascendedhorizons.com/");
+  res.redirect("https://renderwebsite2.onrender.com/");
 });

@@ -34,7 +34,7 @@ import helmet from 'helmet'
 import nodemailer from 'nodemailer';
 
 const app = express();
-app.use(cors({ origin: 'https://ascendedhorizons.com', credentials: true }));
+app.use(cors({ origin: 'https://renderwebsite2.onrender.com', credentials: true }));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser())
@@ -182,7 +182,7 @@ passport.use(new GoogleStrategy(
     {
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: 'https://ascendedhorizons.com/auth/google/callback'
+        callbackURL: 'https://renderwebsite2.onrender.com/auth/google/callback'
     },
     async (accessToken, refreshToken, profile, done) => {
        try {
