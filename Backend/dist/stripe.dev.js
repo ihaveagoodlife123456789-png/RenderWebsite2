@@ -23,7 +23,7 @@ stripePayment.get('/', function _callee(req, res) {
         case 0:
           _context.next = 2;
           return regeneratorRuntime.awrap(stripe.paymentIntents.create({
-            amount: 10,
+            amount: 100,
             currency: 'cad'
           }));
 
