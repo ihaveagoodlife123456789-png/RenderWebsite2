@@ -1,7 +1,6 @@
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import { useState } from 'react';
 
-import userIntentSecret from './paymentPage.jsx'
 
 export function CheckoutForm() {
   const stripe = useStripe();

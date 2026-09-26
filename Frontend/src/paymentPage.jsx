@@ -18,7 +18,6 @@ export function PaymentPage() {
         
         const data = await response.json();
         setClientSecret(data.client_secret);
-        userIntentSecret = data.client_secret
       } catch (err) {
         console.error("Failed to fetch intent:", err);
         setError(true);
