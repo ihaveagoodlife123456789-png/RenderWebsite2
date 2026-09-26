@@ -7,7 +7,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 stripePayment.get('/', async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
-    amount: 1,
+    amount: 10,
     currency: 'cad'
 })
 console.log(paymentIntent)
