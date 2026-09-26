@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "STRIPE_SECRET_KEY=$STRIPE_SECRET_KEY vite build",
     "lint": "oxlint",
     "preview": "vite preview"
   },
