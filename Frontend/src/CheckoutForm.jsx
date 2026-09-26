@@ -44,7 +44,7 @@ export function CheckoutForm() {
 
   return (
     <form onSubmit={handleSubmit} className="max-w-md mx-auto p-4">
-      <PaymentElement />
+      <PaymentElement options={{layout: 'accordion'}}/>
       <button 
         type="submit" 
         disabled={!stripe || loading}
