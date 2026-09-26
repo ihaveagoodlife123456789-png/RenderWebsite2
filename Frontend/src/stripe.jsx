@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 import Stripe from 'stripe';
-import {ElementsProvider, PaymentElement} from '@stripe/react-stripe-js';
+import { PaymentElement } from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import { useState, useEffect } from 'react'
 
