@@ -80,9 +80,16 @@ app.use(
 
 //XSS Prevention
 app.use((req, res, next) => {
-    res.setHeader('Content-Security-Policy', "default-src 'self'")
+    res.setHeader(
+        'Content-Security-Policy', 
+        "default-src 'self'; " +
+        "script-src 'self' https://stripe.com; " +
+        "style-src 'self' 'unsafe-inline'; " +
+        "frame-src 'self' https://stripe.com https://stripe.com; " +
+        "connect-src 'self' https://stripe.com;"
+    )
+    res.setHeader('X-Frame-Options', 'SAMEORIGIN')
     res.setHeader('X-Content-Type-Options', 'nosniff')
-    res.setHeader('X-Frame-Options', 'DENY')
     res.setHeader('X-XSS-Protection', '1; mode=block')
     next()
 })
