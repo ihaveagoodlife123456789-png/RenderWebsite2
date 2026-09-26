@@ -27,8 +27,7 @@ export function PaymentPage() {
   }, []);
 
   const appearance = {
-    theme: 'night',
-    labels: 'floating'
+    theme: 'night'
   }
 
   if (error) {
