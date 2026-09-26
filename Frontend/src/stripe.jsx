@@ -4,9 +4,10 @@ import Stripe from 'stripe';
 import { PaymentElement } from '@stripe/react-stripe-js';
 import {loadStripe} from '@stripe/stripe-js';
 import { useState, useEffect } from 'react'
+import { Elements } from '@stripe/react-stripe-js'
 
 
-const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+const stripePromise = loadStripe(process.env.STRIPE_SECRET_KEY);
 
 
 export function PaymentPage() {
@@ -18,12 +19,12 @@ export function PaymentPage() {
                 setClientSecret(null)
                 return;
             }
-            const { getClientSecret } = fetchClientSecret.json()
+            const { getClientSecret } = await fetchClientSecret.json()
             console.log(getClientSecret)
             setClientSecret(getClientSecret)
         }
         fetchClientSecretfunc()
-    })
+    }, [])
     return (
   <Elements stripe={stripePromise} options={{clientSecret}}>
     <form>
