@@ -9,7 +9,9 @@ var _stripe = _interopRequireDefault(require("stripe"));
 
 var _express = _interopRequireDefault(require("express"));
 
-var _clientSecrets = require("openai/resources/realtime/client-secrets.js");
+require("dotenv/config");
+
+require("../.env");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -25,8 +27,8 @@ stripePayment.get('/', function _callee(req, res) {
         case 0:
           _context.next = 2;
           return regeneratorRuntime.awrap(stripe.paymentIntents.create({
-            amount: 250,
-            currency: 'usd'
+            amount: 1,
+            currency: 'cad'
           }));
 
         case 2:

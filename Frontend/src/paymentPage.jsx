@@ -4,7 +4,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { CheckoutForm } from './CheckoutForm'; // Import your form component
 
 // EXCLUSIVELY use your Publishable Key here (pk_test_...)
-const stripePromise = loadStripe(import.meta.env. VITE_STRIPE_SECRET_KEY);
+const stripePromise = loadStripe(import.meta.env. VITE_STRIPE_SECRET_KEY);  
 
 export function PaymentPage() {
   const [clientSecret, setClientSecret] = useState(null);
@@ -26,6 +26,11 @@ export function PaymentPage() {
     fetchClientSecretFunc();
   }, []);
 
+  const appearance = {
+    theme: 'night',
+    labels: 'floating'
+  }
+
   if (error) {
     return <div className='bg-red-300 p-4 text-red-800'>Failed to load checkout session.</div>;
   }
@@ -35,7 +40,7 @@ export function PaymentPage() {
   }
 
   return (
-    <Elements stripe={stripePromise} options={{ clientSecret }}>
+    <Elements stripe={stripePromise} options={{ clientSecret, appearance }}>
       <CheckoutForm />
     </Elements>
   );

@@ -1,6 +1,8 @@
 import Stripe from 'stripe';
 import express from 'express';
-import { ClientSecrets } from 'openai/resources/realtime/client-secrets.js';
+
+import 'dotenv/config'
+import '../.env'
 
 export const stripePayment = express.Router()
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
@@ -8,8 +10,8 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 stripePayment.get('/', async (req, res) => {
     const paymentIntent = await stripe.paymentIntents.create({
-    amount: 250,
-    currency: 'usd'
+    amount: 1,
+    currency: 'cad'
 })
 console.log(paymentIntent)
 res.json({client_secret: paymentIntent.client_secret})
