@@ -25,6 +25,14 @@ export function PaymentPage() {
         }
         fetchClientSecretfunc()
     }, [])
+
+    if(!clientSecret) {
+        return (
+            <div className='bg-red-300'>
+                Loading...
+            </div>
+        )
+    }
     return (
   <Elements stripe={stripePromise} options={{clientSecret}}>
     <form>
