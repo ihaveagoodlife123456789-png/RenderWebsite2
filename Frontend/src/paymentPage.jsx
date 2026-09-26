@@ -4,7 +4,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { CheckoutForm } from './CheckoutForm'; // Import your form component
 
 // EXCLUSIVELY use your Publishable Key here (pk_test_...)
-const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PUBLISHABLE_KEY);
+const stripePromise = loadStripe(process.env.STRIPE_SECRET_KEY);
 
 export function PaymentPage() {
   const [clientSecret, setClientSecret] = useState(null);
