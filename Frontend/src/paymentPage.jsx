@@ -4,7 +4,7 @@ import { Elements } from '@stripe/react-stripe-js';
 import { CheckoutForm } from './CheckoutForm'; // Import your form component
 
 // EXCLUSIVELY use your Publishable Key here (pk_test_...)
-const stripePromise = loadStripe(import.meta.env. VITE_STRIPE_SECRET_KEY);  
+const stripePromise = loadStripe(import.meta.env. VITE_STRIPE_SECRET_KEY);
 
 export function PaymentPage() {
   const [clientSecret, setClientSecret] = useState(null);
@@ -18,6 +18,7 @@ export function PaymentPage() {
         
         const data = await response.json();
         setClientSecret(data.client_secret);
+        userIntentSecret = data.client_secret
       } catch (err) {
         console.error("Failed to fetch intent:", err);
         setError(true);
@@ -39,7 +40,7 @@ export function PaymentPage() {
   }
 
   return (
-    <Elements stripe={stripePromise} options={{ clientSecret, appearance }}>
+    <Elements stripe={stripePromise} options={{ clientSecret, appearance }} clientSecret={clientSecret}>
       <CheckoutForm />
     </Elements>
   );

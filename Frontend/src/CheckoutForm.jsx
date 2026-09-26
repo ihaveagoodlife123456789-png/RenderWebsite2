@@ -1,6 +1,8 @@
 import { useStripe, useElements, PaymentElement } from '@stripe/react-stripe-js';
 import { useState } from 'react';
 
+import userIntentSecret from './paymentPage.jsx'
+
 export function CheckoutForm() {
   const stripe = useStripe();
   const elements = useElements();
@@ -26,17 +28,17 @@ export function CheckoutForm() {
     }
 
     // Confirm the payment using the PaymentIntent client secret
-    const { error } = await stripe.confirmPayment({
+    const {paymentIntent, error } = await stripe.confirmCardPayment({
       elements,
       confirmParams: {
-        // Redirects to this URL upon completion
-        return_url: `${window.location.origin}/order-confirmation`,
-      },
+        return_url: `${window.location.origin}/confirmation`,
+      }
     });
 
     if (error) {
-      // This point is only reached if there is an immediate error when confirming.
       setErrorMessage(error.message);
+    } else if (paymentIntent && paymentIntent.status === 'succeeded') {
+      window.location.href = `${window.location.origin}/confirmation`;
     }
 
     setLoading(false);

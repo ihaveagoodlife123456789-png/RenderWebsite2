@@ -9,6 +9,7 @@ import { Login } from './login.jsx'
 import { GetUserProfile } from './profiles.jsx'
 import { Dashboard } from './dashboard.jsx'
 import { PaymentPage } from './paymentPage.jsx'
+import { PaymentConfirmation } from './paymentConfirmation.jsx'
 
 const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ const router = createBrowserRouter([
   {
     path: '/payment',
     element: <PaymentPage />
+  },
+  {
+    path: '/payment/confirmation',
+    element: <PaymentConfirmation />
   },
 ]);
 createRoot(document.getElementById('root')).render(
