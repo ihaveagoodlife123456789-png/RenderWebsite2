@@ -19,7 +19,7 @@ export function PaymentPage() {
                 setClientSecret(null)
                 return;
             }
-            const { getClientSecret } = await fetchClientSecret.json()
+            const data = await fetchClientSecret.json()
             console.log(getClientSecret)
             setClientSecret(getClientSecret)
         }
