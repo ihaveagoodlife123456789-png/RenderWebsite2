@@ -43,10 +43,6 @@ const router = createBrowserRouter([
     path: '/payment',
     element: <PaymentPage />
   },
-  {
-    path: '/auth/payment/method',
-    element: <Element />
-  }
 ]);
 createRoot(document.getElementById('root')).render(
   <StrictMode>
