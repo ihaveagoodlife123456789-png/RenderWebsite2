@@ -1,32 +1,36 @@
 import {useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 
+import Stripe from 'stripe';
+import {ElementsProvider, PaymentElement} from '@stripe/react-stripe-js';
+import {loadStripe} from '@stripe/stripe-js';
+import { useState, useEffect } from 'react'
+
+
+const stripePromise = loadStripe('pk_test_TYooMQauvdEDq54NiTphI7jx');
+
+
 export function PaymentPage() {
-const [payment, setPayment] = useState(null)
-
-useEffect(() => {
-    async function fetchPayment() {
-        const APIResponse = await fetch('/auth/stripe', {
-            method: 'POST',
-            credentials: 'include'
-        })
-
-        if(!APIResponse) {
-            setPayment(null)
-            return;
+    const [clientSecret, setClientSecret] = useState(null)
+    useEffect(() => {
+        async function fetchClientSecretfunc() {
+            const fetchClientSecret = await fetch('/auth/stripe')
+            if(!fetchClientSecret) {
+                setClientSecret(null)
+                return;
+            }
+            const { getClientSecret } = fetchClientSecret.json()
+            console.log(getClientSecret)
+            setClientSecret(getClientSecret)
         }
-        const data = APIResponse.json()
-        setPayment(data)
-        console.log(data)
-    }
-    fetchPayment()
-}, [])
+        fetchClientSecretfunc()
+    })
     return (
-    <div className="size-full bg-blue-300">
-        <div className="size-80% bg-slate-950/80 flex flex-col justify-center items-center">
-        {payment ? <div className="text-green-700">Success</div> : <div className="text-red-700">Error</div> }
-        </div>
-        <Link to="/auth/payment/method" className="font-bold text-white text-[26px]">Pay</Link>
-    </div>
+  <Elements stripe={stripePromise} options={{clientSecret}}>
+    <form>
+      <PaymentElement />
+      <button type="submit">Pay now</button>
+    </form>
+  </Elements>
     )
 }
