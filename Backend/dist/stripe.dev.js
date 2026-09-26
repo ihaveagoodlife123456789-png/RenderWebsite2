@@ -9,10 +9,6 @@ var _stripe = _interopRequireDefault(require("stripe"));
 
 var _express = _interopRequireDefault(require("express"));
 
-require("dotenv/config");
-
-require("../.env");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 var stripePayment = _express["default"].Router();

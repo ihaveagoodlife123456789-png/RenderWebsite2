@@ -1,9 +1,6 @@
 import Stripe from 'stripe';
 import express from 'express';
 
-import 'dotenv/config'
-import '../.env'
-
 export const stripePayment = express.Router()
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
