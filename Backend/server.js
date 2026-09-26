@@ -81,13 +81,13 @@ app.use(
 //XSS Prevention
 app.use((req, res, next) => {
     res.setHeader(
-        'Content-Security-Policy', 
-        "default-src 'self'; " +
-        "script-src 'self' https://js.stripe.com; " + // <-- MUST have 'js.'
-        "style-src 'self' 'unsafe-inline'; " +
-        "frame-src 'self' https://js.stripe.com https://hooks.stripe.com; " +
-        "connect-src 'self' https://api.stripe.com;"
-    )
+    'Content-Security-Policy', 
+    "default-src 'self'; " +
+    "script-src 'self' https://js.stripe.com https://stripe.com; " + // Added root domain here
+    "style-src 'self' 'unsafe-inline'; " +
+    "frame-src 'self' https://js.stripe.com https://hooks.stripe.com; " +
+    "connect-src 'self' https://api.stripe.com;"
+)
     res.setHeader('X-Frame-Options', 'SAMEORIGIN')
     res.setHeader('X-Content-Type-Options', 'nosniff')
     res.setHeader('X-XSS-Protection', '1; mode=block')
