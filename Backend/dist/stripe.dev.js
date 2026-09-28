@@ -16,32 +16,27 @@ var stripePayment = _express["default"].Router();
 exports.stripePayment = stripePayment;
 var stripe = new _stripe["default"](process.env.STRIPE_SECRET_KEY);
 stripePayment.get('/', function _callee(req, res) {
-  var paymentMethodDomain, paymentIntent;
+  var paymentIntent;
   return regeneratorRuntime.async(function _callee$(_context) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          _context.next = 2;
-          return regeneratorRuntime.awrap(stripe.paymentMethodDomains.create({
-            domain_name: 'ascendedHorizons.com'
-          }, {
-            stripeAccount: procces.env.STRIPE_ACCOUNT_ID
-          }));
-
-        case 2:
-          paymentMethodDomain = _context.sent;
-
-          if (!paymentMethodDomain) {
-            console.log('Cannot connect :(');
+          if (paymentMethodDomain) {
+            _context.next = 3;
+            break;
           }
 
-          _context.next = 6;
+          console.log('Cannot connect :(');
+          return _context.abrupt("return");
+
+        case 3:
+          _context.next = 5;
           return regeneratorRuntime.awrap(stripe.paymentIntents.create({
             amount: 100,
             currency: 'cad'
           }));
 
-        case 6:
+        case 5:
           paymentIntent = _context.sent;
           console.log(paymentIntent);
           res.json({
@@ -49,7 +44,7 @@ stripePayment.get('/', function _callee(req, res) {
             client_secret: paymentIntent.client_secret
           });
 
-        case 9:
+        case 8:
         case "end":
           return _context.stop();
       }

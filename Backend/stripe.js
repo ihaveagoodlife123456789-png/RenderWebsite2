@@ -5,16 +5,17 @@ export const stripePayment = express.Router()
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
 stripePayment.get('/', async (req, res) => {
-    const paymentMethodDomain = await stripe.paymentMethodDomains.create(
+    /*const paymentMethodDomain = await stripe.paymentMethodDomains.create(
   {
     domain_name: 'ascendedHorizons.com',
   },
   {
     stripeAccount: procces.env.STRIPE_ACCOUNT_ID
   }
-);
+);*/
 if(!paymentMethodDomain) {
     console.log('Cannot connect :(')
+    return
 }
     const paymentIntent = await stripe.paymentIntents.create({
     amount: 100,
