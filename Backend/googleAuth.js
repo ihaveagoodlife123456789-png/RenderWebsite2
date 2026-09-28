@@ -42,7 +42,7 @@ authGoogle.get('/callback',
             sameSite: 'strict'  
         })
 
-        res.redirect(`https://renderwebsite2.onrender.com/`)
+        res.redirect(`https://ascendedhorizons.com/`)
     }
 )
 

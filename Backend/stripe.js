@@ -1,6 +1,6 @@
 import Stripe from 'stripe';
 import express from 'express';
-
+ 
 export const stripePayment = express.Router()
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
