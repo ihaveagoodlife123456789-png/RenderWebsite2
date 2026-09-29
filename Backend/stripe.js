@@ -76,3 +76,13 @@ stripePayment.post('/confirm', async (req, res) => {
 
 //Payment Elements
 //payment_intent.succeeded
+
+/*
+import { PaymentElement, AddressElement } from '@stripe/react-stripe-js';
+
+<form onSubmit={handleSubmit}>
+  <AddressElement options={{ mode: 'shipping', allowedCountries: ['CA', 'US'] }} />
+  <PaymentElement options={{ layout: 'accordion' }} />
+  <button type="submit">Pay now</button>
+</form>
+*/
