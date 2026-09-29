@@ -21,22 +21,13 @@ stripePayment.get('/', function _callee(req, res) {
     while (1) {
       switch (_context.prev = _context.next) {
         case 0:
-          if (paymentMethodDomain) {
-            _context.next = 3;
-            break;
-          }
-
-          console.log('Cannot connect :(');
-          return _context.abrupt("return");
-
-        case 3:
-          _context.next = 5;
+          _context.next = 2;
           return regeneratorRuntime.awrap(stripe.paymentIntents.create({
             amount: 100,
             currency: 'cad'
           }));
 
-        case 5:
+        case 2:
           paymentIntent = _context.sent;
           console.log(paymentIntent);
           res.json({
@@ -44,7 +35,7 @@ stripePayment.get('/', function _callee(req, res) {
             client_secret: paymentIntent.client_secret
           });
 
-        case 8:
+        case 5:
         case "end":
           return _context.stop();
       }

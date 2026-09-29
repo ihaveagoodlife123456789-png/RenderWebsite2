@@ -12,11 +12,11 @@ stripePayment.get('/', async (req, res) => {
   {
     stripeAccount: procces.env.STRIPE_ACCOUNT_ID
   }
-);*/
+);
 if(!paymentMethodDomain) {
     console.log('Cannot connect :(')
     return
-}
+}*/
     const paymentIntent = await stripe.paymentIntents.create({
     amount: 100,
     currency: 'cad'
