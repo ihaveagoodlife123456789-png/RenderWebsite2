@@ -4,19 +4,12 @@ import express from 'express';
 export const stripePayment = express.Router()
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
+const domain = await stripe.paymentMethodDomains.create({
+  domain_name: 'ascendedhorizons.com', // lowercase, no https://, no path
+});
+console.log(domain.id, domain.apple_pay.status);
+
 stripePayment.get('/', async (req, res) => {
-    /*const paymentMethodDomain = await stripe.paymentMethodDomains.create(
-  {
-    domain_name: 'ascendedHorizons.com',
-  },
-  {
-    stripeAccount: procces.env.STRIPE_ACCOUNT_ID
-  }
-);
-if(!paymentMethodDomain) {
-    console.log('Cannot connect :(')
-    return
-}*/
     const paymentIntent = await stripe.paymentIntents.create({
     amount: 100,
     currency: 'cad'

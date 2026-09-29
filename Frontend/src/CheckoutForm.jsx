@@ -27,7 +27,7 @@ export function CheckoutForm() {
     }
 
     // Confirm the payment using the PaymentIntent client secret
-    const {paymentIntent, error } = await stripe.confirmCardPayment({
+    const {paymentIntent, error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
         return_url: `${window.location.origin}/confirmation`,
