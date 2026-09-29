@@ -75,4 +75,4 @@ stripePayment.post('/confirm', async (req, res) => {
 });
 
 //Payment Elements
-
+//payment_intent.succeeded
