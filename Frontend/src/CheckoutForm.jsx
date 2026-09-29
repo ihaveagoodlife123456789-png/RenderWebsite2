@@ -30,14 +30,14 @@ export function CheckoutForm() {
     const {paymentIntent, error } = await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: `https://ascendedhorizons/payment/confirmation`,
+        return_url: `${window.location.origin}/payment/confirmation`,
       }
     });
 
     if (error) {
       setErrorMessage(error.message);
     } else if (paymentIntent && paymentIntent.status === 'succeeded') {
-      window.location.href = `https://ascendedhorizons/payment/confirmation`;
+      window.location.href = `${window.location.origin}/payment/confirmation`;
     }
 
     setLoading(false);
